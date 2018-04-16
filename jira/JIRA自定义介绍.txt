@@ -1,0 +1,12 @@
+<div class="g-intro">
+<div class="intro">
+<img class="intro-logo" src="/images/64jira.png"/>
+<h3>欢迎来到 SFA JIRA</h3>
+<p>不确定从哪里开始？查看
+<a id="jira101" alt="Get help!" title="Getting started with JIRA Core" href="https://docs.atlassian.com/jira/jsw-docs-073/Getting+started">的 JIRA 指南 101</a>
+和
+<a id="jiraTraining" title="JIRA以及Confluence正规培训" href="http://www.atlassian.com/training/">Atlassian 培训课程</a>。
+</p>
+<p>您可以在系统管理部分<a id="edit-introduction" href="/secure/admin/jira/EditApplicationProperties!default.jspa">自定义此段文字</a>。</p>
+</div>
+</div>
