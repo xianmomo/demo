@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.itmro.svn.dao.TbSvnApplyMapper">
+  <resultMap id="BaseResultMap" type="com.sf.itmro.svn.model.TbSvnApply">
+    <id column="apply_id" jdbcType="VARCHAR" property="applyId" />
+    <result column="apply_user_name" jdbcType="VARCHAR" property="applyUserName" />
+    <result column="apply_user_alias" jdbcType="VARCHAR" property="applyUserAlias" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="receive_time" jdbcType="VARCHAR" property="receiveTime" />
+    <result column="over_time" jdbcType="VARCHAR" property="overTime" />
+    <result column="run_id" jdbcType="BIGINT" property="runId" />
+    <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
+    <result column="apply_type_name" jdbcType="VARCHAR" property="applyTypeName" />
+    <result column="apply_model_type" jdbcType="VARCHAR" property="applyModelType" />
+    <result column="repository_type_name" jdbcType="VARCHAR" property="repositoryTypeName" />
+    <result column="apply_user_type" jdbcType="VARCHAR" property="applyUserType" />
+    <result column="repository_dept" jdbcType="VARCHAR" property="repositoryDept" />
+    <result column="repository_user" jdbcType="VARCHAR" property="repositoryUser" />
+    <result column="apply_statu" jdbcType="VARCHAR" property="applyStatu" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="rule_check_remark" jdbcType="VARCHAR" property="ruleCheckRemark" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    apply_id,apply_user_name,apply_user_alias, apply_time,receive_time,over_time,run_id,process_number, apply_type_name,apply_model_type, repository_type_name, apply_user_type, repository_dept, 
+     repository_user, apply_statu, remark,rule_check_remark
+  </sql>
+  
+  <sql id="Query_where">
+  	<where>
+  		<if test="applyId != null and applyId !=''">
+  			and apply_id = #{applyId}
+  		</if>
+  		<if test="applyUserName != null and applyUserName !=''">
+  			and apply_user_name = #{applyUserName}
+  		</if>
+  		<if test="applyUserNameLike != null and applyUserNameLike !=''">
+  			and locate(#{applyUserNameLike},apply_user_name)>0 
+  		</if>
+  		<if test="applyStatu != null and applyStatu !=''">
+  			and apply_statu = #{applyStatu}
+  		</if>
+  		<if test="applyStatuIn != null and applyStatuIn !=''">
+  			and apply_statu in (${applyStatu})
+  		</if>
+  		<if test="applyModelType != null and applyModelType !=''">
+  			and apply_model_type = #{applyModelType}
+  		</if>
+  		<if test="repositoryTypeName != null and repositoryTypeName !=''">
+  			and repository_type_name = #{repositoryTypeName}
+  		</if>
+  		<if test="repositoryTypeNameNot != null and repositoryTypeNameNot !=''">
+  			and repository_type_name != #{repositoryTypeNameNot}
+  		</if>
+  		<if test="repositoryTypeNameIn != null and repositoryTypeNameIn !=''">
+  			and repository_type_name in ${repositoryTypeNameIn}
+  		</if>
+  		<if test="applyTimeBegin != null and applyTimeBegin!=''">
+  			and date_format(apply_time,'%Y-%m-%d') &gt;= #{applyTimeBegin}
+  		</if>
+  		<if test="applyTimeEnd != null and applyTimeEnd!=''">
+  			and date_format(apply_time,'%Y-%m-%d') &lt;= #{applyTimeEnd}
+  		</if>
+  		<if test="processNumber != null and processNumber!=''">
+  			and process_number = #{processNumber}
+  		</if>
+  		<if test="runId != null and runId!=''">
+  			and run_id = #{runId}
+  		</if>
+  	</where>
+  </sql>
+  
+  <select id="load" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_svn_apply
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="queryData" parameterType="map" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+    from tb_svn_apply
+    <include refid="Query_where"></include>
+  </select>
+  
+  <insert id="insertSelective" parameterType="com.sf.itmro.svn.model.TbSvnApply">
+    insert into tb_svn_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applyId != null">
+        apply_id,
+      </if>
+      <if test="applyTime != null">
+        apply_time,
+      </if>
+      <if test="applyTypeName != null">
+        apply_type_name,
+      </if>
+      <if test="applyModelType != null">
+        apply_model_type,
+      </if>
+      <if test="repositoryTypeName != null">
+        repository_type_name,
+      </if>
+      <if test="applyUserType != null">
+        apply_user_type,
+      </if>
+      <if test="repositoryDept != null">
+        repository_dept,
+      </if>
+      <if test="applyUserName != null">
+        apply_user_name,
+      </if>
+      <if test="applyUserAlias != null">
+        apply_user_alias,
+      </if>
+      <if test="repositoryUser != null">
+        repository_user,
+      </if>
+      <if test="applyStatu != null">
+        apply_statu,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applyId != null">
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyTypeName != null">
+        #{applyTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyModelType != null">
+        #{applyModelType,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryTypeName != null">
+        #{repositoryTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserType != null">
+        #{applyUserType,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryDept != null">
+        #{repositoryDept,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserName != null">
+        #{applyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserAlias != null">
+        #{applyUserAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryUser != null">
+        #{repositoryUser,jdbcType=VARCHAR},
+      </if>
+      <if test="applyStatu != null">
+        #{applyStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.svn.model.TbSvnApply">
+    update tb_svn_apply
+    <set>
+      <if test="applyTime != null">
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        receive_time = #{receiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="overTime != null">
+        over_time = #{overTime,jdbcType=VARCHAR},
+      </if>
+      <if test="processNumber != null">
+        process_number = #{processNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTypeName != null">
+        apply_type_name = #{applyTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyModelType != null">
+        apply_model_type = #{applyModelType,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryTypeName != null">
+        repository_type_name = #{repositoryTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserType != null">
+        apply_user_type = #{applyUserType,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryDept != null">
+        repository_dept = #{repositoryDept,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserName != null">
+        apply_user_name = #{applyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryUser != null">
+        repository_user = #{repositoryUser,jdbcType=VARCHAR},
+      </if>
+      <if test="applyStatu != null">
+        apply_statu = #{applyStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleCheckRemark != null">
+        rule_check_remark = #{ruleCheckRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="runId != null">
+        run_id = #{runId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="queryMapData" parameterType="map" resultType="map">
+		select * from (select date_format(apply_time,'%Y-%m-%d %H:%i:%s') as apply_time_str,
+	  	case apply_statu when '0' then '申请单已保存' when '1' then '申请单已提交' when '2' then 'ECP审批中' when '3' then 'ECP审批归档' when '4' then '丰速处理完成' when '5' then '丰速处理异常' when '6' then '申请单转向QA' end as apply_statu_str,
+	  	(select user_alias from sys_user t where t.user_code=tb_svn_apply.apply_user_name) as apply_user_alias,
+	  	apply_id,apply_user_name, apply_type_name,apply_model_type, repository_type_name,remark,rule_check_remark,process_number,receive_time,over_time 
+	    from tb_svn_apply
+	    <include refid="Query_where"></include>
+	    order by apply_time desc
+		) temp 
+		<if test="rowStart != null">
+			limit ${rowStart},${rows}
+		</if>
+	</select>
+
+	<select id="countData" resultType="java.lang.Integer"
+		parameterType="map">
+		select count(1) from tb_svn_apply
+		<include refid="Query_where"></include>
+	</select>
+</mapper>

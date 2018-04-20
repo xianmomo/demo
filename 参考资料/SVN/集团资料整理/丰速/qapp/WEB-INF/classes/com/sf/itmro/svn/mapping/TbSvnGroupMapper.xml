@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.svn.dao.TbSvnGroupMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.svn.model.TbSvnGroup">
+		<id column="group_id" property="groupId" jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
+		<result column="group_alias" property="groupAlias" jdbcType="VARCHAR" />
+		<result column="group_type" property="groupType" jdbcType="VARCHAR" />
+		<result column="resp_type" property="respType" jdbcType="VARCHAR" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_id" property="modifyId" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		group_id, parent_id, group_name, group_alias, group_type, resp_type, create_id, create_time,
+		modify_id,
+		modify_time, remark
+	</sql>
+	<sql id="Query_where">
+		<where>
+			<if test="groupName != null and groupName !=''">
+				and group_name = #{groupName}
+			</if>
+			<if test="groupNameIn != null and groupNameIn !=''">
+				and group_name in ${groupNameIn}
+			</if>
+			<if test="notAnyStartGroupName != null and notAnyStartGroupName !=''">
+				and group_name not like '${notAnyStartGroupName}%';
+			</if>
+			<if test="groupAlias != null and groupAlias !=''">
+				and group_alias = #{groupAlias}
+			</if>
+			<if test="groupType != null and groupType !=''">
+				and group_type = #{groupType}
+			</if>
+			<if test="respType != null and respType !=''">
+				and resp_type = #{respType}
+			</if>
+			<if test="createTimeBegin!=null and createTimeBegin !=''">
+				and date_format(create_time,'%Y-%m-%d') &gt;= #{createTimeBegin}
+			</if>
+			<if test="createTimeEnd!=null and createTimeEnd !=''">
+				and date_format(create_time,'%Y-%m-%d') &lt;= #{createTimeEnd}
+			</if>
+			<if test="groupId != null and groupId  !=''">
+				and group_id = #{groupId }
+			</if>
+		</where>
+	</sql>
+	<select id="queryData" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_group
+		<include refid="Query_where"></include>
+	</select>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.svn.model.TbSvnGroup">
+		insert into tb_svn_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="groupId != null">
+				group_id,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="groupName != null">
+				group_name,
+			</if>
+			<if test="groupAlias != null">
+				group_alias,
+			</if>
+			<if test="groupType != null">
+				group_type,
+			</if>
+			<if test="respType != null">
+				resp_type,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyId != null">
+				modify_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="groupId != null">
+				#{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="groupName != null">
+				#{groupName,jdbcType=VARCHAR},
+			</if>
+			<if test="groupAlias != null">
+				#{groupAlias,jdbcType=VARCHAR},
+			</if>
+			<if test="groupType != null">
+				#{groupType,jdbcType=VARCHAR},
+			</if>
+			<if test="respType != null">
+				#{respType,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				#{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.svn.model.TbSvnGroup">
+		update tb_svn_group
+		<set>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="groupName != null">
+				group_name = #{groupName,jdbcType=VARCHAR},
+			</if>
+			<if test="groupAlias != null">
+				group_alias = #{groupAlias,jdbcType=VARCHAR},
+			</if>
+			<if test="groupType != null">
+				group_type = #{groupType,jdbcType=VARCHAR},
+			</if>
+			<if test="respType != null">
+				resp_type = #{respType,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				create_id = #{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				modify_id = #{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where group_id = #{groupId,jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateGroupNameByRespName" parameterType="map">
+		UPDATE tb_svn_group t SET t.group_name =
+		REPLACE(t.group_name,#{oldRespName},#{newRespName})
+		WHERE t.group_name IN ${groupNameIn}
+	</update>
+
+	<select id="queryGridMapData" parameterType="map" resultType="map">
+		SELECT DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%s') AS create_time_str,
+		(
+		SELECT user_alias
+		FROM sys_user su
+		WHERE
+		su.user_code = t.create_id) AS create_name,
+		(
+		SELECT GROUP_CONCAT(tsg.group_name)
+		FROM tb_svn_group tsg
+		WHERE
+		FIND_IN_SET(tsg.group_id,t.parent_id)>0) AS parent_group_name,
+		t.*
+		FROM tb_svn_group t
+		<include refid="Query_where"></include>
+		ORDER BY group_name
+		<if test="rowStart != null">
+			LIMIT ${rowStart},${rows}
+		</if>
+	</select>
+
+	<select id="queryNotGDevStartGroupExistsAnyGroup" parameterType="map" resultType="map">
+		SELECT t.group_id,t.group_name
+		FROM tb_svn_group t
+		WHERE group_name NOT LIKE '${notAnyStartGroupName}%' AND resp_type = 1 AND group_type='1' AND
+		FIND_IN_SET(t.group_id,#{existsAnyGroupId})=0;
+	</select>
+
+	<select id="queryNotPermissionGroupData" parameterType="map" resultType="map">
+		SELECT t.group_id,t.group_name
+		FROM
+		tb_svn_group t
+		WHERE t.resp_type='1' AND t.group_name in ${groupNameIn} AND NOT EXISTS(
+		SELECT 1
+		FROM tb_svn_group_dir
+		tsgd
+		WHERE tsgd.group_id = t.group_id AND tsgd.dir_id=#{dirId})
+	</select>
+
+	<select id="queryHasPermissionGroupData" parameterType="java.lang.String" resultType="map">
+		SELECT
+		tsg.group_id,tsg.group_name,tsgd.auth,tsgd.id
+		FROM tb_svn_group_dir tsgd,tb_svn_group tsg
+		WHERE tsgd.group_id =
+		tsg.group_id AND tsgd.dir_id=#{dirId}
+	</select>
+
+	<select id="queryChildGroupMapByGroupId" parameterType="java.lang.String" resultType="map">
+		SELECT
+		t.group_id,t.group_name
+		FROM tb_svn_group t
+		WHERE EXISTS (
+		SELECT 1
+		FROM tb_svn_group tsg
+		WHERE
+		FIND_IN_SET(t.group_id,tsg.parent_id)>0 AND tsg.group_id=#{groupId,jdbcType=VARCHAR})
+	</select>
+
+	<select id="queryGroupUserMapByGroupId" parameterType="java.lang.String" resultType="map">
+		SELECT
+		t.id,tsu.user_id,tsu.user_name,tsu.user_alias,tsu.date_num, DATE_FORMAT(t.valid_begintime,'%Y-%m-%d') AS begin_time,
+		DATE_FORMAT(t.valid_endtime,'%Y-%m-%d') AS end_time
+		FROM tb_svn_user_group t,tb_svn_user tsu
+		WHERE t.user_id =
+		tsu.user_id AND t.group_id=#{groupId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryGroupDirMapByGroupId" parameterType="java.lang.String" resultType="map">
+		SELECT tsd.dir_id,
+		CONCAT(tsr.resp_name,":",tsd.dir_path) AS dir_path,t.auth
+		FROM tb_svn_group_dir t,tb_svn_dir tsd,tb_svn_resp tsr
+		WHERE
+		t.dir_id = tsd.dir_id AND tsd.resp_id=tsr.resp_id AND t.group_id=#{groupId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryDataToShowPermission" parameterType="java.lang.String" resultType="map">
+		select
+		t.group_name,t.group_id from tb_svn_group t where t.resp_type=#{respType,jdbcType=VARCHAR}
+	</select>
+
+	<select id="countData" resultType="java.lang.Integer" parameterType="map">
+		select count(1) from tb_svn_group t
+		<include refid="Query_where"></include>
+	</select>
+
+	<delete id="deleteGroupByGroupNameIn" parameterType="java.lang.String">
+		DELETE
+		FROM tb_svn_group
+		WHERE tb_svn_group.group_name IN
+		(${groupNameIn,jdbcType=VARCHAR})
+	</delete>
+
+</mapper>

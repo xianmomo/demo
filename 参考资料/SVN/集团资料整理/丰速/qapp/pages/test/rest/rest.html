@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>REST 服务测试页面</title>
+<script type="text/javascript"
+	src="../../../resources/jquery-easyui-1.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function ajaxRequest(jsonFile, url, requestShowId, responseShowId) {
+		var result = confirm("确定测试该接口");
+		if (result) {
+			$.getJSON(jsonFile, function(data) {
+				$("#" + requestShowId).text(JSON.stringify(data));
+				$.ajax({
+					type : "POST",
+					url : url,
+					data : JSON.stringify(data),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(obj) {
+						$("#" + responseShowId).text(JSON.stringify(obj));
+					}
+				});
+			});
+		}
+	}
+
+	function createGitProject() {
+		var jsonFile = "git_createProject.json";
+		var url = "/qapp/rest/gitService/createProject";
+		ajaxRequest(jsonFile, url, "createGitProjectRequestParams",
+				"createGitProjectResponseResult");
+	}
+
+	function createGitRepository() {
+		var jsonFile = "git_createRepository.json";
+		var url = "/qapp/rest/gitService/createRepository";
+		ajaxRequest(jsonFile, url, "createGitRepositoryRequestParams",
+				"createGitRepositoryResponseResult");
+	}
+
+	function applyGitPermission() {
+		var jsonFile = "git_applyPermission.json";
+		var url = "/qapp/rest/gitService/applyPermission";
+		ajaxRequest(jsonFile, url, "applyGitPermissionRequestParams",
+				"applyGitPermissionResponseResult");
+	}
+
+	function queryGitGroupUser() {
+		var jsonFile = "git_queryGroupUser.json";
+		var url = "/qapp/rest/gitService/queryGroupUser";
+		ajaxRequest(jsonFile, url, "queryGitGroupUserRequestParams",
+				"queryGitGroupUserResponseResult");
+	}
+
+	function applyJiraPermission() {
+		var jsonFile = "jira_applyPermission.json";
+		var url = "/qapp/rest/jiraService/applyPermission";
+		ajaxRequest(jsonFile, url, "applyJiraPermissionRequestParams",
+				"applyJiraPermissionResponseResult");
+	}
+
+	function queryJiraGroupUser() {
+		var jsonFile = "jira_queryGroupUser.json";
+		var url = "/qapp/rest/jiraService/queryGroupUser";
+		ajaxRequest(jsonFile, url, "queryJiraGroupUserRequestParams",
+				"queryJiraGroupUserResponseResult");
+	}
+</script>
+</head>
+<body>
+	<hr />
+	***********JIRA系统REST接口测试**************
+	<hr />
+	<a href='javascript:void("#")' onclick="applyJiraPermission();">JIRA申请权限</a>
+	<div id="applyJiraPermissionRequestParams"></div>
+	<div id="applyJiraPermissionResponseResult"></div>
+	<hr />
+	<a href='javascript:void("#")' onclick="queryJiraGroupUser();">JIRA查询组用户</a>
+	<div id="queryJiraGroupUserRequestParams"></div>
+	<div id="queryJiraGroupUserResponseResult"></div>
+	<hr />
+	***********GIT系统REST接口测试**************
+	<hr />
+	<a href='javascript:void("#")' onclick="createGitProject();">GIT申请创建项目</a>
+	<div id="createGitProjectRequestParams"></div>
+	<div id="createGitProjectResponseResult"></div>
+	<hr />
+	<a href='javascript:void("#")' onclick="createGitRepository();">GIT申请创建库</a>
+	<div id="createGitRepositoryRequestParams"></div>
+	<div id="createGitRepositoryResponseResult"></div>
+	<hr />
+	<a href='javascript:void("#")' onclick="applyGitPermission();">GIT申请权限</a>
+	<div id="applyGitPermissionRequestParams"></div>
+	<div id="applyGitPermissionResponseResult"></div>
+	<hr />
+	<a href='javascript:void("#")' onclick="queryGitGroupUser();">GIT查询组用户</a>
+	<div id="queryGitGroupUserRequestParams"></div>
+	<div id="queryGitGroupUserResponseResult"></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    					http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://cxf.apache.org/jaxws
+      					http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+	<!-- 获取email模板key值。value值为相对路径(项目的classes目录) -->
+	<bean class="com.sf.itmro.svn.utils.FilePathUtils">
+		<property name="permissionRemindTemplace" value="svn-inf/permissionPostponeRemind.template" />
+		<property name="remindExcelTemplace" value="svn-inf/Tmp-SVN-Template.xls" />
+		<property name="remindExcelFile" value="svn-inf/Tmp-SVN.xls" />
+		<property name="applyUserEmail" value="svn-inf/applyUserEmail.template" />
+		<property name="processUserEmail" value="svn-inf/processUserEmail.template" />
+		<property name="createRepositoryEmail" value="svn-inf/createRepositoryEmail.template" />
+		<property name="resourceFile" value="svn-inf/svn.properties" />
+		<property name="svnPermissionFile" value="svn-inf/svn-permission.xml" />
+	</bean>
+</beans>

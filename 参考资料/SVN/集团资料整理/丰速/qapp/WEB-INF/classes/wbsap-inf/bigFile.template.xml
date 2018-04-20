@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 外包人员，bigFileService服务推送过来的文件格式 -->
+<emps size="419" batch_number="20170331183000">
+	<emp>
+		<emp_id attr="员工ID">40</emp_id>
+		<employeeCode attr="员工工号">80002002</employeeCode>
+		<employeeName attr="员工姓名">重置345</employeeName>
+		<superiorCode attr="上级工号">474764</superiorCode>
+		<telNo attr="手机号码">123456789</telNo>
+		<orgCode attr="组织编码">852S</orgCode>
+		<orgId attr="组织ID">20673</orgId>
+		<positionId attr="职位ID">2068992</positionId>
+		<comPosition attr="职位属性（一线 、二线、三线）"></comPosition>
+		<pstatus attr="员工状态 （1=在职2=离职）">2</pstatus>
+		<entryDt attr="入职日期">2016-01-15</entryDt>
+		<endDt attr="离职日期">2016-01-15</endDt>
+		<eMail attr="邮箱">80000002@sf-express.com</eMail>
+		<eSex attr="性别 （0=女1=男） ">1</eSex>
+	</emp>
+	<emp>
+		<emp_id attr="员工ID">41</emp_id>
+		<employeeCode attr="员工工号">80002003</employeeCode>
+		<employeeName attr="员工姓名">重置123</employeeName>
+		<superiorCode attr="上级工号">474764</superiorCode>
+		<telNo attr="手机号码">123456781</telNo>
+		<orgCode attr="组织编码">852S</orgCode>
+		<orgId attr="组织ID">20673</orgId>
+		<positionId attr="职位ID">2068992</positionId>
+		<comPosition attr="职位属性（一线 、二线、三线）"></comPosition>
+		<pstatus attr="员工状态 （1=在职2=离职）">1</pstatus>
+		<entryDt attr="入职日期">2017-01-15</entryDt>
+		<endDt attr="离职日期"></endDt>
+		<eMail attr="邮箱">80002003@sf-express.com</eMail>
+		<eSex attr="性别 （0=女1=男） ">0</eSex>
+	</emp>
+</emps>

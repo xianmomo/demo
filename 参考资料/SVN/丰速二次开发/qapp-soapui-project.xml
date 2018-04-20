@@ -1,0 +1,2130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ff59e5bf-f6d5-40f2-8741-b627e1e9e205" activeEnvironment="Default" name="qapp" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="25afed5a-a89a-4ad9-9252-3ccd15bae04e" wsaVersion="NONE" name="BigFileServiceImplServiceSoapBinding" type="wsdl" bindingName="{http://www.sf-express.com/esb/service/BigFileService/wsdl}BigFileServiceImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:9999/qapp/cxfService/ESBBigFileService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9999/qapp/cxfService/ESBBigFileService?wsdl"><con:part><con:url>http://localhost:9999/qapp/cxfService/ESBBigFileService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BigFileServiceImplService" targetNamespace="http://www.sf-express.com/esb/service/BigFileService/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.sf-express.com/esb/service/BigFileService/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.sf-express.com/esb/service/BigFileService">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.sf-express.com/esb/service/BigFileService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sf-express.com/esb/service/BigFileService" xmlns:ns1="http://www.sf-express.com/esb/metadata">
+      <xs:import namespace="http://www.sf-express.com/esb/metadata"/>
+      <xs:element name="BigFileService" type="tns:BigFileService_TYPE"/>
+      <xs:element name="BigFileServiceResponse" type="tns:BigFileServiceResponse_TYPE"/>
+      <xs:element name="esbSoapHeader" type="tns:esbSoapHeaderType"/>
+      <xs:complexType name="BigFileService_TYPE">
+        <xs:sequence>
+          <xs:element name="SHEAD" type="tns:SHEADType_1"/>
+          <xs:element name="SBODY" type="tns:SBODYType_2"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="esbSoapHeaderType">
+        <xs:sequence>
+          <xs:element name="MAC" type="xs:string"/>
+          <xs:element name="MACOrg" type="xs:string"/>
+          <xs:element name="Source" type="xs:string"/>
+          <xs:element name="MessageID" type="xs:string"/>
+          <xs:element name="From" type="xs:string"/>
+          <xs:element name="ReplyTo" type="xs:string"/>
+          <xs:element name="To" type="xs:string"/>
+          <xs:element name="Action" type="xs:string"/>
+          <xs:element name="Subscriber" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SHEADType_3">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SYSTEM_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TRAN_MODE" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TRAN_DATE" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TRAN_TIMESTAMP" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SERVER_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="WS_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="USER_LANG" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="USER_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SEQ_NO" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="COUNTRY" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PAGE_NUM" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PAGE_INDEX" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PAGE_SIZE" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="RET" nillable="true" type="tns:RETArrayType_4"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RETArrayType_4">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RET_CODE" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="RET_MSG" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BigFileServiceResponse_TYPE">
+        <xs:sequence>
+          <xs:element name="SHEAD" type="tns:SHEADType_3"/>
+          <xs:element name="SBODY" type="tns:SBODYType_5"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SBODYType_5">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SHEADType_1">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SYSTEM_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TRAN_MODE" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TRAN_DATE" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TRAN_TIMESTAMP" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SERVER_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="WS_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="USER_LANG" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="USER_ID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SEQ_NO" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="COUNTRY" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PAGE_NUM" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PAGE_INDEX" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PAGE_SIZE" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SBODYType_2">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataType" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="timeStamp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="isZip" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="filePath" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="md5" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.sf-express.com/esb/metadata" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="COUNTRY" type="xs:string"/>
+      <xs:element name="PAGE_INDEX" type="xs:string"/>
+      <xs:element name="PAGE_NUM" type="xs:string"/>
+      <xs:element name="PAGE_SIZE" type="xs:string"/>
+      <xs:element name="RET" type="xs:string"/>
+      <xs:element name="RET_CODE" type="xs:string"/>
+      <xs:element name="RET_MSG" type="xs:string"/>
+      <xs:element name="SEQ_NO" type="xs:string"/>
+      <xs:element name="SERVER_ID" type="xs:string"/>
+      <xs:element name="SYSTEM_ID" type="xs:string"/>
+      <xs:element name="TRAN_DATE" type="xs:string"/>
+      <xs:element name="TRAN_MODE" type="xs:string"/>
+      <xs:element name="TRAN_TIMESTAMP" type="xs:string"/>
+      <xs:element name="USER_ID" type="xs:string"/>
+      <xs:element name="USER_LANG" type="xs:string"/>
+      <xs:element name="WS_ID" type="xs:string"/>
+      <xs:element name="WbpxEndDate" type="xs:anySimpleType"/>
+      <xs:element name="WbpxStartDate" type="xs:anySimpleType"/>
+      <xs:element name="Wbpxorg" type="xs:string"/>
+      <xs:element name="Wbpxsub" type="xs:string"/>
+      <xs:element name="abnormalReason" type="xs:string"/>
+      <xs:element name="account" type="xs:string"/>
+      <xs:element name="account_name" type="xs:string"/>
+      <xs:element name="accountantCode" type="xs:string"/>
+      <xs:element name="addBar" type="xs:string"/>
+      <xs:element name="addHTML" type="xs:string"/>
+      <xs:element name="addService" type="xs:string"/>
+      <xs:element name="addr" type="xs:string"/>
+      <xs:element name="address" type="xs:string"/>
+      <xs:element name="addressId" type="xs:string"/>
+      <xs:element name="addresseeAddr" type="xs:string"/>
+      <xs:element name="addresseeAddrNative" type="xs:string"/>
+      <xs:element name="addresseeCompName" type="xs:string"/>
+      <xs:element name="addresseeContName" type="xs:string"/>
+      <xs:element name="addresseeCustNo" type="xs:string"/>
+      <xs:element name="addresseeMobile" type="xs:string"/>
+      <xs:element name="addresseePhone" type="xs:string"/>
+      <xs:element name="aduitPass" type="xs:string"/>
+      <xs:element name="aduitPerson" type="xs:string"/>
+      <xs:element name="affireNum" type="xs:string"/>
+      <xs:element name="age" type="xs:string"/>
+      <xs:element name="applyBuyCyc" type="xs:string"/>
+      <xs:element name="applyDate" type="xs:anySimpleType"/>
+      <xs:element name="applyDepartment" type="xs:string"/>
+      <xs:element name="applyId" type="xs:string"/>
+      <xs:element name="applyNum" type="xs:string"/>
+      <xs:element name="applyType" type="xs:string"/>
+      <xs:element name="arriveTm" type="xs:anySimpleType"/>
+      <xs:element name="assertNum" type="xs:string"/>
+      <xs:element name="assetsCode" type="xs:string"/>
+      <xs:element name="assetsCount" type="xs:string"/>
+      <xs:element name="assetsName" type="xs:string"/>
+      <xs:element name="assetsNum" type="xs:string"/>
+      <xs:element name="attach1" type="xs:string"/>
+      <xs:element name="attach2" type="xs:string"/>
+      <xs:element name="attach3" type="xs:string"/>
+      <xs:element name="attach4" type="xs:string"/>
+      <xs:element name="attach5" type="xs:string"/>
+      <xs:element name="attach6" type="xs:string"/>
+      <xs:element name="auditCompleteDate" type="xs:string"/>
+      <xs:element name="auditNum" type="xs:string"/>
+      <xs:element name="auditTime" type="xs:anySimpleType"/>
+      <xs:element name="auditTypeCode" type="xs:string"/>
+      <xs:element name="auditTypeText" type="xs:string"/>
+      <xs:element name="auditorUser" type="xs:string"/>
+      <xs:element name="autoloading" type="xs:string"/>
+      <xs:element name="b2c" type="xs:string"/>
+      <xs:element name="bank" type="xs:string"/>
+      <xs:element name="barCode" type="xs:string"/>
+      <xs:element name="barList" type="xs:string"/>
+      <xs:element name="barNewList" type="xs:string"/>
+      <xs:element name="barScanDt" type="xs:string"/>
+      <xs:element name="barScanTm" type="xs:anySimpleType"/>
+      <xs:element name="barScanTmStd" type="xs:anySimpleType"/>
+      <xs:element name="barTraceList" type="xs:string"/>
+      <xs:element name="barUploadTm" type="xs:anySimpleType"/>
+      <xs:element name="barUploadTmStd" type="xs:anySimpleType"/>
+      <xs:element name="beginTm" type="xs:anySimpleType"/>
+      <xs:element name="bloodtype" type="xs:string"/>
+      <xs:element name="brand" type="xs:string"/>
+      <xs:element name="buEndDate" type="xs:anySimpleType"/>
+      <xs:element name="buInfo" type="xs:string"/>
+      <xs:element name="buPosition" type="xs:string"/>
+      <xs:element name="buStaDate" type="xs:anySimpleType"/>
+      <xs:element name="businessDocumentKey" type="xs:string"/>
+      <xs:element name="cageCode" type="xs:string"/>
+      <xs:element name="cancelCnt" type="xs:string"/>
+      <xs:element name="catalogId" type="xs:string"/>
+      <xs:element name="catalogName" type="xs:string"/>
+      <xs:element name="catalogNo" type="xs:string"/>
+      <xs:element name="cbcmt" type="xs:string"/>
+      <xs:element name="cbfrom" type="xs:string"/>
+      <xs:element name="cbinfo" type="xs:string"/>
+      <xs:element name="cbstatus" type="xs:string"/>
+      <xs:element name="certificate" type="xs:string"/>
+      <xs:element name="certiname" type="xs:string"/>
+      <xs:element name="channel" type="xs:string"/>
+      <xs:element name="channelname" type="xs:string"/>
+      <xs:element name="checkChannel" type="xs:string"/>
+      <xs:element name="checkStandard" type="xs:string"/>
+      <xs:element name="checkWay" type="xs:string"/>
+      <xs:element name="childNo" type="xs:string"/>
+      <xs:element name="childNos" type="xs:string"/>
+      <xs:element name="childSet" type="xs:string"/>
+      <xs:element name="childWaybillNo" type="xs:string"/>
+      <xs:element name="cityName" type="xs:string"/>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="comEmpType" type="xs:string"/>
+      <xs:element name="comPosition" type="xs:string"/>
+      <xs:element name="comTitle" type="xs:string"/>
+      <xs:element name="comWorks" type="xs:string"/>
+      <xs:element name="committee" type="xs:string"/>
+      <xs:element name="comp" type="xs:string"/>
+      <xs:element name="companyCode" type="xs:string"/>
+      <xs:element name="companyId" type="xs:string"/>
+      <xs:element name="companyName" type="xs:string"/>
+      <xs:element name="comstaDate" type="xs:string"/>
+      <xs:element name="consNames" type="xs:string"/>
+      <xs:element name="consQtys" type="xs:string"/>
+      <xs:element name="consignList" type="xs:string"/>
+      <xs:element name="consignList_consId" type="xs:string"/>
+      <xs:element name="consignList_consName" type="xs:string"/>
+      <xs:element name="consignList_consQty" type="xs:string"/>
+      <xs:element name="consignList_consValue" type="xs:double"/>
+      <xs:element name="consignList_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="consignList_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="consignList_qtyUnit" type="xs:string"/>
+      <xs:element name="consignList_versionNo" type="xs:int"/>
+      <xs:element name="consignList_waybillId" type="xs:string"/>
+      <xs:element name="consignList_waybillNo" type="xs:string"/>
+      <xs:element name="consignList_weightQty" type="xs:double"/>
+      <xs:element name="consignedTm" type="xs:anySimpleType"/>
+      <xs:element name="consignmentMode" type="xs:string"/>
+      <xs:element name="consignorContName" type="xs:string"/>
+      <xs:element name="consignorCustNo" type="xs:string"/>
+      <xs:element name="consignorMobile" type="xs:string"/>
+      <xs:element name="consignorPhone" type="xs:string"/>
+      <xs:element name="contactAddr" type="xs:string"/>
+      <xs:element name="contnrCode" type="xs:string"/>
+      <xs:element name="conveyanceType" type="xs:string"/>
+      <xs:element name="convienienceCode" type="xs:string"/>
+      <xs:element name="convienienceStore" type="xs:string"/>
+      <xs:element name="cooperateStatus" type="xs:string"/>
+      <xs:element name="countryName" type="xs:string"/>
+      <xs:element name="courierCode" type="xs:string"/>
+      <xs:element name="crapNum" type="xs:string"/>
+      <xs:element name="createTime" type="xs:anySimpleType"/>
+      <xs:element name="createUser" type="xs:string"/>
+      <xs:element name="createdOn" type="xs:anySimpleType"/>
+      <xs:element name="currencyCode" type="xs:string"/>
+      <xs:element name="currencyType" type="xs:string"/>
+      <xs:element name="currentAddr" type="xs:string"/>
+      <xs:element name="customerCardNo" type="xs:string"/>
+      <xs:element name="customerCode" type="xs:string"/>
+      <xs:element name="customerCodeList" type="xs:string"/>
+      <xs:element name="customerNo" type="xs:string"/>
+      <xs:element name="cvsCode" type="xs:string"/>
+      <xs:element name="cvsName" type="xs:string"/>
+      <xs:element name="dataType" type="xs:string"/>
+      <xs:element name="dateofbirth" type="xs:anySimpleType"/>
+      <xs:element name="deadline" type="xs:string"/>
+      <xs:element name="dealStatus" type="xs:string"/>
+      <xs:element name="dealView" type="xs:string"/>
+      <xs:element name="degree" type="xs:string"/>
+      <xs:element name="delayCnt" type="xs:string"/>
+      <xs:element name="delayReason" type="xs:string"/>
+      <xs:element name="delayTm" type="xs:anySimpleType"/>
+      <xs:element name="deliverConfirm" type="xs:string"/>
+      <xs:element name="deliverDateStr" type="xs:anySimpleType"/>
+      <xs:element name="deliveringCnt" type="xs:string"/>
+      <xs:element name="depName" type="xs:string"/>
+      <xs:element name="departTm" type="xs:anySimpleType"/>
+      <xs:element name="departmentCode" type="xs:string"/>
+      <xs:element name="deptCode" type="xs:string"/>
+      <xs:element name="deptName" type="xs:string"/>
+      <xs:element name="desCity" type="xs:string"/>
+      <xs:element name="desCityName" type="xs:string"/>
+      <xs:element name="desCode" type="xs:string"/>
+      <xs:element name="descZoneCodeGps" type="xs:string"/>
+      <xs:element name="destCityName" type="xs:string"/>
+      <xs:element name="destZoneCode" type="xs:string"/>
+      <xs:element name="destZoneName" type="xs:string"/>
+      <xs:element name="destination" type="xs:string"/>
+      <xs:element name="detailId" type="xs:string"/>
+      <xs:element name="detpCode" type="xs:string"/>
+      <xs:element name="discardCount" type="xs:string"/>
+      <xs:element name="dist" type="xs:string"/>
+      <xs:element name="distName" type="xs:string"/>
+      <xs:element name="distScanTm" type="xs:anySimpleType"/>
+      <xs:element name="district" type="xs:string"/>
+      <xs:element name="divCode" type="xs:string"/>
+      <xs:element name="divName" type="xs:string"/>
+      <xs:element name="docStatus" type="xs:string"/>
+      <xs:element name="drawNum" type="xs:string"/>
+      <xs:element name="drawTime" type="xs:anySimpleType"/>
+      <xs:element name="drawWare" type="xs:string"/>
+      <xs:element name="driverlicense" type="xs:string"/>
+      <xs:element name="dutyName" type="xs:string"/>
+      <xs:element name="dutyNumber" type="xs:string"/>
+      <xs:element name="eduEndTime" type="xs:anySimpleType"/>
+      <xs:element name="eduLevel" type="xs:string"/>
+      <xs:element name="eduStartTime" type="xs:anySimpleType"/>
+      <xs:element name="edus" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="empMobile" type="xs:string"/>
+      <xs:element name="empName" type="xs:string"/>
+      <xs:element name="empType" type="xs:string"/>
+      <xs:element name="emplevel" type="xs:string"/>
+      <xs:element name="employeeID" type="xs:string"/>
+      <xs:element name="employeeId" type="xs:string"/>
+      <xs:element name="employeeName" type="xs:string"/>
+      <xs:element name="endDate" type="xs:anySimpleType"/>
+      <xs:element name="endDt" type="xs:string"/>
+      <xs:element name="endReason" type="xs:string"/>
+      <xs:element name="endTm" type="xs:anySimpleType"/>
+      <xs:element name="endtime" type="xs:anySimpleType"/>
+      <xs:element name="englishName" type="xs:string"/>
+      <xs:element name="estament" type="xs:string"/>
+      <xs:element name="exceptionCause" type="xs:string"/>
+      <xs:element name="exceptionState" type="xs:string"/>
+      <xs:element name="expendRate" type="xs:string"/>
+      <xs:element name="expressTypeName" type="xs:string"/>
+      <xs:element name="extendAttach1" type="xs:string"/>
+      <xs:element name="extendAttach2" type="xs:string"/>
+      <xs:element name="extendAttach3" type="xs:string"/>
+      <xs:element name="extendAttach4" type="xs:string"/>
+      <xs:element name="extendAttach5" type="xs:string"/>
+      <xs:element name="feeAmt" type="xs:double"/>
+      <xs:element name="feeTypeCodeList" type="xs:string"/>
+      <xs:element name="fileName" type="xs:string"/>
+      <xs:element name="filePath" type="xs:string"/>
+      <xs:element name="filialeId" type="xs:string"/>
+      <xs:element name="filialeName" type="xs:string"/>
+      <xs:element name="firstTradeDate" type="xs:anySimpleType"/>
+      <xs:element name="firstlang" type="xs:string"/>
+      <xs:element name="firstlanglevel" type="xs:string"/>
+      <xs:element name="flanlevel" type="xs:string"/>
+      <xs:element name="flowKey" type="xs:string"/>
+      <xs:element name="formData" type="xs:string"/>
+      <xs:element name="fromOmpflg" type="xs:string"/>
+      <xs:element name="goodat" type="xs:string"/>
+      <xs:element name="gps" type="xs:string"/>
+      <xs:element name="guid" type="xs:string"/>
+      <xs:element name="handNum" type="xs:string"/>
+      <xs:element name="height" type="xs:string"/>
+      <xs:element name="hqCode" type="xs:string"/>
+      <xs:element name="htInfo" type="xs:string"/>
+      <xs:element name="htNo" type="xs:string"/>
+      <xs:element name="hukouAddr" type="xs:string"/>
+      <xs:element name="hukouType" type="xs:string"/>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="idCard" type="xs:string"/>
+      <xs:element name="idcardno" type="xs:string"/>
+      <xs:element name="imageURL" type="xs:string"/>
+      <xs:element name="importantLevel" type="xs:string"/>
+      <xs:element name="initExpectedDeliveryTm" type="xs:anySimpleType"/>
+      <xs:element name="inputTypeCode" type="xs:string"/>
+      <xs:element name="insuranceFee" type="xs:double"/>
+      <xs:element name="isDelete" type="xs:string"/>
+      <xs:element name="isNohtm" type="xs:string"/>
+      <xs:element name="isValid" type="xs:string"/>
+      <xs:element name="isZip" type="xs:string"/>
+      <xs:element name="isdeDeliveryPreparation" type="xs:string"/>
+      <xs:element name="jobDatefrom" type="xs:anySimpleType"/>
+      <xs:element name="joinDate" type="xs:anySimpleType"/>
+      <xs:element name="journalId" type="xs:string"/>
+      <xs:element name="jxCyear" type="xs:string"/>
+      <xs:element name="jxEndDate" type="xs:anySimpleType"/>
+      <xs:element name="jxStartDate" type="xs:anySimpleType"/>
+      <xs:element name="jxcircle" type="xs:string"/>
+      <xs:element name="jxinfo" type="xs:string"/>
+      <xs:element name="jxkhType" type="xs:string"/>
+      <xs:element name="jxkhrst" type="xs:string"/>
+      <xs:element name="jxpdist" type="xs:string"/>
+      <xs:element name="jxrtype" type="xs:string"/>
+      <xs:element name="keapCnt" type="xs:string"/>
+      <xs:element name="laborDrawList" type="xs:string"/>
+      <xs:element name="lastDate" type="xs:anySimpleType"/>
+      <xs:element name="lastDateList" type="xs:string"/>
+      <xs:element name="lastExpectedDeliveryTm" type="xs:anySimpleType"/>
+      <xs:element name="lastUpdateTime" type="xs:anySimpleType"/>
+      <xs:element name="lastUpdateUser" type="xs:string"/>
+      <xs:element name="latitude" type="xs:double"/>
+      <xs:element name="level" type="xs:string"/>
+      <xs:element name="linkman" type="xs:string"/>
+      <xs:element name="linkmanMobile" type="xs:string"/>
+      <xs:element name="linkmanTel" type="xs:string"/>
+      <xs:element name="longitude" type="xs:double"/>
+      <xs:element name="lostCnt" type="xs:string"/>
+      <xs:element name="lowestShengouliang" type="xs:string"/>
+      <xs:element name="madd" type="xs:string"/>
+      <xs:element name="mainLandToMainLand" type="xs:string"/>
+      <xs:element name="maintenanceOn" type="xs:anySimpleType"/>
+      <xs:element name="marriage" type="xs:string"/>
+      <xs:element name="materielCode" type="xs:string"/>
+      <xs:element name="materielName" type="xs:string"/>
+      <xs:element name="maxEduLevel" type="xs:string"/>
+      <xs:element name="md5" type="xs:string"/>
+      <xs:element name="memo" type="xs:string"/>
+      <xs:element name="merchandiseCode" type="xs:string"/>
+      <xs:element name="merchandiseName" type="xs:string"/>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="meterageWeightQty" type="xs:double"/>
+      <xs:element name="mobile" type="xs:string"/>
+      <xs:element name="month" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="nation" type="xs:string"/>
+      <xs:element name="nativePlace" type="xs:string"/>
+      <xs:element name="nativetype" type="xs:string"/>
+      <xs:element name="nbpxCerti" type="xs:string"/>
+      <xs:element name="nbpxCresult" type="xs:string"/>
+      <xs:element name="nbpxPaper" type="xs:string"/>
+      <xs:element name="nbpxResult" type="xs:string"/>
+      <xs:element name="nbpxSndDate" type="xs:anySimpleType"/>
+      <xs:element name="nbpxSroject" type="xs:string"/>
+      <xs:element name="nbpxStartDate" type="xs:anySimpleType"/>
+      <xs:element name="nbpxSubject" type="xs:string"/>
+      <xs:element name="nbpxType" type="xs:string"/>
+      <xs:element name="nbpxinfo" type="xs:string"/>
+      <xs:element name="netWorth" type="xs:string"/>
+      <xs:element name="nextDestZone" type="xs:string"/>
+      <xs:element name="noSingedCnt" type="xs:int"/>
+      <xs:element name="note" type="xs:string"/>
+      <xs:element name="nowAddr" type="xs:string"/>
+      <xs:element name="nowNum" type="xs:string"/>
+      <xs:element name="number" type="xs:string"/>
+      <xs:element name="objTypeCode" type="xs:string"/>
+      <xs:element name="offtel" type="xs:string"/>
+      <xs:element name="omethod" type="xs:string"/>
+      <xs:element name="opAttachInfo" type="xs:string"/>
+      <xs:element name="opCode" type="xs:string"/>
+      <xs:element name="opName" type="xs:string"/>
+      <xs:element name="openDate" type="xs:anySimpleType"/>
+      <xs:element name="openingOn" type="xs:anySimpleType"/>
+      <xs:element name="operationUser" type="xs:string"/>
+      <xs:element name="oprCode" type="xs:string"/>
+      <xs:element name="orderPrincipal" type="xs:string"/>
+      <xs:element name="org" type="xs:string"/>
+      <xs:element name="orgName" type="xs:string"/>
+      <xs:element name="originalValue" type="xs:string"/>
+      <xs:element name="otherCnt" type="xs:string"/>
+      <xs:element name="otherConfig" type="xs:string"/>
+      <xs:element name="otherFee" type="xs:double"/>
+      <xs:element name="outsideName" type="xs:string"/>
+      <xs:element name="packSpec" type="xs:string"/>
+      <xs:element name="pageCnt" type="xs:string"/>
+      <xs:element name="parameterName" type="xs:string"/>
+      <xs:element name="parameterNameList" type="xs:string"/>
+      <xs:element name="parameterValue" type="xs:string"/>
+      <xs:element name="parameterValueList" type="xs:string"/>
+      <xs:element name="parentId" type="xs:string"/>
+      <xs:element name="payDetail" type="xs:string"/>
+      <xs:element name="payFlg" type="xs:string"/>
+      <xs:element name="payType" type="xs:string"/>
+      <xs:element name="paymentTypeCode" type="xs:string"/>
+      <xs:element name="payway" type="xs:string"/>
+      <xs:element name="perlevel" type="xs:string"/>
+      <xs:element name="pernative" type="xs:string"/>
+      <xs:element name="phone" type="xs:string"/>
+      <xs:element name="phoneZone" type="xs:string"/>
+      <xs:element name="picurl" type="xs:string"/>
+      <xs:element name="planArriveZoneCode" type="xs:string"/>
+      <xs:element name="planTime" type="xs:anySimpleType"/>
+      <xs:element name="position" type="xs:string"/>
+      <xs:element name="positionName" type="xs:string"/>
+      <xs:element name="postcode" type="xs:string"/>
+      <xs:element name="preNumber" type="xs:string"/>
+      <xs:element name="priceType" type="xs:string"/>
+      <xs:element name="proEndDate" type="xs:anySimpleType"/>
+      <xs:element name="proJoinDate" type="xs:anySimpleType"/>
+      <xs:element name="proPosition" type="xs:string"/>
+      <xs:element name="proQuitDate" type="xs:anySimpleType"/>
+      <xs:element name="proStatDate" type="xs:anySimpleType"/>
+      <xs:element name="proType" type="xs:string"/>
+      <xs:element name="producingArea" type="xs:string"/>
+      <xs:element name="projectCode" type="xs:string"/>
+      <xs:element name="projects" type="xs:string"/>
+      <xs:element name="projoinDate" type="xs:anySimpleType"/>
+      <xs:element name="prolevel" type="xs:string"/>
+      <xs:element name="proquitDate" type="xs:anySimpleType"/>
+      <xs:element name="provinceName" type="xs:string"/>
+      <xs:element name="pstatus" type="xs:string"/>
+      <xs:element name="quantity" type="xs:double"/>
+      <xs:element name="queryType" type="xs:int"/>
+      <xs:element name="quitDate" type="xs:anySimpleType"/>
+      <xs:element name="reason" type="xs:string"/>
+      <xs:element name="receDt" type="xs:string"/>
+      <xs:element name="receTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill" type="xs:string"/>
+      <xs:element name="receiveBillFlg" type="xs:string"/>
+      <xs:element name="receiveBill_ackbillTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeAddr" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeAddrNative" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeCompName" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeContName" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeMobile" type="xs:string"/>
+      <xs:element name="receiveBill_addresseePhone" type="xs:string"/>
+      <xs:element name="receiveBill_addresseePostalCode" type="xs:string"/>
+      <xs:element name="receiveBill_airportCode" type="xs:string"/>
+      <xs:element name="receiveBill_auditedFlg" type="xs:int"/>
+      <xs:element name="receiveBill_auditedTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_auditerEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_auditerTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_boxTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_cargoTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_codBillFlg" type="xs:int"/>
+      <xs:element name="receiveBill_codType" type="xs:int"/>
+      <xs:element name="receiveBill_consValue" type="xs:double"/>
+      <xs:element name="receiveBill_consValueCurrencyCode" type="xs:string"/>
+      <xs:element name="receiveBill_consignedTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_consigneeEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_consignorAdd" type="xs:string"/>
+      <xs:element name="receiveBill_consignorCompName" type="xs:string"/>
+      <xs:element name="receiveBill_consignorContName" type="xs:string"/>
+      <xs:element name="receiveBill_consignorMobile" type="xs:string"/>
+      <xs:element name="receiveBill_consignorPhone" type="xs:string"/>
+      <xs:element name="receiveBill_consignorPostalCode" type="xs:string"/>
+      <xs:element name="receiveBill_consignorTaxNo" type="xs:string"/>
+      <xs:element name="receiveBill_consultCode" type="xs:string"/>
+      <xs:element name="receiveBill_countryCode" type="xs:string"/>
+      <xs:element name="receiveBill_customsBatchs" type="xs:string"/>
+      <xs:element name="receiveBill_customsTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_cvsCode" type="xs:string"/>
+      <xs:element name="receiveBill_deliverEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_destZoneCode" type="xs:string"/>
+      <xs:element name="receiveBill_distanceTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_expressTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_frangibleParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_freeParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_freeTicketNo" type="xs:string"/>
+      <xs:element name="receiveBill_hasServiceProdFlg" type="xs:int"/>
+      <xs:element name="receiveBill_hvalueBoxType" type="xs:string"/>
+      <xs:element name="receiveBill_innerParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_inputTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_inputTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_inputedZoneCode" type="xs:string"/>
+      <xs:element name="receiveBill_inputerEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_invoiceNo" type="xs:string"/>
+      <xs:element name="receiveBill_isCredit" type="xs:int"/>
+      <xs:element name="receiveBill_limitTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_lockVersionNo" type="xs:int"/>
+      <xs:element name="receiveBill_mawb" type="xs:string"/>
+      <xs:element name="receiveBill_meterageWeightQty" type="xs:double"/>
+      <xs:element name="receiveBill_modifiedEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_modifiedTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_modifydateGmt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_needSignedBackFlg" type="xs:int"/>
+      <xs:element name="receiveBill_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_oneselfPickupFlg" type="xs:int"/>
+      <xs:element name="receiveBill_otherNodeFlg" type="xs:int"/>
+      <xs:element name="receiveBill_preCustomsDt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_quantity" type="xs:double"/>
+      <xs:element name="receiveBill_realWeightQty" type="xs:double"/>
+      <xs:element name="receiveBill_refundFreeParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_selfSendDiscount" type="xs:double"/>
+      <xs:element name="receiveBill_selfSendFlg" type="xs:int"/>
+      <xs:element name="receiveBill_signedBackWaybillNo" type="xs:string"/>
+      <xs:element name="receiveBill_signinTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_sourceZoneCode" type="xs:string"/>
+      <xs:element name="receiveBill_sourcearea" type="xs:string"/>
+      <xs:element name="receiveBill_subscriberName" type="xs:string"/>
+      <xs:element name="receiveBill_suppTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_tbOrderNo" type="xs:string"/>
+      <xs:element name="receiveBill_tbOrderType" type="xs:string"/>
+      <xs:element name="receiveBill_transferParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_transportTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_trustParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_twinvoiceTypeCode" type="xs:int"/>
+      <xs:element name="receiveBill_unifiedCode" type="xs:string"/>
+      <xs:element name="receiveBill_unitWeight" type="xs:string"/>
+      <xs:element name="receiveBill_versionNo" type="xs:int"/>
+      <xs:element name="receiveBill_volume" type="xs:double"/>
+      <xs:element name="receiveBill_waybillId" type="xs:string"/>
+      <xs:element name="receiveBill_waybillNo" type="xs:string"/>
+      <xs:element name="receiveBill_waybillRemk" type="xs:string"/>
+      <xs:element name="receiveFee" type="xs:string"/>
+      <xs:element name="receiveFee_bizOwnerZoneCode" type="xs:string"/>
+      <xs:element name="receiveFee_currencyCode" type="xs:string"/>
+      <xs:element name="receiveFee_customerAcctCode" type="xs:string"/>
+      <xs:element name="receiveFee_destCurrencyCode" type="xs:string"/>
+      <xs:element name="receiveFee_exchangeRate" type="xs:double"/>
+      <xs:element name="receiveFee_feeAmt" type="xs:double"/>
+      <xs:element name="receiveFee_feeId" type="xs:string"/>
+      <xs:element name="receiveFee_feeTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_gatherEmpCode" type="xs:string"/>
+      <xs:element name="receiveFee_gatherZoneCode" type="xs:string"/>
+      <xs:element name="receiveFee_gstFee" type="xs:double"/>
+      <xs:element name="receiveFee_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveFee_inputTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveFee_paymentChangeTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_paymentTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_refundFeeAmt" type="xs:double"/>
+      <xs:element name="receiveFee_serviceId" type="xs:string"/>
+      <xs:element name="receiveFee_settlementTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_sourceCodeFeeAmt" type="xs:double"/>
+      <xs:element name="receiveFee_versionNo" type="xs:int"/>
+      <xs:element name="receiveFee_waybillId" type="xs:string"/>
+      <xs:element name="receiveFee_waybillNo" type="xs:string"/>
+      <xs:element name="receiveService" type="xs:string"/>
+      <xs:element name="receiveService_Attribute3" type="xs:string"/>
+      <xs:element name="receiveService_Attribute4" type="xs:string"/>
+      <xs:element name="receiveService_Attribute5" type="xs:string"/>
+      <xs:element name="receiveService_attribute1" type="xs:string"/>
+      <xs:element name="receiveService_attribute2" type="xs:string"/>
+      <xs:element name="receiveService_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveService_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveService_serviceId" type="xs:string"/>
+      <xs:element name="receiveService_serviceProdCode" type="xs:string"/>
+      <xs:element name="receiveService_versionNo" type="xs:int"/>
+      <xs:element name="receiveService_waybillId" type="xs:string"/>
+      <xs:element name="receiveService_waybillNo" type="xs:string"/>
+      <xs:element name="recordedOn" type="xs:anySimpleType"/>
+      <xs:element name="regionRightOfUse" type="xs:string"/>
+      <xs:element name="rela" type="xs:string"/>
+      <xs:element name="relaDistrict" type="xs:string"/>
+      <xs:element name="relaOrgName" type="xs:string"/>
+      <xs:element name="relaTitle" type="xs:string"/>
+      <xs:element name="relainfo" type="xs:string"/>
+      <xs:element name="remark" type="xs:string"/>
+      <xs:element name="reportDt" type="xs:string"/>
+      <xs:element name="requestDate" type="xs:anySimpleType"/>
+      <xs:element name="requestSystemId" type="xs:string"/>
+      <xs:element name="reson" type="xs:string"/>
+      <xs:element name="responsibilityPeople" type="xs:string"/>
+      <xs:element name="result" type="xs:string"/>
+      <xs:element name="return" type="xs:string"/>
+      <xs:element name="returnTime" type="xs:anySimpleType"/>
+      <xs:element name="routeCode" type="xs:string"/>
+      <xs:element name="rssChannel" type="xs:string"/>
+      <xs:element name="runId" type="xs:string"/>
+      <xs:element name="sapDestZoneCode" type="xs:string"/>
+      <xs:element name="sapDestZoneName" type="xs:string"/>
+      <xs:element name="scanDate" type="xs:string"/>
+      <xs:element name="scanTime" type="xs:anySimpleType"/>
+      <xs:element name="score" type="xs:string"/>
+      <xs:element name="seclang" type="xs:string"/>
+      <xs:element name="seclanglevel" type="xs:string"/>
+      <xs:element name="segmentMgr" type="xs:string"/>
+      <xs:element name="sendBackCnt" type="xs:string"/>
+      <xs:element name="sendBill" type="xs:string"/>
+      <xs:element name="sendBill_ackbillTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_addresseeAddr" type="xs:string"/>
+      <xs:element name="sendBill_addresseeAddrNative" type="xs:string"/>
+      <xs:element name="sendBill_addresseeCompName" type="xs:string"/>
+      <xs:element name="sendBill_addresseeContName" type="xs:string"/>
+      <xs:element name="sendBill_addresseeMobile" type="xs:string"/>
+      <xs:element name="sendBill_addresseePhone" type="xs:string"/>
+      <xs:element name="sendBill_addresseePostalCode" type="xs:string"/>
+      <xs:element name="sendBill_airportCode" type="xs:string"/>
+      <xs:element name="sendBill_auditedFlg" type="xs:int"/>
+      <xs:element name="sendBill_auditedTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_auditerEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_auditerTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_boxTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_cargoTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_codBillFlg" type="xs:int"/>
+      <xs:element name="sendBill_codType" type="xs:int"/>
+      <xs:element name="sendBill_consValue" type="xs:double"/>
+      <xs:element name="sendBill_consValueCurrencyCode" type="xs:string"/>
+      <xs:element name="sendBill_consignedTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_consigneeEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_consignorAdd" type="xs:string"/>
+      <xs:element name="sendBill_consignorCompName" type="xs:string"/>
+      <xs:element name="sendBill_consignorContName" type="xs:string"/>
+      <xs:element name="sendBill_consignorMobile" type="xs:string"/>
+      <xs:element name="sendBill_consignorPhone" type="xs:string"/>
+      <xs:element name="sendBill_consignorPostalCode" type="xs:string"/>
+      <xs:element name="sendBill_consignorTaxNo" type="xs:string"/>
+      <xs:element name="sendBill_consultCode" type="xs:string"/>
+      <xs:element name="sendBill_countryCode" type="xs:string"/>
+      <xs:element name="sendBill_customsBatchs" type="xs:string"/>
+      <xs:element name="sendBill_customsTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_cvsCode" type="xs:string"/>
+      <xs:element name="sendBill_deliverEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_destZoneCode" type="xs:string"/>
+      <xs:element name="sendBill_distanceTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_expressTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_frangibleParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_freeParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_freeTicketNo" type="xs:string"/>
+      <xs:element name="sendBill_hasServiceProdFlg" type="xs:int"/>
+      <xs:element name="sendBill_hvalueBoxType" type="xs:string"/>
+      <xs:element name="sendBill_innerParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_inputTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_inputTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_inputedZoneCode" type="xs:string"/>
+      <xs:element name="sendBill_inputerEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_invoiceNo" type="xs:string"/>
+      <xs:element name="sendBill_isCredit" type="xs:int"/>
+      <xs:element name="sendBill_limitTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_lockVersionNo" type="xs:int"/>
+      <xs:element name="sendBill_mawb" type="xs:string"/>
+      <xs:element name="sendBill_meterageWeightQty" type="xs:double"/>
+      <xs:element name="sendBill_modifiedEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_modifiedTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_modifydateGmt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_needSignedBackFlg" type="xs:int"/>
+      <xs:element name="sendBill_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_oneselfPickupFlg" type="xs:int"/>
+      <xs:element name="sendBill_otherNodeFlg" type="xs:int"/>
+      <xs:element name="sendBill_preCustomsDt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_quantity" type="xs:double"/>
+      <xs:element name="sendBill_realWeightQty" type="xs:double"/>
+      <xs:element name="sendBill_refundFreeParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_selfSendDiscount" type="xs:double"/>
+      <xs:element name="sendBill_selfSendFlg" type="xs:int"/>
+      <xs:element name="sendBill_signedBackWaybillNo" type="xs:string"/>
+      <xs:element name="sendBill_signinTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_sourceZoneCode" type="xs:string"/>
+      <xs:element name="sendBill_sourcearea" type="xs:string"/>
+      <xs:element name="sendBill_subscriberName" type="xs:string"/>
+      <xs:element name="sendBill_suppTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_tbOrderNo" type="xs:string"/>
+      <xs:element name="sendBill_tbOrderType" type="xs:string"/>
+      <xs:element name="sendBill_transferParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_transportTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_trustParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_twinvoiceTypeCode" type="xs:int"/>
+      <xs:element name="sendBill_unifiedCode" type="xs:string"/>
+      <xs:element name="sendBill_unitWeight" type="xs:string"/>
+      <xs:element name="sendBill_versionNo" type="xs:int"/>
+      <xs:element name="sendBill_volume" type="xs:double"/>
+      <xs:element name="sendBill_waybillId" type="xs:string"/>
+      <xs:element name="sendBill_waybillNo" type="xs:string"/>
+      <xs:element name="sendBill_waybillRemk" type="xs:string"/>
+      <xs:element name="sendFee" type="xs:string"/>
+      <xs:element name="sendFee_bizOwnerZoneCode" type="xs:string"/>
+      <xs:element name="sendFee_currencyCode" type="xs:string"/>
+      <xs:element name="sendFee_customerAcctCode" type="xs:string"/>
+      <xs:element name="sendFee_destCurrencyCode" type="xs:string"/>
+      <xs:element name="sendFee_exchangeRate" type="xs:double"/>
+      <xs:element name="sendFee_feeAmt" type="xs:double"/>
+      <xs:element name="sendFee_feeId" type="xs:string"/>
+      <xs:element name="sendFee_feeTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_gatherEmpCode" type="xs:string"/>
+      <xs:element name="sendFee_gatherZoneCode" type="xs:string"/>
+      <xs:element name="sendFee_gstFee" type="xs:double"/>
+      <xs:element name="sendFee_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendFee_inputTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendFee_paymentChangeTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_paymentTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_refundFeeAmt" type="xs:double"/>
+      <xs:element name="sendFee_serviceId" type="xs:string"/>
+      <xs:element name="sendFee_settlementTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_sourceCodeFeeAmt" type="xs:double"/>
+      <xs:element name="sendFee_versionNo" type="xs:int"/>
+      <xs:element name="sendFee_waybillId" type="xs:string"/>
+      <xs:element name="sendFee_waybillNo" type="xs:string"/>
+      <xs:element name="sendService" type="xs:string"/>
+      <xs:element name="sendService_Attribute3" type="xs:string"/>
+      <xs:element name="sendService_Attribute4" type="xs:string"/>
+      <xs:element name="sendService_Attribute5" type="xs:string"/>
+      <xs:element name="sendService_attribute1" type="xs:string"/>
+      <xs:element name="sendService_attribute2" type="xs:string"/>
+      <xs:element name="sendService_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendService_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendService_serviceId" type="xs:string"/>
+      <xs:element name="sendService_serviceProdCode" type="xs:string"/>
+      <xs:element name="sendService_versionNo" type="xs:int"/>
+      <xs:element name="sendService_waybillId" type="xs:string"/>
+      <xs:element name="sendService_waybillNo" type="xs:string"/>
+      <xs:element name="serialNumber" type="xs:string"/>
+      <xs:element name="seriesnum" type="xs:string"/>
+      <xs:element name="serviceTypeCodeList" type="xs:string"/>
+      <xs:element name="sex" type="xs:string"/>
+      <xs:element name="shopCard" type="xs:string"/>
+      <xs:element name="signedPercent" type="xs:double"/>
+      <xs:element name="signedStates" type="xs:string"/>
+      <xs:element name="signinTm" type="xs:anySimpleType"/>
+      <xs:element name="singedCnt" type="xs:string"/>
+      <xs:element name="singedType" type="xs:int"/>
+      <xs:element name="source" type="xs:string"/>
+      <xs:element name="sourceCityName" type="xs:string"/>
+      <xs:element name="sourceScanTm" type="xs:anySimpleType"/>
+      <xs:element name="sourceZoneCode" type="xs:string"/>
+      <xs:element name="sourceZoneName" type="xs:string"/>
+      <xs:element name="spec" type="xs:string"/>
+      <xs:element name="specialApplyExplain" type="xs:string"/>
+      <xs:element name="specialLevel" type="xs:string"/>
+      <xs:element name="srcCity" type="xs:string"/>
+      <xs:element name="srcCityName" type="xs:string"/>
+      <xs:element name="srcCode" type="xs:string"/>
+      <xs:element name="srcZoneCode" type="xs:string"/>
+      <xs:element name="srcZoneCodeGps" type="xs:string"/>
+      <xs:element name="sreason" type="xs:string"/>
+      <xs:element name="staDate" type="xs:anySimpleType"/>
+      <xs:element name="startDate" type="xs:anySimpleType"/>
+      <xs:element name="startDt" type="xs:string"/>
+      <xs:element name="starttime" type="xs:anySimpleType"/>
+      <xs:element name="statReason" type="xs:string"/>
+      <xs:element name="status" type="xs:string"/>
+      <xs:element name="stayCodeName" type="xs:string"/>
+      <xs:element name="stayWhyCode" type="xs:string"/>
+      <xs:element name="stayWhyName" type="xs:string"/>
+      <xs:element name="stayWhyNameEn" type="xs:string"/>
+      <xs:element name="stockPrefixdate" type="xs:string"/>
+      <xs:element name="stockPrincipal" type="xs:string"/>
+      <xs:element name="storeCode" type="xs:string"/>
+      <xs:element name="stumode" type="xs:string"/>
+      <xs:element name="subscriberName" type="xs:string"/>
+      <xs:element name="supplementCnt" type="xs:string"/>
+      <xs:element name="supplierAlias" type="xs:string"/>
+      <xs:element name="supplierEmail" type="xs:string"/>
+      <xs:element name="supplierFax" type="xs:string"/>
+      <xs:element name="supplierId" type="xs:string"/>
+      <xs:element name="supplierName" type="xs:string"/>
+      <xs:element name="supplierPsnm" type="xs:string"/>
+      <xs:element name="supplierTel" type="xs:string"/>
+      <xs:element name="supplierType" type="xs:string"/>
+      <xs:element name="supplierWeb" type="xs:string"/>
+      <xs:element name="supplyRange" type="xs:string"/>
+      <xs:element name="syexpDate" type="xs:anySimpleType"/>
+      <xs:element name="systemId" type="xs:string"/>
+      <xs:element name="taxNo" type="xs:string"/>
+      <xs:element name="taxbillInfo" type="xs:string"/>
+      <xs:element name="taxbillInfo_currencyCode" type="xs:string"/>
+      <xs:element name="taxbillInfo_customsDate" type="xs:anySimpleType"/>
+      <xs:element name="taxbillInfo_customsDutiesAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_exciseAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_handlingFeeAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_importTm" type="xs:anySimpleType"/>
+      <xs:element name="taxbillInfo_importedDt" type="xs:anySimpleType"/>
+      <xs:element name="taxbillInfo_othertaxAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_salesTaxAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_taxbillId" type="xs:string"/>
+      <xs:element name="taxbillInfo_taxbillNo" type="xs:string"/>
+      <xs:element name="taxbillInfo_totalTaxfeeAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_waybillNo" type="xs:string"/>
+      <xs:element name="tbOrderNo" type="xs:string"/>
+      <xs:element name="tel" type="xs:string"/>
+      <xs:element name="telNo" type="xs:string"/>
+      <xs:element name="test_name" type="xs:string"/>
+      <xs:element name="tgType" type="xs:string"/>
+      <xs:element name="timeStamp" type="xs:string"/>
+      <xs:element name="timestamp" type="xs:string"/>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="totalAmt" type="xs:string"/>
+      <xs:element name="totalCnt" type="xs:string"/>
+      <xs:element name="totalFee" type="xs:double"/>
+      <xs:element name="totalId" type="xs:string"/>
+      <xs:element name="traceIncrementInfoList" type="xs:string"/>
+      <xs:element name="tradeType" type="xs:string"/>
+      <xs:element name="trainCourse" type="xs:string"/>
+      <xs:element name="trainEndtime" type="xs:anySimpleType"/>
+      <xs:element name="trainHost" type="xs:string"/>
+      <xs:element name="trainHours" type="xs:string"/>
+      <xs:element name="trainStatime" type="xs:anySimpleType"/>
+      <xs:element name="trainings" type="xs:string"/>
+      <xs:element name="transferCnt" type="xs:string"/>
+      <xs:element name="transportCnt" type="xs:string"/>
+      <xs:element name="trarst" type="xs:string"/>
+      <xs:element name="type" type="xs:string"/>
+      <xs:element name="tytype" type="xs:string"/>
+      <xs:element name="unit" type="xs:string"/>
+      <xs:element name="unitName" type="xs:string"/>
+      <xs:element name="unitPrice" type="xs:string"/>
+      <xs:element name="updateTm" type="xs:anySimpleType"/>
+      <xs:element name="uploadTypeInputty" type="xs:string"/>
+      <xs:element name="userAccount" type="xs:string"/>
+      <xs:element name="userCode" type="xs:string"/>
+      <xs:element name="userYear" type="xs:string"/>
+      <xs:element name="vehicleId" type="xs:string"/>
+      <xs:element name="vehicleNo" type="xs:string"/>
+      <xs:element name="vehiclePlate" type="xs:string"/>
+      <xs:element name="vheicleGpsInfo" type="xs:string"/>
+      <xs:element name="vipCode" type="xs:string"/>
+      <xs:element name="visitInfo" type="xs:string"/>
+      <xs:element name="waiteServiceFlg" type="xs:string"/>
+      <xs:element name="wareAttr" type="xs:string"/>
+      <xs:element name="wareCapability" type="xs:string"/>
+      <xs:element name="wareId" type="xs:string"/>
+      <xs:element name="wareInsideId" type="xs:string"/>
+      <xs:element name="wareLabel" type="xs:string"/>
+      <xs:element name="wareMaterial" type="xs:string"/>
+      <xs:element name="wareMeno" type="xs:string"/>
+      <xs:element name="wareModel" type="xs:string"/>
+      <xs:element name="wareName" type="xs:string"/>
+      <xs:element name="warePrice" type="xs:string"/>
+      <xs:element name="wareShortName" type="xs:string"/>
+      <xs:element name="wareSpec" type="xs:string"/>
+      <xs:element name="wareType" type="xs:string"/>
+      <xs:element name="wareUse" type="xs:string"/>
+      <xs:element name="warehouseId" type="xs:string"/>
+      <xs:element name="warehouseName" type="xs:string"/>
+      <xs:element name="wayBillId" type="xs:string"/>
+      <xs:element name="waybillList" type="xs:string"/>
+      <xs:element name="waybillNo" type="xs:string"/>
+      <xs:element name="waybillNoList" type="xs:string"/>
+      <xs:element name="waybillRemark" type="xs:string"/>
+      <xs:element name="wbpxInfo" type="xs:string"/>
+      <xs:element name="weight" type="xs:string"/>
+      <xs:element name="weightQty" type="xs:double"/>
+      <xs:element name="workEndTime" type="xs:anySimpleType"/>
+      <xs:element name="workExp" type="xs:string"/>
+      <xs:element name="workStaTime" type="xs:anySimpleType"/>
+      <xs:element name="works" type="xs:string"/>
+      <xs:element name="workstaDate" type="xs:anySimpleType"/>
+      <xs:element name="writeDate" type="xs:anySimpleType"/>
+      <xs:element name="x" type="xs:string"/>
+      <xs:element name="xzjccatgy" type="xs:string"/>
+      <xs:element name="xzjcinfo" type="xs:string"/>
+      <xs:element name="xzjcmethod" type="xs:string"/>
+      <xs:element name="xzjcrasion" type="xs:string"/>
+      <xs:element name="xzjctype" type="xs:string"/>
+      <xs:element name="xzjcyear" type="xs:string"/>
+      <xs:element name="y" type="xs:string"/>
+      <xs:element name="ywjccat" type="xs:string"/>
+      <xs:element name="ywjcinfo" type="xs:string"/>
+      <xs:element name="ywjcmethod" type="xs:string"/>
+      <xs:element name="ywjcrasion" type="xs:string"/>
+      <xs:element name="ywjctype" type="xs:string"/>
+      <xs:element name="ywjcyear" type="xs:string"/>
+      <xs:element name="zip" type="xs:string"/>
+      <xs:element name="zoneCode" type="xs:string"/>
+      <xs:element name="zoneGmt" type="xs:string"/>
+      <xs:element name="zoneName" type="xs:string"/>
+      <xs:element name="zoneTypeCode" type="xs:string"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="BigFileService">
+    <wsdl:part element="ns1:BigFileService" name="parameters"></wsdl:part>
+    <wsdl:part element="ns1:esbSoapHeader" name="esbSoapHeader"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BigFileServiceResponse">
+    <wsdl:part element="ns1:BigFileServiceResponse" name="result"></wsdl:part>
+    <wsdl:part element="ns1:esbSoapHeader" name="esbSoapHeader"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BigFileServicePortType">
+    <wsdl:operation name="BigFileService">
+      <wsdl:input message="tns:BigFileService" name="BigFileService"></wsdl:input>
+      <wsdl:output message="tns:BigFileServiceResponse" name="BigFileServiceResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BigFileServiceImplServiceSoapBinding" type="tns:BigFileServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="BigFileService">
+      <soap:operation soapAction="urn:BigFileService/1/" style="document"/>
+      <wsdl:input name="BigFileService">
+        <soap:header message="tns:BigFileService" part="esbSoapHeader" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BigFileServiceResponse">
+        <soap:header message="tns:BigFileServiceResponse" part="esbSoapHeader" use="literal"></soap:header>
+        <soap:body parts="result" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BigFileServiceImplService">
+    <wsdl:port binding="tns:BigFileServiceImplServiceSoapBinding" name="BigFileServiceImplPort">
+      <soap:address location="http://localhost:9999/qapp/cxfService/ESBBigFileService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9999/qapp/cxfService/ESBBigFileService</con:endpoint></con:endpoints><con:operation id="aefc1aec-9121-49c9-99ea-d54923f4781c" isOneWay="false" action="urn:BigFileService/1/" name="BigFileService" bindingOperationName="BigFileService" type="Request-Response" outputName="BigFileServiceResponse" inputName="BigFileService" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b0ea2f66-23da-4b54-8250-b5f15ff8c583" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9999/qapp/cxfService/ESBBigFileService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:big="http://www.sf-express.com/esb/service/BigFileService">\r
+   <soapenv:Header>\r
+      <big:esbSoapHeader>\r
+         <big:MAC>?</big:MAC>\r
+         <big:MACOrg>?</big:MACOrg>\r
+         <big:Source>?</big:Source>\r
+         <big:MessageID>?</big:MessageID>\r
+         <big:From>?</big:From>\r
+         <big:ReplyTo>?</big:ReplyTo>\r
+         <big:To>?</big:To>\r
+         <big:Action>?</big:Action>\r
+         <big:Subscriber>?</big:Subscriber>\r
+      </big:esbSoapHeader>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <big:BigFileService>\r
+         <big:SHEAD>\r
+            <!--Optional:-->\r
+            <big:SYSTEM_ID>?</big:SYSTEM_ID>\r
+            <!--Optional:-->\r
+            <big:TRAN_MODE>?</big:TRAN_MODE>\r
+            <!--Optional:-->\r
+            <big:TRAN_DATE>?</big:TRAN_DATE>\r
+            <!--Optional:-->\r
+            <big:TRAN_TIMESTAMP>?</big:TRAN_TIMESTAMP>\r
+            <!--Optional:-->\r
+            <big:SERVER_ID>?</big:SERVER_ID>\r
+            <!--Optional:-->\r
+            <big:WS_ID>?</big:WS_ID>\r
+            <!--Optional:-->\r
+            <big:USER_LANG>?</big:USER_LANG>\r
+            <!--Optional:-->\r
+            <big:USER_ID>?</big:USER_ID>\r
+            <!--Optional:-->\r
+            <big:SEQ_NO>?</big:SEQ_NO>\r
+            <!--Optional:-->\r
+            <big:COUNTRY>?</big:COUNTRY>\r
+            <!--Optional:-->\r
+            <big:PAGE_NUM>?</big:PAGE_NUM>\r
+            <!--Optional:-->\r
+            <big:PAGE_INDEX>?</big:PAGE_INDEX>\r
+            <!--Optional:-->\r
+            <big:PAGE_SIZE>?</big:PAGE_SIZE>\r
+         </big:SHEAD>\r
+         <big:SBODY>\r
+            <!--Optional:-->\r
+            <big:dataType>?</big:dataType>\r
+            <!--Optional:-->\r
+            <big:timeStamp>?</big:timeStamp>\r
+            <!--Optional:-->\r
+            <big:isZip>?</big:isZip>\r
+            <!--Optional:-->\r
+            <big:filePath>?</big:filePath>\r
+            <!--Optional:-->\r
+            <big:fileName>?</big:fileName>\r
+            <!--Optional:-->\r
+            <big:md5>?</big:md5>\r
+         </big:SBODY>\r
+      </big:BigFileService>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:BigFileService/1/"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="579fca57-229d-4600-bafe-7582a95c0c84" wsaVersion="NONE" name="SyncApprovalProcResultsServiceImplServiceSoapBinding" type="wsdl" bindingName="{http://www.sf-express.com/esb/service/SyncApprovalProcResults/wsdl}SyncApprovalProcResultsServiceImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:9999/qapp/cxfService/ESBSyncApprovalProcResultsService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9999/qapp/cxfService/ESBSyncApprovalProcResultsService?wsdl"><con:part><con:url>http://localhost:9999/qapp/cxfService/ESBSyncApprovalProcResultsService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="SyncApprovalProcResultsServiceImplService" targetNamespace="http://www.sf-express.com/esb/service/SyncApprovalProcResults/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.sf-express.com/esb/service/SyncApprovalProcResults/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.sf-express.com/esb/service/SyncApprovalProcResults">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.sf-express.com/esb/service/SyncApprovalProcResults" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sf-express.com/esb/service/SyncApprovalProcResults" xmlns:ns1="http://www.sf-express.com/esb/metadata">
+      <xs:import namespace="http://www.sf-express.com/esb/metadata"/>
+      <xs:element name="SyncApprovalProcResult" type="tns:SyncApprovalProcResultBodyType"/>
+      <xs:element name="SyncApprovalProcResultResponse" type="tns:SyncApprovalProcResultResponseBodyType"/>
+      <xs:element name="esbSoapHeader" type="ns1:esbSoapHeaderType"/>
+      <xs:complexType name="SyncApprovalProcResultBodyType">
+        <xs:sequence>
+          <xs:element name="SHEAD">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="SYSTEM_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="TRAN_MODE" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="TRAN_DATE" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="TRAN_TIMESTAMP" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="SERVER_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="WS_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="USER_LANG" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="USER_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="SEQ_NO" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="COUNTRY" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="PAGE_NUM" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="PAGE_INDEX" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="PAGE_SIZE" nillable="true" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="SBODY">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="businessDocumentKey" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="flowKey" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="runId" nillable="true" type="xs:long"/>
+                <xs:element minOccurs="0" name="formData" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="employeeID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="status" nillable="true" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SyncApprovalProcResultResponseBodyType">
+        <xs:sequence>
+          <xs:element name="SHEAD">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="SYSTEM_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="TRAN_MODE" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="TRAN_DATE" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="TRAN_TIMESTAMP" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="SERVER_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="WS_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="USER_LANG" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="USER_ID" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="SEQ_NO" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="COUNTRY" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="PAGE_NUM" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="PAGE_INDEX" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="PAGE_SIZE" nillable="true" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="RET">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="RET_CODE" nillable="true" type="xs:string"/>
+                      <xs:element minOccurs="0" name="RET_MSG" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="SBODY">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.sf-express.com/esb/metadata" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sf-express.com/esb/metadata">
+      <xs:element name="COUNTRY" type="xs:string"/>
+      <xs:element name="DEST_SYSTEM_ID" type="xs:string"/>
+      <xs:element name="PAGE_INDEX" type="xs:string"/>
+      <xs:element name="PAGE_NUM" type="xs:string"/>
+      <xs:element name="PAGE_SIZE" type="xs:string"/>
+      <xs:element name="RET" type="xs:string"/>
+      <xs:element name="RET_CODE" type="xs:string"/>
+      <xs:element name="RET_MSG" type="xs:string"/>
+      <xs:element name="SEQ_NO" type="xs:string"/>
+      <xs:element name="SERVER_ID" type="xs:string"/>
+      <xs:element name="SYSTEM_ID" type="xs:string"/>
+      <xs:element name="TRAN_DATE" type="xs:string"/>
+      <xs:element name="TRAN_MODE" type="xs:string"/>
+      <xs:element name="TRAN_TIMESTAMP" type="xs:string"/>
+      <xs:element name="USER_ID" type="xs:string"/>
+      <xs:element name="USER_LANG" type="xs:string"/>
+      <xs:element name="WS_ID" type="xs:string"/>
+      <xs:element name="WbpxEndDate" type="xs:anySimpleType"/>
+      <xs:element name="WbpxStartDate" type="xs:anySimpleType"/>
+      <xs:element name="Wbpxorg" type="xs:string"/>
+      <xs:element name="Wbpxsub" type="xs:string"/>
+      <xs:element name="abnormalReason" type="xs:string"/>
+      <xs:element name="account" type="xs:string"/>
+      <xs:element name="account_name" type="xs:string"/>
+      <xs:element name="accountantCode" type="xs:string"/>
+      <xs:element name="actDefId" type="xs:string"/>
+      <xs:element name="actInstId" type="xs:string"/>
+      <xs:element name="addBar" type="xs:string"/>
+      <xs:element name="addHTML" type="xs:string"/>
+      <xs:element name="addService" type="xs:string"/>
+      <xs:element name="addr" type="xs:string"/>
+      <xs:element name="address" type="xs:string"/>
+      <xs:element name="addressId" type="xs:string"/>
+      <xs:element name="addresseeAddr" type="xs:string"/>
+      <xs:element name="addresseeAddrNative" type="xs:string"/>
+      <xs:element name="addresseeCompName" type="xs:string"/>
+      <xs:element name="addresseeContName" type="xs:string"/>
+      <xs:element name="addresseeCustNo" type="xs:string"/>
+      <xs:element name="addresseeMobile" type="xs:string"/>
+      <xs:element name="addresseePhone" type="xs:string"/>
+      <xs:element name="aduitPass" type="xs:string"/>
+      <xs:element name="aduitPerson" type="xs:string"/>
+      <xs:element name="affireNum" type="xs:string"/>
+      <xs:element name="age" type="xs:string"/>
+      <xs:element name="allowBackToStart" type="xs:string"/>
+      <xs:element name="allowFinishedDivert" type="xs:int"/>
+      <xs:element name="applyBuyCyc" type="xs:string"/>
+      <xs:element name="applyDate" type="xs:anySimpleType"/>
+      <xs:element name="applyDepartment" type="xs:string"/>
+      <xs:element name="applyId" type="xs:string"/>
+      <xs:element name="applyNum" type="xs:string"/>
+      <xs:element name="applyType" type="xs:string"/>
+      <xs:element name="arriveTm" type="xs:anySimpleType"/>
+      <xs:element name="assertNum" type="xs:string"/>
+      <xs:element name="assetsCode" type="xs:string"/>
+      <xs:element name="assetsCount" type="xs:string"/>
+      <xs:element name="assetsName" type="xs:string"/>
+      <xs:element name="assetsNum" type="xs:string"/>
+      <xs:element name="attach1" type="xs:string"/>
+      <xs:element name="attach2" type="xs:string"/>
+      <xs:element name="attach3" type="xs:string"/>
+      <xs:element name="attach4" type="xs:string"/>
+      <xs:element name="attach5" type="xs:string"/>
+      <xs:element name="attach6" type="xs:string"/>
+      <xs:element name="auditCompleteDate" type="xs:string"/>
+      <xs:element name="auditNum" type="xs:string"/>
+      <xs:element name="auditPoint" type="xs:string"/>
+      <xs:element name="auditTime" type="xs:anySimpleType"/>
+      <xs:element name="auditTypeCode" type="xs:string"/>
+      <xs:element name="auditTypeText" type="xs:string"/>
+      <xs:element name="auditorUser" type="xs:string"/>
+      <xs:element name="autoloading" type="xs:string"/>
+      <xs:element name="awakenNodeCount" type="xs:int"/>
+      <xs:element name="b2c" type="xs:string"/>
+      <xs:element name="bank" type="xs:string"/>
+      <xs:element name="barCode" type="xs:string"/>
+      <xs:element name="barList" type="xs:string"/>
+      <xs:element name="barNewList" type="xs:string"/>
+      <xs:element name="barScanDt" type="xs:string"/>
+      <xs:element name="barScanTm" type="xs:string"/>
+      <xs:element name="barScanTmStd" type="xs:anySimpleType"/>
+      <xs:element name="barTraceList" type="xs:string"/>
+      <xs:element name="barUploadTm" type="xs:anySimpleType"/>
+      <xs:element name="barUploadTmStd" type="xs:anySimpleType"/>
+      <xs:element name="beginTm" type="xs:anySimpleType"/>
+      <xs:element name="bloodtype" type="xs:string"/>
+      <xs:element name="brand" type="xs:string"/>
+      <xs:element name="buEndDate" type="xs:anySimpleType"/>
+      <xs:element name="buInfo" type="xs:string"/>
+      <xs:element name="buPosition" type="xs:string"/>
+      <xs:element name="buStaDate" type="xs:anySimpleType"/>
+      <xs:element name="businessDocumentKey" type="xs:string"/>
+      <xs:element name="businessFormBriefly" type="xs:string"/>
+      <xs:element name="businessKey" type="xs:string"/>
+      <xs:element name="businessUrl" type="xs:string"/>
+      <xs:element name="cageCode" type="xs:string"/>
+      <xs:element name="cancelCnt" type="xs:string"/>
+      <xs:element name="catalogId" type="xs:string"/>
+      <xs:element name="catalogName" type="xs:string"/>
+      <xs:element name="catalogNo" type="xs:string"/>
+      <xs:element name="cbcmt" type="xs:string"/>
+      <xs:element name="cbfrom" type="xs:string"/>
+      <xs:element name="cbinfo" type="xs:string"/>
+      <xs:element name="cbstatus" type="xs:string"/>
+      <xs:element name="certificate" type="xs:string"/>
+      <xs:element name="certiname" type="xs:string"/>
+      <xs:element name="channel" type="xs:string"/>
+      <xs:element name="channelname" type="xs:string"/>
+      <xs:element name="checkChannel" type="xs:string"/>
+      <xs:element name="checkStandard" type="xs:string"/>
+      <xs:element name="checkStatus" type="xs:string"/>
+      <xs:element name="checkWay" type="xs:string"/>
+      <xs:element name="childNo" type="xs:string"/>
+      <xs:element name="childNos" type="xs:string"/>
+      <xs:element name="childSet" type="xs:string"/>
+      <xs:element name="childWaybillNo" type="xs:string"/>
+      <xs:element name="cityName" type="xs:string"/>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="comEmpType" type="xs:string"/>
+      <xs:element name="comPosition" type="xs:string"/>
+      <xs:element name="comTakCount" type="xs:long"/>
+      <xs:element name="comTitle" type="xs:string"/>
+      <xs:element name="comWorks" type="xs:string"/>
+      <xs:element name="comment" type="xs:string"/>
+      <xs:element name="committee" type="xs:string"/>
+      <xs:element name="comp" type="xs:string"/>
+      <xs:element name="companyCode" type="xs:string"/>
+      <xs:element name="companyId" type="xs:string"/>
+      <xs:element name="companyName" type="xs:string"/>
+      <xs:element name="comstaDate" type="xs:string"/>
+      <xs:element name="consNames" type="xs:string"/>
+      <xs:element name="consQtys" type="xs:string"/>
+      <xs:element name="consignList" type="xs:string"/>
+      <xs:element name="consignList_consId" type="xs:string"/>
+      <xs:element name="consignList_consName" type="xs:string"/>
+      <xs:element name="consignList_consQty" type="xs:string"/>
+      <xs:element name="consignList_consValue" type="xs:double"/>
+      <xs:element name="consignList_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="consignList_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="consignList_qtyUnit" type="xs:string"/>
+      <xs:element name="consignList_versionNo" type="xs:int"/>
+      <xs:element name="consignList_waybillId" type="xs:string"/>
+      <xs:element name="consignList_waybillNo" type="xs:string"/>
+      <xs:element name="consignList_weightQty" type="xs:double"/>
+      <xs:element name="consignedTm" type="xs:string"/>
+      <xs:element name="consignmentMode" type="xs:string"/>
+      <xs:element name="consignorContName" type="xs:string"/>
+      <xs:element name="consignorCustNo" type="xs:string"/>
+      <xs:element name="consignorMobile" type="xs:string"/>
+      <xs:element name="consignorPhone" type="xs:string"/>
+      <xs:element name="contactAddr" type="xs:string"/>
+      <xs:element name="contnrCode" type="xs:string"/>
+      <xs:element name="conveyanceType" type="xs:string"/>
+      <xs:element name="convienienceCode" type="xs:string"/>
+      <xs:element name="convienienceStore" type="xs:string"/>
+      <xs:element name="cooperateStatus" type="xs:string"/>
+      <xs:element name="copyCount" type="xs:long"/>
+      <xs:element name="copyId" type="xs:long"/>
+      <xs:element name="corpCode" type="xs:string"/>
+      <xs:element name="corpName" type="xs:string"/>
+      <xs:element name="countryName" type="xs:string"/>
+      <xs:element name="courierCode" type="xs:string"/>
+      <xs:element name="cp_actInstId" type="xs:long"/>
+      <xs:element name="cp_copyId" type="xs:long"/>
+      <xs:element name="cp_copyTime" type="xs:anySimpleType"/>
+      <xs:element name="cp_copyType" type="xs:long"/>
+      <xs:element name="cp_copyUserId" type="xs:long"/>
+      <xs:element name="cp_copyUserName" type="xs:string"/>
+      <xs:element name="cp_createId" type="xs:long"/>
+      <xs:element name="cp_createTime" type="xs:anySimpleType"/>
+      <xs:element name="cp_creator" type="xs:string"/>
+      <xs:element name="cp_fillComments" type="xs:string"/>
+      <xs:element name="cp_isRead" type="xs:long"/>
+      <xs:element name="cp_orgName" type="xs:string"/>
+      <xs:element name="cp_postName" type="xs:string"/>
+      <xs:element name="cp_processName" type="xs:string"/>
+      <xs:element name="cp_processNumber" type="xs:string"/>
+      <xs:element name="cp_processTitle" type="xs:string"/>
+      <xs:element name="cp_readTime" type="xs:anySimpleType"/>
+      <xs:element name="cp_runId" type="xs:long"/>
+      <xs:element name="cp_sendUserId" type="xs:long"/>
+      <xs:element name="cp_sendUserName" type="xs:string"/>
+      <xs:element name="cp_tagNames" type="xs:string"/>
+      <xs:element name="cp_typedefId" type="xs:long"/>
+      <xs:element name="cp_updateId" type="xs:long"/>
+      <xs:element name="cp_updateTime" type="xs:anySimpleType"/>
+      <xs:element name="crapNum" type="xs:string"/>
+      <xs:element name="createId" type="xs:long"/>
+      <xs:element name="createTime" type="xs:anySimpleType"/>
+      <xs:element name="createUser" type="xs:string"/>
+      <xs:element name="createdOn" type="xs:anySimpleType"/>
+      <xs:element name="creator" type="xs:string"/>
+      <xs:element name="creatorId" type="xs:long"/>
+      <xs:element name="curExecUser" type="xs:string"/>
+      <xs:element name="curHandleUser" type="xs:string"/>
+      <xs:element name="currencyCode" type="xs:string"/>
+      <xs:element name="currencyType" type="xs:string"/>
+      <xs:element name="currentAddr" type="xs:string"/>
+      <xs:element name="customerCardNo" type="xs:string"/>
+      <xs:element name="customerCodeList" type="xs:string"/>
+      <xs:element name="customerNo" type="xs:string"/>
+      <xs:element name="cvsCode" type="xs:string"/>
+      <xs:element name="cvsName" type="xs:string"/>
+      <xs:element name="dataType" type="xs:string"/>
+      <xs:element name="dateofbirth" type="xs:anySimpleType"/>
+      <xs:element name="deadline" type="xs:string"/>
+      <xs:element name="dealStatus" type="xs:string"/>
+      <xs:element name="dealView" type="xs:string"/>
+      <xs:element name="definitionId" type="xs:long"/>
+      <xs:element name="degree" type="xs:string"/>
+      <xs:element name="delayCnt" type="xs:string"/>
+      <xs:element name="delayReason" type="xs:string"/>
+      <xs:element name="delayTm" type="xs:anySimpleType"/>
+      <xs:element name="deleteNum" type="xs:int"/>
+      <xs:element name="deliverConfirm" type="xs:string"/>
+      <xs:element name="deliverDateStr" type="xs:anySimpleType"/>
+      <xs:element name="deliveringCnt" type="xs:string"/>
+      <xs:element name="depName" type="xs:string"/>
+      <xs:element name="departTm" type="xs:anySimpleType"/>
+      <xs:element name="departmentCode" type="xs:string"/>
+      <xs:element name="deptCode" type="xs:string"/>
+      <xs:element name="deptName" type="xs:string"/>
+      <xs:element name="desCity" type="xs:string"/>
+      <xs:element name="desCityName" type="xs:string"/>
+      <xs:element name="desCode" type="xs:string"/>
+      <xs:element name="descZoneCodeGps" type="xs:string"/>
+      <xs:element name="destCityName" type="xs:string"/>
+      <xs:element name="destZoneCode" type="xs:string"/>
+      <xs:element name="destZoneName" type="xs:string"/>
+      <xs:element name="destination" type="xs:string"/>
+      <xs:element name="detailId" type="xs:string"/>
+      <xs:element name="detpCode" type="xs:string"/>
+      <xs:element name="discardCount" type="xs:string"/>
+      <xs:element name="dist" type="xs:string"/>
+      <xs:element name="distName" type="xs:string"/>
+      <xs:element name="distScanTm" type="xs:anySimpleType"/>
+      <xs:element name="district" type="xs:string"/>
+      <xs:element name="divCode" type="xs:string"/>
+      <xs:element name="divName" type="xs:string"/>
+      <xs:element name="docStatus" type="xs:string"/>
+      <xs:element name="draftTitle" type="xs:string"/>
+      <xs:element name="drawNum" type="xs:string"/>
+      <xs:element name="drawTime" type="xs:anySimpleType"/>
+      <xs:element name="drawWare" type="xs:string"/>
+      <xs:element name="driverlicense" type="xs:string"/>
+      <xs:element name="durationTime" type="xs:long"/>
+      <xs:element name="dutyName" type="xs:string"/>
+      <xs:element name="dutyNumber" type="xs:string"/>
+      <xs:element name="eduEndTime" type="xs:anySimpleType"/>
+      <xs:element name="eduLevel" type="xs:string"/>
+      <xs:element name="eduStartTime" type="xs:anySimpleType"/>
+      <xs:element name="edus" type="xs:string"/>
+      <xs:element name="effectiveEndTime" type="xs:anySimpleType"/>
+      <xs:element name="effectiveStartTime" type="xs:anySimpleType"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="empMobile" type="xs:string"/>
+      <xs:element name="empName" type="xs:string"/>
+      <xs:element name="empType" type="xs:string"/>
+      <xs:element name="emplevel" type="xs:string"/>
+      <xs:element name="employeeID" type="xs:string"/>
+      <xs:element name="employeeId" type="xs:string"/>
+      <xs:element name="employeeName" type="xs:string"/>
+      <xs:element name="endDate" type="xs:anySimpleType"/>
+      <xs:element name="endDt" type="xs:string"/>
+      <xs:element name="endReason" type="xs:string"/>
+      <xs:element name="endTime" type="xs:anySimpleType"/>
+      <xs:element name="endTm" type="xs:anySimpleType"/>
+      <xs:element name="endtime" type="xs:anySimpleType"/>
+      <xs:element name="englishName" type="xs:string"/>
+      <xs:element name="entry" type="xs:string"/>
+      <xs:element name="entryKey" type="xs:string"/>
+      <xs:element name="entryValue" type="xs:string"/>
+      <xs:element name="estament" type="xs:string"/>
+      <xs:element name="examDueTim" type="xs:anySimpleType"/>
+      <xs:element name="examExecTim" type="xs:anySimpleType"/>
+      <xs:element name="exceptionCause" type="xs:string"/>
+      <xs:element name="exceptionNum" type="xs:string"/>
+      <xs:element name="exceptionRecord" type="xs:string"/>
+      <xs:element name="exceptionState" type="xs:string"/>
+      <xs:element name="exeUserId" type="xs:string"/>
+      <xs:element name="exeUserName" type="xs:string"/>
+      <xs:element name="executeId" type="xs:string"/>
+      <xs:element name="executionId" type="xs:string"/>
+      <xs:element name="executor" type="xs:string"/>
+      <xs:element name="executorType" type="xs:string"/>
+      <xs:element name="expendRate" type="xs:string"/>
+      <xs:element name="expendTime" type="xs:string"/>
+      <xs:element name="expressTypeName" type="xs:string"/>
+      <xs:element name="extendAttach1" type="xs:string"/>
+      <xs:element name="extendAttach2" type="xs:string"/>
+      <xs:element name="extendAttach3" type="xs:string"/>
+      <xs:element name="extendAttach4" type="xs:string"/>
+      <xs:element name="extendAttach5" type="xs:string"/>
+      <xs:element name="feeAmt" type="xs:double"/>
+      <xs:element name="feeTypeCodeList" type="xs:string"/>
+      <xs:element name="fileName" type="xs:string"/>
+      <xs:element name="filePath" type="xs:string"/>
+      <xs:element name="filialeId" type="xs:string"/>
+      <xs:element name="filialeName" type="xs:string"/>
+      <xs:element name="firstTradeDate" type="xs:anySimpleType"/>
+      <xs:element name="firstlang" type="xs:string"/>
+      <xs:element name="firstlanglevel" type="xs:string"/>
+      <xs:element name="flanlevel" type="xs:string"/>
+      <xs:element name="flowKey" type="xs:string"/>
+      <xs:element name="formData" type="xs:string"/>
+      <xs:element name="formKeyUrl" type="xs:string"/>
+      <xs:element name="formType" type="xs:int"/>
+      <xs:element name="fromOmpflg" type="xs:string"/>
+      <xs:element name="goodat" type="xs:string"/>
+      <xs:element name="gps" type="xs:string"/>
+      <xs:element name="grade" type="xs:int"/>
+      <xs:element name="guid" type="xs:string"/>
+      <xs:element name="handNum" type="xs:string"/>
+      <xs:element name="height" type="xs:string"/>
+      <xs:element name="hqCode" type="xs:string"/>
+      <xs:element name="htInfo" type="xs:string"/>
+      <xs:element name="htNo" type="xs:string"/>
+      <xs:element name="hukouAddr" type="xs:string"/>
+      <xs:element name="hukouType" type="xs:string"/>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="idCard" type="xs:string"/>
+      <xs:element name="idcardno" type="xs:string"/>
+      <xs:element name="imageURL" type="xs:string"/>
+      <xs:element name="importantLevel" type="xs:string"/>
+      <xs:element name="informType" type="xs:string"/>
+      <xs:element name="initExpectedDeliveryTm" type="xs:anySimpleType"/>
+      <xs:element name="inputTypeCode" type="xs:string"/>
+      <xs:element name="insuranceFee" type="xs:double"/>
+      <xs:element name="invokeExternal" type="xs:string"/>
+      <xs:element name="isAllowAccess" type="xs:string"/>
+      <xs:element name="isDelete" type="xs:string"/>
+      <xs:element name="isExtSystem" type="xs:int"/>
+      <xs:element name="isManage" type="xs:int"/>
+      <xs:element name="isMobile" type="xs:int"/>
+      <xs:element name="isNohtm" type="xs:string"/>
+      <xs:element name="isPhone" type="xs:string"/>
+      <xs:element name="isPrint" type="xs:int"/>
+      <xs:element name="isRevoke" type="xs:int"/>
+      <xs:element name="isRevoked" type="xs:int"/>
+      <xs:element name="isValid" type="xs:string"/>
+      <xs:element name="isZip" type="xs:string"/>
+      <xs:element name="isdeDeliveryPreparation" type="xs:string"/>
+      <xs:element name="jobDatefrom" type="xs:anySimpleType"/>
+      <xs:element name="joinDate" type="xs:anySimpleType"/>
+      <xs:element name="journalId" type="xs:string"/>
+      <xs:element name="jxCyear" type="xs:string"/>
+      <xs:element name="jxEndDate" type="xs:anySimpleType"/>
+      <xs:element name="jxStartDate" type="xs:anySimpleType"/>
+      <xs:element name="jxcircle" type="xs:string"/>
+      <xs:element name="jxinfo" type="xs:string"/>
+      <xs:element name="jxkhType" type="xs:string"/>
+      <xs:element name="jxkhrst" type="xs:string"/>
+      <xs:element name="jxpdist" type="xs:string"/>
+      <xs:element name="jxrtype" type="xs:string"/>
+      <xs:element name="keapCnt" type="xs:string"/>
+      <xs:element name="laborDrawList" type="xs:string"/>
+      <xs:element name="lastCheckStatus" type="xs:int"/>
+      <xs:element name="lastDate" type="xs:anySimpleType"/>
+      <xs:element name="lastDateList" type="xs:string"/>
+      <xs:element name="lastExpectedDeliveryTm" type="xs:anySimpleType"/>
+      <xs:element name="lastSubmitDurationTim" type="xs:long"/>
+      <xs:element name="lastUpdateTime" type="xs:anySimpleType"/>
+      <xs:element name="lastUpdateUser" type="xs:string"/>
+      <xs:element name="latitude" type="xs:double"/>
+      <xs:element name="level" type="xs:string"/>
+      <xs:element name="linkman" type="xs:string"/>
+      <xs:element name="linkmanMobile" type="xs:string"/>
+      <xs:element name="linkmanTel" type="xs:string"/>
+      <xs:element name="longitude" type="xs:double"/>
+      <xs:element name="lostCnt" type="xs:string"/>
+      <xs:element name="lowestShengouliang" type="xs:string"/>
+      <xs:element name="madd" type="xs:string"/>
+      <xs:element name="mainLandToMainLand" type="xs:string"/>
+      <xs:element name="maintenanceOn" type="xs:anySimpleType"/>
+      <xs:element name="marriage" type="xs:string"/>
+      <xs:element name="materielCode" type="xs:string"/>
+      <xs:element name="materielName" type="xs:string"/>
+      <xs:element name="maxEduLevel" type="xs:string"/>
+      <xs:element name="md5" type="xs:string"/>
+      <xs:element name="memo" type="xs:string"/>
+      <xs:element name="merchandiseCode" type="xs:string"/>
+      <xs:element name="merchandiseName" type="xs:string"/>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="meterageWeightQty" type="xs:double"/>
+      <xs:element name="mobile" type="xs:string"/>
+      <xs:element name="monitorType" type="xs:long"/>
+      <xs:element name="month" type="xs:string"/>
+      <xs:element name="myComCount" type="xs:long"/>
+      <xs:element name="myReqCount" type="xs:long"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="nation" type="xs:string"/>
+      <xs:element name="nativePlace" type="xs:string"/>
+      <xs:element name="nativetype" type="xs:string"/>
+      <xs:element name="nbpxCerti" type="xs:string"/>
+      <xs:element name="nbpxCresult" type="xs:string"/>
+      <xs:element name="nbpxPaper" type="xs:string"/>
+      <xs:element name="nbpxResult" type="xs:string"/>
+      <xs:element name="nbpxSndDate" type="xs:anySimpleType"/>
+      <xs:element name="nbpxSroject" type="xs:string"/>
+      <xs:element name="nbpxStartDate" type="xs:anySimpleType"/>
+      <xs:element name="nbpxSubject" type="xs:string"/>
+      <xs:element name="nbpxType" type="xs:string"/>
+      <xs:element name="nbpxinfo" type="xs:string"/>
+      <xs:element name="netCode" type="xs:string"/>
+      <xs:element name="netWorth" type="xs:string"/>
+      <xs:element name="nextDestZone" type="xs:string"/>
+      <xs:element name="noSingedCnt" type="xs:int"/>
+      <xs:element name="note" type="xs:string"/>
+      <xs:element name="nowAddr" type="xs:string"/>
+      <xs:element name="nowNum" type="xs:string"/>
+      <xs:element name="number" type="xs:string"/>
+      <xs:element name="objTypeCode" type="xs:string"/>
+      <xs:element name="offtel" type="xs:string"/>
+      <xs:element name="omethod" type="xs:string"/>
+      <xs:element name="opAttachInfo" type="xs:string"/>
+      <xs:element name="opCode" type="xs:string"/>
+      <xs:element name="opName" type="xs:string"/>
+      <xs:element name="openDate" type="xs:anySimpleType"/>
+      <xs:element name="openingOn" type="xs:anySimpleType"/>
+      <xs:element name="operationUser" type="xs:string"/>
+      <xs:element name="opinion" type="xs:string"/>
+      <xs:element name="opinionId" type="xs:string"/>
+      <xs:element name="oprCode" type="xs:string"/>
+      <xs:element name="orderPrincipal" type="xs:string"/>
+      <xs:element name="org" type="xs:string"/>
+      <xs:element name="orgId" type="xs:long"/>
+      <xs:element name="orgName" type="xs:string"/>
+      <xs:element name="originalValue" type="xs:string"/>
+      <xs:element name="otherCnt" type="xs:string"/>
+      <xs:element name="otherConfig" type="xs:string"/>
+      <xs:element name="otherFee" type="xs:double"/>
+      <xs:element name="outsideName" type="xs:string"/>
+      <xs:element name="overdueNum" type="xs:int"/>
+      <xs:element name="packSpec" type="xs:string"/>
+      <xs:element name="pageCnt" type="xs:string"/>
+      <xs:element name="pageCount" type="xs:long"/>
+      <xs:element name="parameterNameList" type="xs:string"/>
+      <xs:element name="parameterValueList" type="xs:string"/>
+      <xs:element name="parentId" type="xs:long"/>
+      <xs:element name="payDetail" type="xs:string"/>
+      <xs:element name="payFlg" type="xs:string"/>
+      <xs:element name="payType" type="xs:string"/>
+      <xs:element name="paymentTypeCode" type="xs:string"/>
+      <xs:element name="payway" type="xs:string"/>
+      <xs:element name="perlevel" type="xs:string"/>
+      <xs:element name="pernative" type="xs:string"/>
+      <xs:element name="phone" type="xs:string"/>
+      <xs:element name="phoneZone" type="xs:string"/>
+      <xs:element name="picurl" type="xs:string"/>
+      <xs:element name="pkName" type="xs:string"/>
+      <xs:element name="planArriveZoneCode" type="xs:string"/>
+      <xs:element name="planTime" type="xs:anySimpleType"/>
+      <xs:element name="pleasedPoint" type="xs:string"/>
+      <xs:element name="position" type="xs:string"/>
+      <xs:element name="positionName" type="xs:string"/>
+      <xs:element name="postcode" type="xs:string"/>
+      <xs:element name="preNumber" type="xs:string"/>
+      <xs:element name="priceType" type="xs:string"/>
+      <xs:element name="proEndDate" type="xs:anySimpleType"/>
+      <xs:element name="proJoinDate" type="xs:anySimpleType"/>
+      <xs:element name="proPosition" type="xs:string"/>
+      <xs:element name="proQuitDate" type="xs:anySimpleType"/>
+      <xs:element name="proStatDate" type="xs:anySimpleType"/>
+      <xs:element name="proType" type="xs:string"/>
+      <xs:element name="processFlag" type="xs:int"/>
+      <xs:element name="processName" type="xs:string"/>
+      <xs:element name="processNumber" type="xs:string"/>
+      <xs:element name="processTitle" type="xs:string"/>
+      <xs:element name="producingArea" type="xs:string"/>
+      <xs:element name="projectCode" type="xs:string"/>
+      <xs:element name="projects" type="xs:string"/>
+      <xs:element name="prolevel" type="xs:string"/>
+      <xs:element name="provinceName" type="xs:string"/>
+      <xs:element name="pstatus" type="xs:string"/>
+      <xs:element name="qualityPoint" type="xs:string"/>
+      <xs:element name="quantity" type="xs:double"/>
+      <xs:element name="queryType" type="xs:int"/>
+      <xs:element name="quitDate" type="xs:anySimpleType"/>
+      <xs:element name="reason" type="xs:string"/>
+      <xs:element name="receDt" type="xs:string"/>
+      <xs:element name="receTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveAccount" type="xs:string"/>
+      <xs:element name="receiveActivityIds" type="xs:string"/>
+      <xs:element name="receiveBillFlg" type="xs:string"/>
+      <xs:element name="receiveBill_ackbillTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeAddr" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeAddrNative" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeCompName" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeContName" type="xs:string"/>
+      <xs:element name="receiveBill_addresseeMobile" type="xs:string"/>
+      <xs:element name="receiveBill_addresseePhone" type="xs:string"/>
+      <xs:element name="receiveBill_addresseePostalCode" type="xs:string"/>
+      <xs:element name="receiveBill_airportCode" type="xs:string"/>
+      <xs:element name="receiveBill_auditedFlg" type="xs:int"/>
+      <xs:element name="receiveBill_auditedTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_auditerEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_auditerTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_boxTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_cargoTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_codBillFlg" type="xs:int"/>
+      <xs:element name="receiveBill_codType" type="xs:int"/>
+      <xs:element name="receiveBill_consValue" type="xs:double"/>
+      <xs:element name="receiveBill_consValueCurrencyCode" type="xs:string"/>
+      <xs:element name="receiveBill_consignedTm" type="xs:string"/>
+      <xs:element name="receiveBill_consigneeEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_consignorAdd" type="xs:string"/>
+      <xs:element name="receiveBill_consignorCompName" type="xs:string"/>
+      <xs:element name="receiveBill_consignorContName" type="xs:string"/>
+      <xs:element name="receiveBill_consignorMobile" type="xs:string"/>
+      <xs:element name="receiveBill_consignorPhone" type="xs:string"/>
+      <xs:element name="receiveBill_consignorPostalCode" type="xs:string"/>
+      <xs:element name="receiveBill_consignorTaxNo" type="xs:string"/>
+      <xs:element name="receiveBill_consultCode" type="xs:string"/>
+      <xs:element name="receiveBill_countryCode" type="xs:string"/>
+      <xs:element name="receiveBill_customsBatchs" type="xs:string"/>
+      <xs:element name="receiveBill_customsTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_cvsCode" type="xs:string"/>
+      <xs:element name="receiveBill_deliverEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_destZoneCode" type="xs:string"/>
+      <xs:element name="receiveBill_distanceTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_expressTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_frangibleParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_freeParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_freeTicketNo" type="xs:string"/>
+      <xs:element name="receiveBill_hasServiceProdFlg" type="xs:int"/>
+      <xs:element name="receiveBill_hvalueBoxType" type="xs:string"/>
+      <xs:element name="receiveBill_innerParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_inputTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_inputTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_inputedZoneCode" type="xs:string"/>
+      <xs:element name="receiveBill_inputerEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_invoiceNo" type="xs:string"/>
+      <xs:element name="receiveBill_isCredit" type="xs:int"/>
+      <xs:element name="receiveBill_limitTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_lockVersionNo" type="xs:int"/>
+      <xs:element name="receiveBill_mawb" type="xs:string"/>
+      <xs:element name="receiveBill_meterageWeightQty" type="xs:double"/>
+      <xs:element name="receiveBill_modifiedEmpCode" type="xs:string"/>
+      <xs:element name="receiveBill_modifiedTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_modifydateGmt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_needSignedBackFlg" type="xs:int"/>
+      <xs:element name="receiveBill_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_oneselfPickupFlg" type="xs:int"/>
+      <xs:element name="receiveBill_otherNodeFlg" type="xs:int"/>
+      <xs:element name="receiveBill_preCustomsDt" type="xs:anySimpleType"/>
+      <xs:element name="receiveBill_quantity" type="xs:double"/>
+      <xs:element name="receiveBill_realWeightQty" type="xs:double"/>
+      <xs:element name="receiveBill_refundFreeParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_selfSendDiscount" type="xs:double"/>
+      <xs:element name="receiveBill_selfSendFlg" type="xs:int"/>
+      <xs:element name="receiveBill_signedBackWaybillNo" type="xs:string"/>
+      <xs:element name="receiveBill_signinTm" type="xs:string"/>
+      <xs:element name="receiveBill_sourceZoneCode" type="xs:string"/>
+      <xs:element name="receiveBill_sourcearea" type="xs:string"/>
+      <xs:element name="receiveBill_subscriberName" type="xs:string"/>
+      <xs:element name="receiveBill_suppTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_tbOrderNo" type="xs:string"/>
+      <xs:element name="receiveBill_tbOrderType" type="xs:string"/>
+      <xs:element name="receiveBill_transferParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_transportTypeCode" type="xs:string"/>
+      <xs:element name="receiveBill_trustParcelFlg" type="xs:int"/>
+      <xs:element name="receiveBill_twinvoiceTypeCode" type="xs:int"/>
+      <xs:element name="receiveBill_unifiedCode" type="xs:string"/>
+      <xs:element name="receiveBill_unitWeight" type="xs:string"/>
+      <xs:element name="receiveBill_versionNo" type="xs:int"/>
+      <xs:element name="receiveBill_volume" type="xs:double"/>
+      <xs:element name="receiveBill_waybillId" type="xs:string"/>
+      <xs:element name="receiveBill_waybillNo" type="xs:string"/>
+      <xs:element name="receiveBill_waybillRemk" type="xs:string"/>
+      <xs:element name="receiveFee" type="xs:string"/>
+      <xs:element name="receiveFee_bizOwnerZoneCode" type="xs:string"/>
+      <xs:element name="receiveFee_currencyCode" type="xs:string"/>
+      <xs:element name="receiveFee_customerAcctCode" type="xs:string"/>
+      <xs:element name="receiveFee_destCurrencyCode" type="xs:string"/>
+      <xs:element name="receiveFee_exchangeRate" type="xs:double"/>
+      <xs:element name="receiveFee_feeAmt" type="xs:double"/>
+      <xs:element name="receiveFee_feeId" type="xs:string"/>
+      <xs:element name="receiveFee_feeTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_gatherEmpCode" type="xs:string"/>
+      <xs:element name="receiveFee_gatherZoneCode" type="xs:string"/>
+      <xs:element name="receiveFee_gstFee" type="xs:double"/>
+      <xs:element name="receiveFee_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveFee_inputTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveFee_paymentChangeTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_paymentTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_refundFeeAmt" type="xs:double"/>
+      <xs:element name="receiveFee_serviceId" type="xs:string"/>
+      <xs:element name="receiveFee_settlementTypeCode" type="xs:string"/>
+      <xs:element name="receiveFee_sourceCodeFeeAmt" type="xs:double"/>
+      <xs:element name="receiveFee_versionNo" type="xs:int"/>
+      <xs:element name="receiveFee_waybillId" type="xs:string"/>
+      <xs:element name="receiveFee_waybillNo" type="xs:string"/>
+      <xs:element name="receiveService" type="xs:string"/>
+      <xs:element name="receiveService_Attribute3" type="xs:string"/>
+      <xs:element name="receiveService_Attribute4" type="xs:string"/>
+      <xs:element name="receiveService_Attribute5" type="xs:string"/>
+      <xs:element name="receiveService_attribute1" type="xs:string"/>
+      <xs:element name="receiveService_attribute2" type="xs:string"/>
+      <xs:element name="receiveService_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveService_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="receiveService_serviceId" type="xs:string"/>
+      <xs:element name="receiveService_serviceProdCode" type="xs:string"/>
+      <xs:element name="receiveService_versionNo" type="xs:int"/>
+      <xs:element name="receiveService_waybillId" type="xs:string"/>
+      <xs:element name="receiveService_waybillNo" type="xs:string"/>
+      <xs:element name="recordedOn" type="xs:anySimpleType"/>
+      <xs:element name="recoveryStatue" type="xs:int"/>
+      <xs:element name="referenceRunId" type="xs:long"/>
+      <xs:element name="regionRightOfUse" type="xs:string"/>
+      <xs:element name="rela" type="xs:string"/>
+      <xs:element name="relaDistrict" type="xs:string"/>
+      <xs:element name="relaOrgName" type="xs:string"/>
+      <xs:element name="relaTitle" type="xs:string"/>
+      <xs:element name="relainfo" type="xs:string"/>
+      <xs:element name="remark" type="xs:string"/>
+      <xs:element name="reportDt" type="xs:string"/>
+      <xs:element name="requestDate" type="xs:anySimpleType"/>
+      <xs:element name="requestSystemId" type="xs:string"/>
+      <xs:element name="reson" type="xs:string"/>
+      <xs:element name="responsibilityPeople" type="xs:string"/>
+      <xs:element name="result" type="xs:string"/>
+      <xs:element name="return" type="xs:string"/>
+      <xs:element name="returnTime" type="xs:anySimpleType"/>
+      <xs:element name="routeCode" type="xs:string"/>
+      <xs:element name="rssChannel" type="xs:string"/>
+      <xs:element name="runId" type="xs:long"/>
+      <xs:element name="sapDestZoneCode" type="xs:string"/>
+      <xs:element name="sapDestZoneName" type="xs:string"/>
+      <xs:element name="scanDate" type="xs:string"/>
+      <xs:element name="scanTime" type="xs:string"/>
+      <xs:element name="score" type="xs:string"/>
+      <xs:element name="seclang" type="xs:string"/>
+      <xs:element name="seclanglevel" type="xs:string"/>
+      <xs:element name="segmentMgr" type="xs:string"/>
+      <xs:element name="sendBackCnt" type="xs:string"/>
+      <xs:element name="sendBill_ackbillTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_addresseeAddr" type="xs:string"/>
+      <xs:element name="sendBill_addresseeAddrNative" type="xs:string"/>
+      <xs:element name="sendBill_addresseeCompName" type="xs:string"/>
+      <xs:element name="sendBill_addresseeContName" type="xs:string"/>
+      <xs:element name="sendBill_addresseeMobile" type="xs:string"/>
+      <xs:element name="sendBill_addresseePhone" type="xs:string"/>
+      <xs:element name="sendBill_addresseePostalCode" type="xs:string"/>
+      <xs:element name="sendBill_airportCode" type="xs:string"/>
+      <xs:element name="sendBill_auditedFlg" type="xs:int"/>
+      <xs:element name="sendBill_auditedTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_auditerEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_auditerTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_boxTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_cargoTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_codBillFlg" type="xs:int"/>
+      <xs:element name="sendBill_codType" type="xs:int"/>
+      <xs:element name="sendBill_consValue" type="xs:double"/>
+      <xs:element name="sendBill_consValueCurrencyCode" type="xs:string"/>
+      <xs:element name="sendBill_consignedTm" type="xs:string"/>
+      <xs:element name="sendBill_consigneeEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_consignorAdd" type="xs:string"/>
+      <xs:element name="sendBill_consignorCompName" type="xs:string"/>
+      <xs:element name="sendBill_consignorContName" type="xs:string"/>
+      <xs:element name="sendBill_consignorMobile" type="xs:string"/>
+      <xs:element name="sendBill_consignorPhone" type="xs:string"/>
+      <xs:element name="sendBill_consignorPostalCode" type="xs:string"/>
+      <xs:element name="sendBill_consignorTaxNo" type="xs:string"/>
+      <xs:element name="sendBill_consultCode" type="xs:string"/>
+      <xs:element name="sendBill_countryCode" type="xs:string"/>
+      <xs:element name="sendBill_customsBatchs" type="xs:string"/>
+      <xs:element name="sendBill_customsTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_cvsCode" type="xs:string"/>
+      <xs:element name="sendBill_deliverEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_destZoneCode" type="xs:string"/>
+      <xs:element name="sendBill_distanceTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_expressTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_frangibleParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_freeParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_freeTicketNo" type="xs:string"/>
+      <xs:element name="sendBill_hasServiceProdFlg" type="xs:int"/>
+      <xs:element name="sendBill_hvalueBoxType" type="xs:string"/>
+      <xs:element name="sendBill_innerParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_inputTmGmt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_inputTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_inputedZoneCode" type="xs:string"/>
+      <xs:element name="sendBill_inputerEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_invoiceNo" type="xs:string"/>
+      <xs:element name="sendBill_isCredit" type="xs:int"/>
+      <xs:element name="sendBill_limitTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_lockVersionNo" type="xs:int"/>
+      <xs:element name="sendBill_mawb" type="xs:string"/>
+      <xs:element name="sendBill_meterageWeightQty" type="xs:double"/>
+      <xs:element name="sendBill_modifiedEmpCode" type="xs:string"/>
+      <xs:element name="sendBill_modifiedTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_modifydateGmt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_needSignedBackFlg" type="xs:int"/>
+      <xs:element name="sendBill_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_oneselfPickupFlg" type="xs:int"/>
+      <xs:element name="sendBill_otherNodeFlg" type="xs:int"/>
+      <xs:element name="sendBill_preCustomsDt" type="xs:anySimpleType"/>
+      <xs:element name="sendBill_quantity" type="xs:double"/>
+      <xs:element name="sendBill_realWeightQty" type="xs:double"/>
+      <xs:element name="sendBill_refundFreeParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_selfSendDiscount" type="xs:double"/>
+      <xs:element name="sendBill_selfSendFlg" type="xs:int"/>
+      <xs:element name="sendBill_signedBackWaybillNo" type="xs:string"/>
+      <xs:element name="sendBill_signinTm" type="xs:string"/>
+      <xs:element name="sendBill_sourceZoneCode" type="xs:string"/>
+      <xs:element name="sendBill_sourcearea" type="xs:string"/>
+      <xs:element name="sendBill_subscriberName" type="xs:string"/>
+      <xs:element name="sendBill_suppTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_tbOrderNo" type="xs:string"/>
+      <xs:element name="sendBill_tbOrderType" type="xs:string"/>
+      <xs:element name="sendBill_transferParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_transportTypeCode" type="xs:string"/>
+      <xs:element name="sendBill_trustParcelFlg" type="xs:int"/>
+      <xs:element name="sendBill_twinvoiceTypeCode" type="xs:int"/>
+      <xs:element name="sendBill_unifiedCode" type="xs:string"/>
+      <xs:element name="sendBill_unitWeight" type="xs:string"/>
+      <xs:element name="sendBill_versionNo" type="xs:int"/>
+      <xs:element name="sendBill_volume" type="xs:double"/>
+      <xs:element name="sendBill_waybillId" type="xs:string"/>
+      <xs:element name="sendBill_waybillNo" type="xs:string"/>
+      <xs:element name="sendBill_waybillRemk" type="xs:string"/>
+      <xs:element name="sendFee" type="xs:string"/>
+      <xs:element name="sendFee_bizOwnerZoneCode" type="xs:string"/>
+      <xs:element name="sendFee_currencyCode" type="xs:string"/>
+      <xs:element name="sendFee_customerAcctCode" type="xs:string"/>
+      <xs:element name="sendFee_destCurrencyCode" type="xs:string"/>
+      <xs:element name="sendFee_exchangeRate" type="xs:double"/>
+      <xs:element name="sendFee_feeAmt" type="xs:double"/>
+      <xs:element name="sendFee_feeId" type="xs:string"/>
+      <xs:element name="sendFee_feeTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_gatherEmpCode" type="xs:string"/>
+      <xs:element name="sendFee_gatherZoneCode" type="xs:string"/>
+      <xs:element name="sendFee_gstFee" type="xs:double"/>
+      <xs:element name="sendFee_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendFee_inputTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendFee_paymentChangeTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_paymentTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_refundFeeAmt" type="xs:double"/>
+      <xs:element name="sendFee_serviceId" type="xs:string"/>
+      <xs:element name="sendFee_settlementTypeCode" type="xs:string"/>
+      <xs:element name="sendFee_sourceCodeFeeAmt" type="xs:double"/>
+      <xs:element name="sendFee_versionNo" type="xs:int"/>
+      <xs:element name="sendFee_waybillId" type="xs:string"/>
+      <xs:element name="sendFee_waybillNo" type="xs:string"/>
+      <xs:element name="sendPoint" type="xs:string"/>
+      <xs:element name="sendService" type="xs:string"/>
+      <xs:element name="sendService_Attribute3" type="xs:string"/>
+      <xs:element name="sendService_Attribute4" type="xs:string"/>
+      <xs:element name="sendService_Attribute5" type="xs:string"/>
+      <xs:element name="sendService_attribute1" type="xs:string"/>
+      <xs:element name="sendService_attribute2" type="xs:string"/>
+      <xs:element name="sendService_inputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendService_newInputTm" type="xs:anySimpleType"/>
+      <xs:element name="sendService_serviceId" type="xs:string"/>
+      <xs:element name="sendService_serviceProdCode" type="xs:string"/>
+      <xs:element name="sendService_versionNo" type="xs:int"/>
+      <xs:element name="sendService_waybillId" type="xs:string"/>
+      <xs:element name="sendService_waybillNo" type="xs:string"/>
+      <xs:element name="serialNumber" type="xs:string"/>
+      <xs:element name="seriesnum" type="xs:string"/>
+      <xs:element name="serviceTypeCodeList" type="xs:string"/>
+      <xs:element name="sex" type="xs:string"/>
+      <xs:element name="shopCard" type="xs:string"/>
+      <xs:element name="signedPercent" type="xs:double"/>
+      <xs:element name="signedStates" type="xs:string"/>
+      <xs:element name="signinTm" type="xs:string"/>
+      <xs:element name="singedCnt" type="xs:string"/>
+      <xs:element name="singedType" type="xs:int"/>
+      <xs:element name="skipAfterHandler" type="xs:string"/>
+      <xs:element name="skipPreHandler" type="xs:string"/>
+      <xs:element name="source" type="xs:string"/>
+      <xs:element name="sourceCityName" type="xs:string"/>
+      <xs:element name="sourceScanTm" type="xs:anySimpleType"/>
+      <xs:element name="sourceZoneCode" type="xs:string"/>
+      <xs:element name="sourceZoneName" type="xs:string"/>
+      <xs:element name="spec" type="xs:string"/>
+      <xs:element name="specialApplyExplain" type="xs:string"/>
+      <xs:element name="specialLevel" type="xs:string"/>
+      <xs:element name="srcCity" type="xs:string"/>
+      <xs:element name="srcCityName" type="xs:string"/>
+      <xs:element name="srcCode" type="xs:string"/>
+      <xs:element name="srcZoneCode" type="xs:string"/>
+      <xs:element name="srcZoneCodeGps" type="xs:string"/>
+      <xs:element name="sreason" type="xs:string"/>
+      <xs:element name="staDate" type="xs:anySimpleType"/>
+      <xs:element name="startDate" type="xs:anySimpleType"/>
+      <xs:element name="startDt" type="xs:string"/>
+      <xs:element name="startOrgId" type="xs:long"/>
+      <xs:element name="startOrgName" type="xs:string"/>
+      <xs:element name="startTime" type="xs:string"/>
+      <xs:element name="starttime" type="xs:anySimpleType"/>
+      <xs:element name="statReason" type="xs:string"/>
+      <xs:element name="status" type="xs:string"/>
+      <xs:element name="stayCodeName" type="xs:string"/>
+      <xs:element name="stayWhyCode" type="xs:string"/>
+      <xs:element name="stayWhyName" type="xs:string"/>
+      <xs:element name="stayWhyNameEn" type="xs:string"/>
+      <xs:element name="stockPrefixdate" type="xs:string"/>
+      <xs:element name="stockPrincipal" type="xs:string"/>
+      <xs:element name="storeCode" type="xs:string"/>
+      <xs:element name="stumode" type="xs:string"/>
+      <xs:element name="subject" type="xs:string"/>
+      <xs:element name="subscriberName" type="xs:string"/>
+      <xs:element name="supplementCnt" type="xs:string"/>
+      <xs:element name="supplierAlias" type="xs:string"/>
+      <xs:element name="supplierEmail" type="xs:string"/>
+      <xs:element name="supplierFax" type="xs:string"/>
+      <xs:element name="supplierId" type="xs:string"/>
+      <xs:element name="supplierName" type="xs:string"/>
+      <xs:element name="supplierPsnm" type="xs:string"/>
+      <xs:element name="supplierTel" type="xs:string"/>
+      <xs:element name="supplierType" type="xs:string"/>
+      <xs:element name="supplierWeb" type="xs:string"/>
+      <xs:element name="supplyRange" type="xs:string"/>
+      <xs:element name="syexpDate" type="xs:anySimpleType"/>
+      <xs:element name="syncTime" type="xs:anySimpleType"/>
+      <xs:element name="systemId" type="xs:string"/>
+      <xs:element name="tableName" type="xs:string"/>
+      <xs:element name="tagNames" type="xs:string"/>
+      <xs:element name="tagids" type="xs:string"/>
+      <xs:element name="taskExecutors" type="xs:string"/>
+      <xs:element name="taskId" type="xs:string"/>
+      <xs:element name="taskKey" type="xs:string"/>
+      <xs:element name="taskName" type="xs:string"/>
+      <xs:element name="taxNo" type="xs:string"/>
+      <xs:element name="taxbillInfo_currencyCode" type="xs:string"/>
+      <xs:element name="taxbillInfo_customsDate" type="xs:anySimpleType"/>
+      <xs:element name="taxbillInfo_customsDutiesAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_exciseAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_handlingFeeAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_importTm" type="xs:anySimpleType"/>
+      <xs:element name="taxbillInfo_importedDt" type="xs:anySimpleType"/>
+      <xs:element name="taxbillInfo_othertaxAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_salesTaxAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_taxbillId" type="xs:string"/>
+      <xs:element name="taxbillInfo_taxbillNo" type="xs:string"/>
+      <xs:element name="taxbillInfo_totalTaxfeeAmt" type="xs:double"/>
+      <xs:element name="taxbillInfo_waybillNo" type="xs:string"/>
+      <xs:element name="tbOrderNo" type="xs:string"/>
+      <xs:element name="tel" type="xs:string"/>
+      <xs:element name="telNo" type="xs:string"/>
+      <xs:element name="tgType" type="xs:string"/>
+      <xs:element name="timeStamp" type="xs:string"/>
+      <xs:element name="timestamp" type="xs:string"/>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="todoType" type="xs:string"/>
+      <xs:element name="totalAmt" type="xs:string"/>
+      <xs:element name="totalCnt" type="xs:string"/>
+      <xs:element name="totalFee" type="xs:double"/>
+      <xs:element name="totalId" type="xs:string"/>
+      <xs:element name="tradeType" type="xs:string"/>
+      <xs:element name="trainCourse" type="xs:string"/>
+      <xs:element name="trainEndtime" type="xs:anySimpleType"/>
+      <xs:element name="trainHost" type="xs:string"/>
+      <xs:element name="trainHours" type="xs:string"/>
+      <xs:element name="trainStatime" type="xs:anySimpleType"/>
+      <xs:element name="trainings" type="xs:string"/>
+      <xs:element name="transferCnt" type="xs:string"/>
+      <xs:element name="transportCnt" type="xs:string"/>
+      <xs:element name="trarst" type="xs:string"/>
+      <xs:element name="type" type="xs:string"/>
+      <xs:element name="typeId" type="xs:long"/>
+      <xs:element name="typeName" type="xs:string"/>
+      <xs:element name="tytype" type="xs:string"/>
+      <xs:element name="unit" type="xs:string"/>
+      <xs:element name="unitName" type="xs:string"/>
+      <xs:element name="unitPrice" type="xs:string"/>
+      <xs:element name="updateId" type="xs:long"/>
+      <xs:element name="updateTime" type="xs:anySimpleType"/>
+      <xs:element name="updateTm" type="xs:anySimpleType"/>
+      <xs:element name="uploadTypeInputty" type="xs:string"/>
+      <xs:element name="userAccount" type="xs:string"/>
+      <xs:element name="userCode" type="xs:string"/>
+      <xs:element name="userYear" type="xs:string"/>
+      <xs:element name="variables" type="xs:string"/>
+      <xs:element name="vehicleGpsInfo" type="xs:string"/>
+      <xs:element name="vehicleId" type="xs:string"/>
+      <xs:element name="vehicleNo" type="xs:string"/>
+      <xs:element name="vehiclePlate" type="xs:string"/>
+      <xs:element name="vipCode" type="xs:string"/>
+      <xs:element name="visitInfo" type="xs:string"/>
+      <xs:element name="voteContent" type="xs:string"/>
+      <xs:element name="waiteServiceFlg" type="xs:string"/>
+      <xs:element name="wareAttr" type="xs:string"/>
+      <xs:element name="wareCapability" type="xs:string"/>
+      <xs:element name="wareId" type="xs:string"/>
+      <xs:element name="wareInsideId" type="xs:string"/>
+      <xs:element name="wareLabel" type="xs:string"/>
+      <xs:element name="wareMaterial" type="xs:string"/>
+      <xs:element name="wareMeno" type="xs:string"/>
+      <xs:element name="wareModel" type="xs:string"/>
+      <xs:element name="wareName" type="xs:string"/>
+      <xs:element name="warePrice" type="xs:string"/>
+      <xs:element name="wareShortName" type="xs:string"/>
+      <xs:element name="wareSpec" type="xs:string"/>
+      <xs:element name="wareType" type="xs:string"/>
+      <xs:element name="wareUse" type="xs:string"/>
+      <xs:element name="warehouseId" type="xs:string"/>
+      <xs:element name="warehouseName" type="xs:string"/>
+      <xs:element name="waybillList" type="xs:string"/>
+      <xs:element name="waybillNo" type="xs:string"/>
+      <xs:element name="waybillNoList" type="xs:string"/>
+      <xs:element name="waybillRemark" type="xs:string"/>
+      <xs:element name="wbpxInfo" type="xs:string"/>
+      <xs:element name="weight" type="xs:string"/>
+      <xs:element name="weightQty" type="xs:double"/>
+      <xs:element name="workEndTime" type="xs:anySimpleType"/>
+      <xs:element name="workExp" type="xs:string"/>
+      <xs:element name="workStaTime" type="xs:anySimpleType"/>
+      <xs:element name="works" type="xs:string"/>
+      <xs:element name="workstaDate" type="xs:anySimpleType"/>
+      <xs:element name="writeDate" type="xs:anySimpleType"/>
+      <xs:element name="x" type="xs:string"/>
+      <xs:element name="xzjccatgy" type="xs:string"/>
+      <xs:element name="xzjcinfo" type="xs:string"/>
+      <xs:element name="xzjcmethod" type="xs:string"/>
+      <xs:element name="xzjcrasion" type="xs:string"/>
+      <xs:element name="xzjctype" type="xs:string"/>
+      <xs:element name="xzjcyear" type="xs:string"/>
+      <xs:element name="y" type="xs:string"/>
+      <xs:element name="ywjccat" type="xs:string"/>
+      <xs:element name="ywjcinfo" type="xs:string"/>
+      <xs:element name="ywjcmethod" type="xs:string"/>
+      <xs:element name="ywjcrasion" type="xs:string"/>
+      <xs:element name="ywjctype" type="xs:string"/>
+      <xs:element name="ywjcyear" type="xs:string"/>
+      <xs:element name="zip" type="xs:string"/>
+      <xs:element name="zoneCode" type="xs:string"/>
+      <xs:element name="zoneGmt" type="xs:string"/>
+      <xs:element name="zoneName" type="xs:string"/>
+      <xs:element name="zoneTypeCode" type="xs:string"/>
+      <xs:complexType name="esbSoapHeaderType">
+        <xs:sequence>
+          <xs:element form="qualified" name="MAC" type="xs:string"/>
+          <xs:element form="qualified" name="MACOrg" type="xs:string"/>
+          <xs:element form="qualified" name="Source" type="xs:string"/>
+          <xs:element form="qualified" name="MessageID" type="xs:string"/>
+          <xs:element form="qualified" name="From" type="xs:string"/>
+          <xs:element form="qualified" name="ReplyTo" type="xs:string"/>
+          <xs:element form="qualified" name="To" type="xs:string"/>
+          <xs:element form="qualified" name="Action" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SyncApprovalProcResultResponse">
+    <wsdl:part element="ns1:SyncApprovalProcResultResponse" name="result"></wsdl:part>
+    <wsdl:part element="ns1:esbSoapHeader" name="esbSoapHeader"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SyncApprovalProcResult">
+    <wsdl:part element="ns1:SyncApprovalProcResult" name="parameters"></wsdl:part>
+    <wsdl:part element="ns1:esbSoapHeader" name="esbSoapHeader"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ESBServerPortType">
+    <wsdl:operation name="SyncApprovalProcResult">
+      <wsdl:input message="tns:SyncApprovalProcResult" name="SyncApprovalProcResult"></wsdl:input>
+      <wsdl:output message="tns:SyncApprovalProcResultResponse" name="SyncApprovalProcResultResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SyncApprovalProcResultsServiceImplServiceSoapBinding" type="tns:ESBServerPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SyncApprovalProcResult">
+      <soap:operation soapAction="urn:/SyncApprovalProcResult" style="document"/>
+      <wsdl:input name="SyncApprovalProcResult">
+        <soap:header message="tns:SyncApprovalProcResult" part="esbSoapHeader" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SyncApprovalProcResultResponse">
+        <soap:header message="tns:SyncApprovalProcResultResponse" part="esbSoapHeader" use="literal"></soap:header>
+        <soap:body parts="result" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SyncApprovalProcResultsServiceImplService">
+    <wsdl:port binding="tns:SyncApprovalProcResultsServiceImplServiceSoapBinding" name="SyncApprovalProcResultsServiceImplPort">
+      <soap:address location="http://localhost:9999/qapp/cxfService/ESBSyncApprovalProcResultsService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9999/qapp/cxfService/ESBSyncApprovalProcResultsService</con:endpoint></con:endpoints><con:operation id="66e002ff-ff38-4e5b-b93e-4295c3768d40" isOneWay="false" action="urn:/SyncApprovalProcResult" name="SyncApprovalProcResult" bindingOperationName="SyncApprovalProcResult" type="Request-Response" outputName="SyncApprovalProcResultResponse" inputName="SyncApprovalProcResult" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1954a2d3-8085-4cbf-8097-e456df34c1dc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9999/qapp/cxfService/ESBSyncApprovalProcResultsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:syn="http://www.sf-express.com/esb/service/SyncApprovalProcResults" xmlns:met="http://www.sf-express.com/esb/metadata">\r
+   <soapenv:Header>\r
+      <syn:esbSoapHeader>\r
+         <met:MAC>?</met:MAC>\r
+         <met:MACOrg>?</met:MACOrg>\r
+         <met:Source>?</met:Source>\r
+         <met:MessageID>?</met:MessageID>\r
+         <met:From>?</met:From>\r
+         <met:ReplyTo>?</met:ReplyTo>\r
+         <met:To>?</met:To>\r
+         <met:Action>?</met:Action>\r
+      </syn:esbSoapHeader>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <syn:SyncApprovalProcResult>\r
+         <syn:SHEAD>\r
+            <!--Optional:-->\r
+            <syn:SYSTEM_ID>?</syn:SYSTEM_ID>\r
+            <!--Optional:-->\r
+            <syn:TRAN_MODE>?</syn:TRAN_MODE>\r
+            <!--Optional:-->\r
+            <syn:TRAN_DATE>?</syn:TRAN_DATE>\r
+            <!--Optional:-->\r
+            <syn:TRAN_TIMESTAMP>?</syn:TRAN_TIMESTAMP>\r
+            <!--Optional:-->\r
+            <syn:SERVER_ID>?</syn:SERVER_ID>\r
+            <!--Optional:-->\r
+            <syn:WS_ID>?</syn:WS_ID>\r
+            <!--Optional:-->\r
+            <syn:USER_LANG>?</syn:USER_LANG>\r
+            <!--Optional:-->\r
+            <syn:USER_ID>?</syn:USER_ID>\r
+            <!--Optional:-->\r
+            <syn:SEQ_NO>?</syn:SEQ_NO>\r
+            <!--Optional:-->\r
+            <syn:COUNTRY>?</syn:COUNTRY>\r
+            <!--Optional:-->\r
+            <syn:PAGE_NUM>?</syn:PAGE_NUM>\r
+            <!--Optional:-->\r
+            <syn:PAGE_INDEX>?</syn:PAGE_INDEX>\r
+            <!--Optional:-->\r
+            <syn:PAGE_SIZE>?</syn:PAGE_SIZE>\r
+         </syn:SHEAD>\r
+         <syn:SBODY>\r
+            <!--Optional:-->\r
+            <syn:businessDocumentKey>?</syn:businessDocumentKey>\r
+            <!--Optional:-->\r
+            <syn:flowKey>?</syn:flowKey>\r
+            <!--Optional:-->\r
+            <syn:runId>?</syn:runId>\r
+            <!--Optional:-->\r
+            <syn:formData>?</syn:formData>\r
+            <!--Optional:-->\r
+            <syn:employeeID>?</syn:employeeID>\r
+            <!--Optional:-->\r
+            <syn:status>?</syn:status>\r
+         </syn:SBODY>\r
+      </syn:SyncApprovalProcResult>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:/SyncApprovalProcResult"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

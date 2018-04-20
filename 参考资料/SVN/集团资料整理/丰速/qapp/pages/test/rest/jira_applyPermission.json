@@ -1,0 +1,10 @@
+[
+    {
+        "deleteUsers": [ ], 
+        "insertUsers": [
+            "800023251"
+        ], 
+        "role": "devManager", 
+        "sysCode": "SFBUY"
+    }
+]

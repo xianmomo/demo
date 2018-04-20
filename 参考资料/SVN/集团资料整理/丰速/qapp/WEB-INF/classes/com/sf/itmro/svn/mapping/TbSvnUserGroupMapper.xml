@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.svn.dao.TbSvnUserGroupMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.svn.model.TbSvnUserGroup">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="group_id" property="groupId" jdbcType="VARCHAR" />
+		<result column="valid_begintime" property="validBegintime" jdbcType="TIMESTAMP" />
+		<result column="valid_endtime" property="validEndtime" jdbcType="TIMESTAMP" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_id, group_id, valid_begintime, valid_endtime, create_id, create_time
+	</sql>
+
+	<sql id="Query_where">
+		<where>
+			<if test="userId != null and userId !=''">
+				and user_id = #{userId}
+			</if>
+			<if test="groupId != null and groupId !=''">
+				and group_id = #{groupId}
+			</if>
+		</where>
+	</sql>
+	<select id="queryData" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_user_group
+		<include refid="Query_where"></include>
+	</select>
+
+	<select id="queryUserGroupRemind" resultType="map" parameterType="map">
+		select distinct
+		tsg.group_name as
+		"groupName",tsr.resp_name as "respName",tsg.group_alias as "groupRemark",DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') as
+		"validEndtime",tsug.valid_endtime from tb_svn_user_group tsug,tb_svn_group_dir tsgd,tb_svn_group
+		tsg,tb_svn_dir
+		tsd,tb_svn_resp tsr where tsug.group_id=tsg.group_id and tsg.group_id=tsgd.group_id and tsgd.dir_id =
+		tsd.dir_id and
+		tsd.resp_id = tsr.resp_id
+		and tsd.dir_path='/'
+		and DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') &lt;= #{validEndtimeEnd}
+		and DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') &gt;= #{validEndtimeBegin}
+		and tsug.user_id=#{userId}
+		order by
+		tsug.valid_endtime desc
+	</select>
+
+	<select id="queryUserGroupMapByUserId" resultType="map" parameterType="map">
+		SELECT
+		t.group_name,temp.begin_time,temp.end_time
+		FROM tb_svn_group t,(
+		SELECT tsg.group_id,tsg.group_name,
+		DATE_FORMAT(tsug.valid_begintime,'%Y-%m-%d') AS begin_time, DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') AS end_time
+		FROM tb_svn_user_group tsug,tb_svn_group tsg
+		WHERE tsug.group_id = tsg.group_id AND tsug.user_id=#{userId}) temp
+		WHERE
+		(FIND_IN_SET(temp.group_id,t.parent_id)>0 OR temp.group_id = t.group_id) and t.resp_type=#{repositoryType}
+		GROUP BY t.group_name
+		ORDER BY t.group_name
+	</select>
+
+	<select id="queryUserGroupOverdueCount" resultType="java.lang.Integer" parameterType="map">
+		select count(1) from
+		tb_svn_user_group tsug,tb_svn_group_dir tsgd,tb_svn_group
+		tsg,tb_svn_dir
+		tsd,tb_svn_resp tsr where
+		tsug.group_id=tsg.group_id and tsg.group_id=tsgd.group_id and tsgd.dir_id =
+		tsd.dir_id and
+		tsd.resp_id = tsr.resp_id
+		and
+		tsd.dir_path='/'
+		and DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') &lt; #{overdueTimeBefore}
+	</select>
+	
+	<select id="queryPermissionUserDataByGroupId" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT IFNULL(group_concat(tsu.user_name),"")
+		FROM tb_svn_user_group tsug,tb_svn_user tsu 
+		WHERE tsug.user_id=tsu.user_id and tsug.group_id=#{groupId,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.svn.model.TbSvnUserGroup">
+		insert into tb_svn_user_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="groupId != null">
+				group_id,
+			</if>
+			<if test="validBegintime != null">
+				valid_begintime,
+			</if>
+			<if test="validEndtime != null">
+				valid_endtime,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="groupId != null">
+				#{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="validBegintime != null">
+				#{validBegintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="validEndtime != null">
+				#{validEndtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.svn.model.TbSvnUserGroup">
+		update tb_svn_user_group
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="groupId != null">
+				group_id = #{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="validBegintime != null">
+				valid_begintime = #{validBegintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="validEndtime != null">
+				valid_endtime = #{validEndtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createId != null">
+				create_id = #{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<delete id="deleteCancelUser">
+		delete from tb_svn_user_group where 1=1
+		and exists (
+		select 1 from tb_svn_user tsu where tsu.user_id = tb_svn_user_group.user_id and date_format(tsu.cancel_date,'%Y-%m-%d') &lt;
+		date_format(sysdate(),'%Y-%m-%d'))
+	</delete>
+
+	<delete id="deleteOverdueUserGroup">
+		delete from tb_svn_user_group where 1=1
+		and DATE_FORMAT(tb_svn_user_group.valid_endtime,'%Y-%m-%d') &lt; date_format(sysdate(),'%Y-%m-%d')
+	</delete>
+
+	<delete id="deleteUserGroupAuth" parameterType="map">
+		delete from tb_svn_user_group
+		where 1=1
+		<if test="respId != null and respId!=''">
+			and exists(select 1 from tb_svn_group_dir tsgd,tb_svn_dir tsd where
+			tb_svn_user_group.group_id =
+			tsgd.group_id and tsgd.dir_id = tsd.dir_id and tsd.resp_id=#{respId})
+		</if>
+		<if test="userId != null and userId!=''">
+			and tb_svn_user_group.user_id=#{userId}
+		</if>
+		<if test="groupId != null and groupId!=''">
+			and tb_svn_user_group.group_id=#{groupId}
+		</if>
+		<if test="validEndtime != null and validEndtime !=''">
+			and DATE_FORMAT(tb_svn_user_group.valid_endtime,'%Y-%m-%d') &lt; #{validEndtime}
+		</if>
+	</delete>
+
+	<delete id="deleteUserGroupByGroupNameIn" parameterType="java.lang.String">
+		DELETE
+		FROM tb_svn_user_group
+		WHERE EXISTS (
+		SELECT 1
+		FROM
+		tb_svn_group tsg
+		WHERE tb_svn_user_group.group_id=tsg.group_id AND tsg.group_name IN (${groupNameIn,jdbcType=VARCHAR}))
+	</delete>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from tb_svn_user_group
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+</mapper>

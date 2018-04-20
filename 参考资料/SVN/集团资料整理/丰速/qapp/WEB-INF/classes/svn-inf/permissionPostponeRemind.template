@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+body, td, pre {
+	font-family: Arial, Verdana, sans-serif
+}
+
+body {
+	font-size: 14px;
+	line-height: 25px;
+	padding: 8px 10px;
+	margin: 0;
+}
+
+pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+
+.rm_line {
+	border-top: 2px solid #F1F1F1;
+	font-size: 0;
+	margin: 15px 0
+}
+
+.atchImg img {
+	border: 2px solid #c3d9ff;
+}
+
+.lnkTxt {
+	color: #0066CC
+}
+
+.rm_PicArea * {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.fbk3 {
+	color: #333;
+	line-height: 160%
+}
+
+.fTip {
+	font-size: 11px;
+	font-weight: normal
+}
+</style>
+
+<head>
+
+<title></title>
+
+</head>
+<body>
+	<table width="680" align="center" cellpadding="0" cellspacing="0"
+		style="border-top: 0px solid #013C9A;">
+		<tr>
+			<td width="70%"
+				style="font-size: 12px; line-height: 13px; color: #4D4D4D;"
+				height="13">
+				<strong style="font-weight: normal; color: #000000;">
+					&nbsp; 
+			</td>
+			<td style="font-size: 12px; line-height: 24px;"></td>
+		</tr>
+	</table>
+
+	<table width="680" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td
+				style="font-size: 12px; line-height: 110%; word-break: break-all; padding-top: 1px;">
+				<b>您好：</b>
+				<br>
+
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp; <b> 您的<font color="red">(svn-scm.sf-express.com)</font>SVN配置库权限即将在${minOverdueTimeStr}到期，请根据你目前实际使用需求，按照<font
+						color="red">附件表格</font>填写重新在ECP上提交<font color="red">所有您需要使用svn-scm.sf-express.com</font>的SVN权限申请流程，SVN权限申请流程名：<font
+						color="red"><a href="${applyPageUrl}" target="_blank">IT003配置库建立及权限申请流程</a></font>。SVN权限管理工具会在权限到期时自动注销相关权限，为了避免影响你的正常工作，请尽快提交申请流程。
+				</b>
+				<br>
+
+
+				<br>
+				<b> &nbsp;&nbsp;&nbsp;&nbsp; 您目前所拥有的所有SVN权限信息如下，请参考： </b>
+				<br>
+
+				<br>
+				<b>一、组权限：</b>
+				<table width="662" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="gray">
+					<tr>
+						<td valign="center" style="background: #C0C0C0;" width="30"
+							class="lh15">序号</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">用户</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">权限类型</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">配置库名</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">角色</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">角色说明</td>
+					</tr>
+					<#list userGroupList as userGroup>
+					<tr>
+						<td valign="center" style="background: #C0C0C0;" width="30" class="lh15">${userGroup_index+1}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userGroup.userName}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userGroup.permissionType}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userGroup.repositoryName}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userGroup.groupName}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userGroup.groupRemark}</td>		
+					</tr>
+					</#list>
+				</table>
+				<br>
+				<br>
+				<b>二、SVN目录权限：</b>
+				<table width="662" border="1" cellpadding="0" cellspacing="0"
+					bordercolor="gray">
+					<tr>
+						<td valign="center" style="background: #C0C0C0;" width="30"
+							class="lh15">序号</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">用户</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">权限类型</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">SVN路径</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">权限信息</td>
+					</tr>
+					<#list userDirList as userDir>
+					<tr>
+						<td valign="center" style="background: #C0C0C0;" width="30" class="lh15">${userDir_index+1}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userDir.userName}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userDir.permissionType}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userDir.dirPath}</td>
+						<td valign="center" style="background: #C0C0C0;" class="lh15">${userDir.permission}</td>
+					</tr>
+					</#list>
+				</table>
+
+				<br>
+				<br>
+				<b>SVN权限管理相关说明： </b>
+				<br>
+				因SVN配置库中存放着公司重要的资料，为减少因离职调岗等情况未能及时对权限注销而导致的信息安全的风险，所有的SVN权限都设置有效期，有关权限说明如下：
+				<br>
+				<b>1、常规权限 </b>指的是符合配置管理制度的正常权限，例如，某系统的研发人员，则该人员就拥有该系统的研发人员的权限，常规权限的期限默认为180天，无需再填写，180天后需要重新申请，在到期前1个月工具会发邮件进行提醒。
+				<br>
+				<b>2、临时权限 </b>是指超出常规权限的权限，使用期限根据用户实际需求进行填写“使用期限”栏，但不能超过180天，权限到期后，由工具进行自动注销，不再另行知会；同时需要填写“具体路径及权限说明”栏，说明具体的路径以及是读还是写权限。
+				<br>
+				3、其中外包人员的配置库权限申请由对应系统的研发负责人或测试负责人代为提交权限申请流程，权限分配原则同资科内部人员
+				<br>
+				4、为了下次保证权限有效期的统一，当最早的常规权限到期时，则要求申请人提交所有权限的申请；
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<table width="680" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td>
+				<div
+					style="width: 100%; height: 100%; padding: 45px 12px 12px 0; font-size: 12px; line-height: 160%; color: #9C9C9C;">
+					系统自动提醒,请不要回复
+					<br>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td height="40">&nbsp;</td>
+		</tr>
+	</table>
+</body>
+</html>

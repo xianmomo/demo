@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.business.dao.SysUserMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.business.model.SysUser">
+		<id column="user_code" property="userCode" jdbcType="VARCHAR" />
+		<result column="user_alias" property="userAlias" jdbcType="VARCHAR" />
+		<result column="is_admin" property="isAdmin" jdbcType="VARCHAR" />
+		<result column="org_id" property="orgId" jdbcType="VARCHAR" />
+		<result column="org_name" property="orgName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="load" resultMap="BaseResultMap" parameterType="com.sf.itmro.business.model.SysUser">
+		select * from sys_user t where t.user_code =
+		#{userCode,jdbcType=VARCHAR}
+	</select>
+
+	<select id="querySpecialUserData" resultMap="BaseResultMap" parameterType="map">
+		select * from sys_user t where 1=1
+		<if test="isAdmin != null or isAdmin !=''">
+			and is_admin = #{isAdmin}
+		</if>
+	</select>
+
+	<select id="queryHcmOutEmpDataByOrg" resultType="map" parameterType="map">
+		select emp_num as id,concat(last_name,"(",emp_num,")") as text
+		from HCM_OUT_EMP
+		where 1=1
+		<if test="orgCode != null and orgCode !=''">
+			and curr_org_id = #{orgCode}
+		</if>
+		<if test="orgCode == null or orgCode ==''">
+			and curr_org_id = '-1'
+		</if>
+	</select>
+
+	<insert id="insertSysUserByHcmOutEmp" parameterType="com.sf.itmro.business.model.SysUser">
+		insert into
+		sys_user(user_code,user_alias,is_admin,org_id,org_name)
+		select emp_num,last_name,case curr_org_id when '10004623' then
+		'0' when '10004624' then '0' else '1' end
+		,curr_org_id,curr_org_name from HCM_OUT_EMP where
+		HCM_OUT_EMP.emp_num=#{userCode,jdbcType=VARCHAR}
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.business.model.SysUser">
+		update sys_user
+		<set>
+			<if test="userAlias != null">
+				user_alias = #{userAlias,jdbcType=VARCHAR},
+			</if>
+			<if test="isAdmin != null">
+				is_admin = #{isAdmin,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				org_id = #{orgId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				org_name = #{orgName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_code = #{userCode,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

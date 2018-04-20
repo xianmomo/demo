@@ -1,0 +1,43 @@
+域账号：SYS.AirSvn
+域密码：jianjian*d123
+
+# 域验证登陆的配置，如果不是域登录，则不用配置
+# 生产环境下的域配置
+ entry_name=OU=SF-Express,DC=SF,DC=com
+ ldap_path=ldap://AD-Ldap-App.int.sfdc.com.cn:3268/
+ domain=SF
+
+
+svnadmin -> /usr/local/subversion/bin/svnadmin
+
+
+CustomLog logs/svn_logfile "%t %u %{SVN-ACTION}e" env=SVN-ACTION
+
+<Location /svn>
+  DAV svn
+  SVNParentPath /svndata
+  SVNAutoversioning On
+  Options Indexes MultiViews
+  AuthType Basic
+  AuthName "svn.sf-express.com"
+  AuthBasicProvider ldap
+  AuthzLDAPAuthoritative off
+  AuthLDAPBindDN "CN=SYS.AirSvn,OU=Applications,DC=sf,DC=com"
+  AuthLDAPBindPassword jianjian*d123
+AuthLDAPURL "ldap://AD-Ldap-App.int.sfdc.com.cn:3268/DC=sf,DC=com?sAMAccountName?sub?(objectClass=*)"
+require valid-user
+#AuthUserFile /svndata/auth/passwd
+AuthzSVNAccessFile /svndata/auth/authz.conf
+</Location>
+
+
+
+常用的错误响应代码如下： 
+    301 ：告知用户请求的URL 已经永久的移动到新的URL，用户可以记住新的URL，以便日后直接使用新的URL 进行访问。 
+    302 ：告知用户请求的URL 临时的移动到新的URL，用户无需记住新的URL，如果省略错误响应代码，默认就是此值。 
+    303 ：告知用户页面已经被替换，用户应该记住新的URL。 
+    401 ：授权失败，即密码错误。 
+    403 ：Access denied 存取错误，即不可以读取该文件。 
+    404 ：File not found 找不到文件。 
+    410 ：告知用户请求的页面已经不再存在，使用此代码时不应该使用重定向的URL 参数。 
+    500 ：服务器内部错误，可能是Web服务器本身存在问题，也可能是编写的程序出错。 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings>
+	<mapping>
+		<method name="baseLineInput">
+			<parameter index="0" mappedName="svnFilePath" />
+			<parameter index="1" mappedName="svnUser" />
+			<parameter index="2" mappedName="svnPassword" />
+		</method>
+		
+		<method name="downloadSvnFile">
+			<parameter index="0" mappedName="svnFilePath" />
+			<parameter index="1" mappedName="svnUser" />
+			<parameter index="2" mappedName="svnPassword" />
+		</method>
+	</mapping>
+
+</mappings>

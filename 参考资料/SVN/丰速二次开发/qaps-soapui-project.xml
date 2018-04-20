@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2fde8ba9-9a97-46a5-b135-2c8ccc49dfe0" activeEnvironment="Default" name="qaps" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b5734b58-8932-45fd-8359-36cd8f9f1f10" wsaVersion="NONE" name="SvnPermissionProcessServiceSoapBinding" type="wsdl" bindingName="{http://ws.server.itmro.sf.com/}SvnPermissionProcessServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService?wsdl"><con:part><con:url>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="SvnPermissionProcessService" targetNamespace="http://ws.server.itmro.sf.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.server.itmro.sf.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.server.itmro.sf.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="addSvnUser" type="tns:addSvnUser"/>
+      <xs:element name="addSvnUserResponse" type="tns:addSvnUserResponse"/>
+      <xs:element name="createSvnRepository" type="tns:createSvnRepository"/>
+      <xs:element name="createSvnRepositoryResponse" type="tns:createSvnRepositoryResponse"/>
+      <xs:element name="editSvnRepository" type="tns:editSvnRepository"/>
+      <xs:element name="editSvnRepositoryResponse" type="tns:editSvnRepositoryResponse"/>
+      <xs:element name="initSvnAuthFile" type="tns:initSvnAuthFile"/>
+      <xs:element name="initSvnAuthFileResponse" type="tns:initSvnAuthFileResponse"/>
+      <xs:element name="writeSvnAuthFile" type="tns:writeSvnAuthFile"/>
+      <xs:element name="writeSvnAuthFileResponse" type="tns:writeSvnAuthFileResponse"/>
+      <xs:complexType name="initSvnAuthFile">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="initSvnAuthFileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createSvnRepository">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="repositoryName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createSvnRepositoryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="writeSvnAuthFile">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="writeSvnAuthFileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="editSvnRepository">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oldRepositoryName" type="xs:string"/>
+          <xs:element minOccurs="0" name="newRepositoryName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="editSvnRepositoryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addSvnUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="svnUser" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addSvnUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="editSvnRepositoryResponse">
+    <wsdl:part element="tns:editSvnRepositoryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSvnUserResponse">
+    <wsdl:part element="tns:addSvnUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSvnRepository">
+    <wsdl:part element="tns:createSvnRepository" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="writeSvnAuthFileResponse">
+    <wsdl:part element="tns:writeSvnAuthFileResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editSvnRepository">
+    <wsdl:part element="tns:editSvnRepository" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initSvnAuthFileResponse">
+    <wsdl:part element="tns:initSvnAuthFileResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initSvnAuthFile">
+    <wsdl:part element="tns:initSvnAuthFile" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="writeSvnAuthFile">
+    <wsdl:part element="tns:writeSvnAuthFile" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSvnRepositoryResponse">
+    <wsdl:part element="tns:createSvnRepositoryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSvnUser">
+    <wsdl:part element="tns:addSvnUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SvnPermissionProcess">
+    <wsdl:operation name="initSvnAuthFile">
+      <wsdl:input message="tns:initSvnAuthFile" name="initSvnAuthFile"></wsdl:input>
+      <wsdl:output message="tns:initSvnAuthFileResponse" name="initSvnAuthFileResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSvnRepository">
+      <wsdl:input message="tns:createSvnRepository" name="createSvnRepository"></wsdl:input>
+      <wsdl:output message="tns:createSvnRepositoryResponse" name="createSvnRepositoryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeSvnAuthFile">
+      <wsdl:input message="tns:writeSvnAuthFile" name="writeSvnAuthFile"></wsdl:input>
+      <wsdl:output message="tns:writeSvnAuthFileResponse" name="writeSvnAuthFileResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editSvnRepository">
+      <wsdl:input message="tns:editSvnRepository" name="editSvnRepository"></wsdl:input>
+      <wsdl:output message="tns:editSvnRepositoryResponse" name="editSvnRepositoryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSvnUser">
+      <wsdl:input message="tns:addSvnUser" name="addSvnUser"></wsdl:input>
+      <wsdl:output message="tns:addSvnUserResponse" name="addSvnUserResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SvnPermissionProcessServiceSoapBinding" type="tns:SvnPermissionProcess">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="initSvnAuthFile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="initSvnAuthFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initSvnAuthFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSvnRepository">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createSvnRepository">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createSvnRepositoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeSvnAuthFile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="writeSvnAuthFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="writeSvnAuthFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editSvnRepository">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="editSvnRepository">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="editSvnRepositoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSvnUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addSvnUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSvnUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SvnPermissionProcessService">
+    <wsdl:port binding="tns:SvnPermissionProcessServiceSoapBinding" name="SvnPermissionProcessPort">
+      <soap:address location="http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService</con:endpoint></con:endpoints><con:operation id="40ed8cc8-60f8-4e60-8a78-c8e351d65f02" isOneWay="false" action="" name="addSvnUser" bindingOperationName="addSvnUser" type="Request-Response" outputName="addSvnUserResponse" inputName="addSvnUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="feda15d9-465d-48cd-8c40-bf60f26d61bb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.server.itmro.sf.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:addSvnUser>\r
+         <!--Optional:-->\r
+         <svnUser>?</svnUser>\r
+      </ws:addSvnUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.server.itmro.sf.com/SvnPermissionProcess/addSvnUser"/></con:call></con:operation><con:operation id="ea9f50ba-4f7c-4b90-b02a-44df306bc2a9" isOneWay="false" action="" name="createSvnRepository" bindingOperationName="createSvnRepository" type="Request-Response" outputName="createSvnRepositoryResponse" inputName="createSvnRepository" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="adf6de61-af59-4985-bf65-004b773581c7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.server.itmro.sf.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:createSvnRepository>\r
+         <!--Optional:-->\r
+         <repositoryName>?</repositoryName>\r
+      </ws:createSvnRepository>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.server.itmro.sf.com/SvnPermissionProcess/createSvnRepository"/></con:call></con:operation><con:operation id="0ba2837c-60f0-4e75-9afe-7a61d0130d58" isOneWay="false" action="" name="editSvnRepository" bindingOperationName="editSvnRepository" type="Request-Response" outputName="editSvnRepositoryResponse" inputName="editSvnRepository" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="044dd7e4-1d3a-4561-bb2c-97c2ec68b612" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.server.itmro.sf.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:editSvnRepository>\r
+         <!--Optional:-->\r
+         <oldRepositoryName>?</oldRepositoryName>\r
+         <!--Optional:-->\r
+         <newRepositoryName>?</newRepositoryName>\r
+      </ws:editSvnRepository>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.server.itmro.sf.com/SvnPermissionProcess/editSvnRepository"/></con:call></con:operation><con:operation id="9f23fd1e-a54f-4507-9bc3-efb3d5d5b4ef" isOneWay="false" action="" name="initSvnAuthFile" bindingOperationName="initSvnAuthFile" type="Request-Response" outputName="initSvnAuthFileResponse" inputName="initSvnAuthFile" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fd4bf0a7-c92c-4b2b-b6ca-ad196059104e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.server.itmro.sf.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:initSvnAuthFile/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.server.itmro.sf.com/SvnPermissionProcess/initSvnAuthFile"/></con:call></con:operation><con:operation id="3c502b59-3552-4ed4-aff5-bc69eecc763b" isOneWay="false" action="" name="writeSvnAuthFile" bindingOperationName="writeSvnAuthFile" type="Request-Response" outputName="writeSvnAuthFileResponse" inputName="writeSvnAuthFile" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c67da3b9-19de-497f-b592-b42ceb53f05c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.88.15.213:8686/qaps/cxfService/SvnPermissionProcessService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.server.itmro.sf.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:writeSvnAuthFile/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.server.itmro.sf.com/SvnPermissionProcess/writeSvnAuthFile"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

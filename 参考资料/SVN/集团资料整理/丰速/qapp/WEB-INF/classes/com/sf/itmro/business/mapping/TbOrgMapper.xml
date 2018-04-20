@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.business.dao.TbOrgMapper" >
+  <resultMap id="BaseResultMap" type="com.sf.itmro.business.model.TbOrg" >
+    <id column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+    <result column="org_statu" property="orgStatu" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    org_id, parent_id, org_name,org_code, org_statu, create_time
+  </sql>
+  
+  <select id="queryTreeData" resultType="map" parameterType="map">
+  	select org_code as id,org_id as currentId, parent_id as "parentId", org_name as text,
+		case (select count(1) from tb_org tt where tt.parent_id = t.org_id) when 0 then 'open' else 'closed' end as state
+		from tb_org t
+		where org_statu='0' 
+			<if test="id != null and id != ''">
+			 and parent_id = #{id} 
+			</if>
+			<if test="currentOrgId != null and currentOrgId != ''">
+			 or (select 1 from (
+				 SELECT T2.org_id FROM ( 
+				 	SELECT   
+		        		@r AS _id,   
+		        		(SELECT @r := parent_id FROM tb_org sto WHERE sto.org_id = _id) AS parent_id,   
+		        		@l := @l + 1 AS lvl   
+	    			FROM (SELECT @r := #{currentOrgId}, @l := 0) vars, tb_org jto   
+	    			WHERE @r &lt;&gt; 0
+				) T1 JOIN tb_org T2   
+				ON T1._id = T2.org_id 
+			) temp where temp.org_id = t.parent_id )
+			</if>			 
+		order by org_name
+  </select>
+
+</mapper>

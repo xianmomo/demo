@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.itmro.git.dao.TbGitUserGroupMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.git.model.TbGitUserGroup">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="group_name" jdbcType="VARCHAR" property="groupName" />
+		<result column="valid_begintime" jdbcType="TIMESTAMP" property="validBegintime" />
+		<result column="valid_endtime" jdbcType="TIMESTAMP" property="validEndtime" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="statu" jdbcType="VARCHAR" property="statu" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_name, group_name, valid_begintime, valid_endtime, create_time,statu
+	</sql>
+
+	<delete id="delete" parameterType="com.sf.itmro.git.model.TbGitUserGroup">
+		update tb_git_user_group t set t.statu='1',t.create_time=sysdate() where
+		t.user_name=#{userName,jdbcType=VARCHAR} and
+		t.group_name=#{groupName,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.git.model.TbGitUserGroup">
+		insert into tb_git_user_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="groupName != null">
+				group_name,
+			</if>
+			<if test="validBegintime != null">
+				valid_begintime,
+			</if>
+			<if test="validEndtime != null">
+				valid_endtime,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="statu != null">
+				statu,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="groupName != null">
+				#{groupName,jdbcType=VARCHAR},
+			</if>
+			<if test="validBegintime != null">
+				#{validBegintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="validEndtime != null">
+				#{validEndtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="statu != null">
+				#{statu,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+</mapper>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.business.dao.SysConfigMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.business.model.SysConfig">
+		<id column="config_id" property="configId" jdbcType="INTEGER" />
+		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
+		<result column="config_name" property="configName" jdbcType="VARCHAR" />
+		<result column="config_value" property="configValue" jdbcType="VARCHAR" />
+		<result column="config_type" property="configType" jdbcType="VARCHAR" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_id" property="modifyId" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		config_id,parent_id, config_name, config_value,
+		config_type,create_id, create_time, modify_id,
+		modify_time,
+		remark
+	</sql>
+	<sql id="Query_Where">
+		<where>
+			<if test="parentId != null and parentId !=''">
+				and parent_id = #{parentId}
+			</if>
+			<if test="configType != null and configType !=''">
+				and config_type = #{configType}
+			</if>
+		</where>
+	</sql>
+	<select id="queryConfigByGroupName" resultType="map" parameterType="java.lang.String">
+		select t.config_name as
+		"key",t.config_value as "value"
+		from sys_config t
+		where exists (select 1 from sys_config sc where sc.config_id = t.parent_id
+				and sc.config_type = 0 and sc.config_name = #{configName,jdbcType=VARCHAR}) 
+			and t.config_type = 1
+	</select>
+	<select id="queryConfigData" resultType="map" parameterType="map">
+		select temp.*,temp.group_name as "group" from (select t.config_id,t.config_name as name,t.config_value as value,(select config_name from sys_config where config_id=t.parent_id) as group_name,t.remark,"text" as "editor" from sys_config t where t.config_type=1 order by group_name) temp
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		sys_config
+		where config_id = #{configId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.business.model.SysConfig">
+		insert into sys_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="configId != null">
+				config_id,
+			</if>
+			<if test="configName != null">
+				config_name,
+			</if>
+			<if test="configValue != null">
+				config_value,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyId != null">
+				modify_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="configId != null">
+				#{configId,jdbcType=INTEGER},
+			</if>
+			<if test="configName != null">
+				#{configName,jdbcType=VARCHAR},
+			</if>
+			<if test="configValue != null">
+				#{configValue,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				#{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.business.model.SysConfig">
+		update sys_config
+		<set>
+			<if test="configName != null">
+				config_name = #{configName,jdbcType=VARCHAR},
+			</if>
+			<if test="configValue != null">
+				config_value = #{configValue,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				create_id = #{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				modify_id = #{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where config_id = #{configId,jdbcType=INTEGER}
+	</update>
+</mapper>

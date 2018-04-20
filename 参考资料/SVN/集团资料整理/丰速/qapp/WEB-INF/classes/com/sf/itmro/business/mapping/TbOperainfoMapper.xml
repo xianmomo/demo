@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.business.dao.TbOperainfoMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.business.model.TbOperainfo">
+		<id column="oper_id" property="operId" jdbcType="INTEGER" />
+		<result column="oper_type" property="operType" jdbcType="VARCHAR" />
+		<result column="oper_title" property="operTitle" jdbcType="VARCHAR" />
+		<result column="oper_result" property="operResult" jdbcType="VARCHAR" />
+		<result column="oper_remark" property="operRemark" jdbcType="VARCHAR" />
+		<result column="apply_id" property="applyId" jdbcType="VARCHAR" />
+		<result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		oper_id, oper_type, oper_title, oper_result, oper_remark,
+		apply_id,
+		apply_time, create_id,
+		create_time
+	</sql>
+
+	<sql id="queryWhere">
+		<where>
+			<if test="operTitle != null and operTitle !=''">
+				and locate(#{operTitle},oper_title) &gt; 0
+			</if>
+			<if test="createTimeStart != null and createTimeStart !=''">
+				and date_format(create_time,'%Y-%m-%d') &gt;=
+				#{createTimeStart}
+			</if>
+			<if test="createTimeEnd != null and createTimeEnd !='' ">
+				and date_format(create_time,'%Y-%m-%d') &lt;=
+				#{createTimeEnd}
+			</if>
+			<if test="operType != null and operType!=''">
+				and oper_type = #{operType}
+			</if>
+			<if test="operResult != null and operResult !=''">
+				and oper_result = #{operResult}
+			</if>
+		</where>
+	</sql>
+
+	<select id="queryData" resultMap="BaseResultMap" parameterType="map">
+		select * from (select
+		<include refid="Base_Column_List"></include>
+		from tb_operainfo t
+		<include refid="queryWhere"></include>
+		order by t.create_time desc
+		) temp 
+		<if test="rowStart != null">
+			where temp.oper_id limit ${rowStart},${rows}
+		</if>
+	</select>
+
+	<select id="countData" resultType="java.lang.Integer"
+		parameterType="map">
+		select count(1) from tb_operainfo
+		<include refid="queryWhere"></include>
+	</select>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.business.model.TbOperainfo">
+		insert into tb_operainfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="operId != null">
+				oper_id,
+			</if>
+			<if test="operType != null">
+				oper_type,
+			</if>
+			<if test="operTitle != null">
+				oper_title,
+			</if>
+			<if test="operResult != null">
+				oper_result,
+			</if>
+			<if test="operRemark != null">
+				oper_remark,
+			</if>
+			<if test="applyId != null">
+				apply_id,
+			</if>
+			<if test="applyTime != null">
+				apply_time,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="operId != null">
+				#{operId,jdbcType=INTEGER},
+			</if>
+			<if test="operType != null">
+				#{operType,jdbcType=VARCHAR},
+			</if>
+			<if test="operTitle != null">
+				#{operTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="operResult != null">
+				#{operResult,jdbcType=VARCHAR},
+			</if>
+			<if test="operRemark != null">
+				#{operRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="applyId != null">
+				#{applyId,jdbcType=VARCHAR},
+			</if>
+			<if test="applyTime != null">
+				#{applyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.business.model.TbOperainfo">
+		update tb_operainfo
+		<set>
+			<if test="operType != null">
+				oper_type = #{operType,jdbcType=VARCHAR},
+			</if>
+			<if test="operTitle != null">
+				oper_title = #{operTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="operResult != null">
+				oper_result = #{operResult,jdbcType=VARCHAR},
+			</if>
+			<if test="operRemark != null">
+				oper_remark = #{operRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="applyId != null">
+				apply_id = #{applyId,jdbcType=VARCHAR},
+			</if>
+			<if test="applyTime != null">
+				apply_time = #{applyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createId != null">
+				create_id = #{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where oper_id = #{operId,jdbcType=INTEGER}
+	</update>
+
+</mapper>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style>
+		body,td,pre{font-family:Arial, Verdana, sans-serif}
+		body{font-size:14px;line-height:25px;padding:8px 10px;margin:0;}
+		pre {
+			white-space: pre-wrap; 
+			white-space: -moz-pre-wrap; 
+			white-space: -pre-wrap;
+			white-space: -o-pre-wrap;
+			word-wrap: break-word;
+		}
+		.rm_line{border-top:2px solid #F1F1F1; font-size:0; margin:15px 0}
+		.atchImg img{border:2px solid #c3d9ff;}
+		.lnkTxt{ color:#0066CC}
+		.rm_PicArea *{ font-family:Arial, sans-serif; font-size:14px;font-weight:700;}
+		.fbk3{ color:#333; line-height:160%}
+		.fTip{ font-size:11px; font-weight:normal}
+	</style>
+
+	<head>
+
+		<title></title>
+
+	</head>
+<body>
+
+
+<table width="680" align="center" cellpadding="0" cellspacing="0" style="border-top:0px solid #013C9A;">
+        <tr>
+            <td width="70%" style="font-size:12px;line-height:13px;color:#4D4D4D;" height="13"><strong style="font-weight:normal; color:#000000;">
+			&nbsp;</td>
+            <td style="font-size:12px; line-height:24px;"></td>
+        </tr>
+</table>
+
+	<table width="680" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td style="font-size:12px; line-height:110%; word-break:break-all;padding-top:1px;">
+				<b>您好：</b>
+				<br>
+				
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>您申请的SVN${repositoryType}配置库<font color="red">《${repositoryName}》</font>创建完毕，并为配置库负责人${repositoryUserAlias}(${repositoryUserName})开通了${permission}权限
+				<#if (otherMsg?length > 0)>
+					，${otherMsg}
+				</#if>
+				。</b>
+				<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>如其他人需要配置库权限，请另提交流程申请<a href="${applyPageUrl}" target="_blank">IT003配置库建立及权限申请流程</a></b>
+				<br/>
+				<br/>
+				<b>配置库访问地址:</b><br/>
+				<#list repositoryList as repository>
+					${repository.repositoryType}：<a href="${repository.repositoryUrl}" target="_blank">${repository.repositoryUrl}</a>。<br/>
+				</#list>
+			</td>
+		</tr>
+	</table>
+
+	<br/>
+	<br/>
+	<br/>
+
+	<table width="680" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+		    <td>
+				<div style="width:100%; height:100%; padding:45px 12px 12px 0; font-size:12px; line-height:160%; color:#9C9C9C;">
+					系统自动提醒,请不要回复
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

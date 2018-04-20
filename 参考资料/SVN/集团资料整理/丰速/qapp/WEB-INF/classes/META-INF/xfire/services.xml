@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<service xmlns="http://xfire.codehaus.org/config/1.0"> 
+		<name>XfireService</name>
+		<serviceClass>com.sf.itmro.svn.interfaceservice.XfireService</serviceClass>
+		<implementationClass>com.sf.itmro.svn.interfaceservice.impl.XfireServiceImpl</implementationClass>
+	</service>
+</beans>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.svn.dao.TbSvnGroupDirMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.svn.model.TbSvnGroupDir">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="group_id" property="groupId" jdbcType="VARCHAR" />
+		<result column="dir_id" property="dirId" jdbcType="VARCHAR" />
+		<result column="auth" property="auth" jdbcType="VARCHAR" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, group_id, dir_id, auth, create_id, create_time
+	</sql>
+	<sql id="Query_where">
+		<where>
+			<if test="groupId != null and groupId !=''">
+				and group_id = #{groupId}
+			</if>
+			<if test="dirId != null and dirId !=''">
+				and dir_id = #{dirId}
+			</if>
+		</where>
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_group_dir
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="queryData" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_group_dir
+		<include refid="Query_where"></include>
+	</select>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.svn.model.TbSvnGroupDir">
+		insert into tb_svn_group_dir
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="groupId != null">
+				group_id,
+			</if>
+			<if test="dirId != null">
+				dir_id,
+			</if>
+			<if test="auth != null">
+				auth,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="groupId != null">
+				#{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="dirId != null">
+				#{dirId,jdbcType=VARCHAR},
+			</if>
+			<if test="auth != null">
+				#{auth,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.svn.model.TbSvnGroupDir">
+		update tb_svn_group_dir
+		<set>
+			<if test="groupId != null">
+				group_id = #{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="dirId != null">
+				dir_id = #{dirId,jdbcType=VARCHAR},
+			</if>
+			<if test="auth != null">
+				auth = #{auth,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				create_id = #{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<delete id="deleteGroupDirAuth" parameterType="map">
+		delete from tb_svn_group_dir
+		where 1=1
+		<if test="respId != null and respId!=''">
+			and exists(select 1 from tb_svn_dir tsd where tb_svn_user_dir.dir_id = tsd.dir_id and
+			tsd.resp_id=#{respId})
+		</if>
+		<if test="groupId != null and groupId!=''">
+			and tb_svn_group_dir.group_id=#{groupId}
+		</if>
+		<if test="dirId != null and dirId!=''">
+			and tb_svn_group_dir.dir_id=#{dirId}
+		</if>
+	</delete>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from tb_svn_group_dir
+		where tb_svn_group_dir.id=#{id,jdbcType=INTEGER}
+	</delete>
+	
+	<delete id="deleteGroupDirByGroupNameIn" parameterType="java.lang.String">
+		DELETE
+		FROM tb_svn_group_dir
+		WHERE EXISTS (
+		SELECT 1
+		FROM tb_svn_group tsg
+		WHERE tb_svn_group_dir.group_id = tsg.group_id AND tsg.group_name IN (${groupNameIn,jdbcType=VARCHAR}))
+	</delete>
+
+</mapper>

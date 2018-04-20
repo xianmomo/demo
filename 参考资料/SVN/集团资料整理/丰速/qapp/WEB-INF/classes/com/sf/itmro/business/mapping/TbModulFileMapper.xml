@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.business.dao.TbModulFileMapper" >
+  <resultMap id="BaseResultMap" type="com.sf.itmro.business.model.TbModulFile" >
+    <id column="modul_id" property="modulId" jdbcType="INTEGER" />
+    <result column="modul_name" property="modulName" jdbcType="VARCHAR" />
+    <result column="modul_upload_name" property="modulUploadName" jdbcType="VARCHAR" />
+    <result column="modul_path" property="modulPath" jdbcType="VARCHAR" />
+    <result column="modul_type" property="modulType" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    modul_id, modul_name, modul_upload_name, modul_path, modul_type, create_id, create_time
+  </sql>
+  <sql id="Query_where">
+  	<where>
+  		<if test="modulId != null and modulId != ''">
+  			and modul_id = #{modulId}
+  		</if>
+  		<if test="modulType != null and modulType != ''">
+  			and modul_type = #{modulType}
+  		</if>
+  		<if test="modulUploadName != null and modulUploadName != ''">
+  			and modul_upload_name = #{modulUploadName}
+  		</if>
+  	</where>
+  </sql>
+  
+  <select id="queryModulFileData" resultType="map" parameterType="map" >
+    select *,
+    date_format(create_time,'%Y-%m-%d %H:%i:%s') as create_time_str
+    from tb_modul_file
+    <include refid="Query_where"></include>
+    order by modul_type,modul_upload_name
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_modul_file
+    where modul_id = #{modulId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.sf.itmro.business.model.TbModulFile" >
+    insert into tb_modul_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="modulId != null" >
+        modul_id,
+      </if>
+      <if test="modulName != null" >
+        modul_name,
+      </if>
+      <if test="modulUploadName != null" >
+        modul_upload_name,
+      </if>
+      <if test="modulPath != null" >
+        modul_path,
+      </if>
+      <if test="modulType != null" >
+        modul_type,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="modulId != null" >
+        #{modulId,jdbcType=INTEGER},
+      </if>
+      <if test="modulName != null" >
+        #{modulName,jdbcType=VARCHAR},
+      </if>
+      <if test="modulUploadName != null" >
+        #{modulUploadName,jdbcType=VARCHAR},
+      </if>
+      <if test="modulPath != null" >
+        #{modulPath,jdbcType=VARCHAR},
+      </if>
+      <if test="modulType != null" >
+        #{modulType,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.business.model.TbModulFile" >
+    update tb_modul_file
+    <set >
+      <if test="modulName != null" >
+        modul_name = #{modulName,jdbcType=VARCHAR},
+      </if>
+      <if test="modulUploadName != null" >
+        modul_upload_name = #{modulUploadName,jdbcType=VARCHAR},
+      </if>
+      <if test="modulPath != null" >
+        modul_path = #{modulPath,jdbcType=VARCHAR},
+      </if>
+      <if test="modulType != null" >
+        modul_type = #{modulType,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where modul_id = #{modulId,jdbcType=INTEGER}
+  </update>
+</mapper>

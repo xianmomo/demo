@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.svn.dao.TbSvnUserMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.svn.model.TbSvnUser">
+		<id column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_alias" property="userAlias" jdbcType="VARCHAR" />
+		<result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+		<result column="user_type" property="userType" jdbcType="VARCHAR" />
+		<result column="date_num" property="dateNum" jdbcType="INTEGER" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_id" property="modifyId" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="cancel_date" property="cancelDate" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="org_name" property="orgName" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, user_name, user_alias, user_email, user_type, date_num, create_id, create_time,
+		modify_id,
+		modify_time,cancel_date, remark,org_code,org_name
+	</sql>
+	<sql id="Query_where">
+		<where>
+			<if test="userId != null and userId != ''">
+				and user_id = #{userId}
+			</if>
+			<if test="userName != null and userName !=''">
+				and user_name = #{userName}
+			</if>
+			<if test="cancelDateBefore !=null and cancelDateBefore !=''">
+				and date_format(cancel_date,'%Y-%m-%d') &lt; #{cancelDateBefore}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="queryNotPermissionUserData" resultType="map" parameterType="map">
+		SELECT t.user_id,t.user_name,t.user_alias,t.date_num
+		FROM tb_svn_user t
+		WHERE NOT EXISTS(
+		SELECT 1
+		FROM tb_svn_user_dir tsud
+		WHERE tsud.user_id = t.user_id AND tsud.dir_id=#{dirId})
+	</select>
+	
+	<select id="queryHasPermissionUserData" resultType="map" parameterType="java.lang.String">
+		SELECT tsu.user_id,tsu.user_name,tsu.user_alias,tsu.date_num,tsud.auth,tsud.id
+		FROM tb_svn_user_dir tsud,tb_svn_user tsu
+		WHERE tsud.user_id = tsu.user_id AND tsud.dir_id=#{dirId}
+	</select>
+	
+	<select id="queryDataToShowPermission" resultType="map" parameterType="java.lang.String">
+		select user_id,user_name,user_alias,date_num from tb_svn_user 
+		<if test="userNameLike != null and userNameLike !=''">
+			where locate(#{userNameLike,jdbcType=VARCHAR},user_name)>0
+		</if>
+		order by user_alias
+	</select>
+
+	<select id="queryUserRemind" resultMap="BaseResultMap" parameterType="map">
+		select tu.user_id,tu.user_name,tu.user_alias,tu.user_email,tu.user_type from
+		tb_svn_user_group tsug,tb_svn_user tu
+		where
+		tsug.user_id = tu.user_id
+		<if test="validEndtimeEnd != null and validEndtimeEnd !=''">
+			and DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') &lt;= #{validEndtimeEnd}
+		</if>
+		<if test="validEndtimeBegin != null and validEndtimeBegin !=''">
+			and DATE_FORMAT(tsug.valid_endtime,'%Y-%m-%d') &gt; #{validEndtimeBegin}
+		</if>
+		union
+		select tu.user_id,tu.user_name,tu.user_alias,tu.user_email,tu.user_type from
+		tb_svn_user_dir tsud,tb_svn_user tu
+		where tsud.user_id = tu.user_id
+		<if test="validEndtimeEnd != null and validEndtimeEnd !=''">
+			and DATE_FORMAT(tsud.valid_endtime,'%Y-%m-%d') &lt;= #{validEndtimeEnd}
+		</if>
+		<if test="validEndtimeBegin != null and validEndtimeBegin !=''">
+			and DATE_FORMAT(tsud.valid_endtime,'%Y-%m-%d') &gt; #{validEndtimeBegin}
+		</if>
+	</select>
+	
+	<select id="queryUserOverdueCount" resultType="java.lang.Integer" parameterType="map">
+		select count(1) from tb_svn_user tu
+		where DATE_FORMAT(tu.cancel_date,'%Y-%m-%d') &lt; #{overdueTimeBefore}
+	</select>
+
+	<select id="queryData" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_user
+		<include refid="Query_where"></include>
+	</select>
+
+	<select id="queryDataByOrg" resultType="map" parameterType="map">
+		select user_name as id,concat(user_alias,"(",user_name,")") as text
+		from tb_svn_user
+		where 1=1
+		<if test="orgCode != null and orgCode !=''">
+			and org_code = #{orgCode}
+		</if>
+		<if test="orgCode == null or orgCode ==''">
+			and org_code = '-1'
+		</if>
+	</select>
+
+	<select id="loadUserByUserName" resultType="com.sf.itmro.svn.model.TbSvnUser" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_user
+		where user_name = #{userName,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="inserTbUserByHcmOutEmp" parameterType="com.sf.itmro.svn.model.TbSvnUser">
+		insert into tb_svn_user(
+		user_id,user_name,user_alias,user_email,user_type,date_num,cancel_date,org_code,org_name
+		) select 
+		uuid(),t.emp_num,t.last_name,t.mail_address,case t.persg_txt when "业务外包" then '1' else '0' end,
+		case t.persg_txt when "业务外包" then 180 else 730 end,t.cancel_date,t.curr_org_id,t.curr_org_name
+		from HCM_OUT_EMP t
+		where t.emp_num=#{userName,jdbcType=VARCHAR};
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.svn.model.TbSvnUser">
+		insert into tb_svn_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userAlias != null">
+				user_alias,
+			</if>
+			<if test="userEmail != null">
+				user_email,
+			</if>
+			<if test="userType != null">
+				user_type,
+			</if>
+			<if test="dateNum != null">
+				date_num,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyId != null">
+				modify_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="cancelDate != null">
+				cancel_date,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="orgCode != null">
+				org_code,
+			</if>
+			<if test="orgName != null">
+				org_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userAlias != null">
+				#{userAlias,jdbcType=VARCHAR},
+			</if>
+			<if test="userEmail != null">
+				#{userEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="userType != null">
+				#{userType,jdbcType=VARCHAR},
+			</if>
+			<if test="dateNum != null">
+				#{dateNum,jdbcType=INTEGER},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				#{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cancelDate != null">
+				#{cancelDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCode != null">
+				#{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				#{orgName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<delete id="deleteUser" parameterType="map">
+		delete from tb_svn_user where tb_svn_user.user_id=#{userId}
+	</delete>
+	
+	<delete id="deleteCancelUser">
+		delete from tb_svn_user where 1=1 
+		 and date_format(tb_svn_user.cancel_date,'%Y-%m-%d') &lt; date_format(sysdate(),'%Y-%m-%d')
+	</delete>
+</mapper>

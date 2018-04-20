@@ -1,0 +1,29 @@
+SVN版本库的迁移步骤：（以adm项目为例）
+源服务器：10.88.2.91  
+源版本库的路径：/foc-website/sfa-adm
+目标服务器：10.88.22.18  
+要迁移的路径：/s_adm
+由于服务器访问权限限制，导致文件传输不太方便，所以以下所有的跨服务器文件传输均使用公共目录ftp://10.88.10.4/lqx
+
+
+源服务器上的操作步骤：
+1.保证没有进程在访问或修改源服务器上的adm。
+
+2.进入10.88.2.91，打开cmd，切换目录至D:\AirSvn。
+
+3.查看版本库到目前为止最新的版本号。
+svnlook youngest foc-website
+
+4.将foc-website版本库导出成Dump文件。
+svnadmin dump foc-website > foc-website-dumpfile
+
+
+目标服务器上的操作步骤：
+1.创建规范化命名的版本库：s_adm。
+
+2.将Dump文件导入到新的版本库。 
+svnadmin load s_adm < sfa-adm-dumpfile
+
+3.checkout新版本库，在s_adm下执行命令：md code\trunk,code\branches,code\tags,doc\1-立项,doc\2-采购,doc\3-策划,doc\4-需求,doc\5-设计,doc\6-实现,doc\7-测试,doc\8-实施,doc\9-验收
+
+4.将代码、文档按标准目录分类。

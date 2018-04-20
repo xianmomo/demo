@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.svn.dao.TbSvnDirMapper">
+	<resultMap id="BaseResultMap" type="com.sf.itmro.svn.model.TbSvnDir">
+		<id column="dir_id" property="dirId" jdbcType="VARCHAR" />
+		<result column="dir_path" property="dirPath" jdbcType="VARCHAR" />
+		<result column="resp_id" property="respId" jdbcType="VARCHAR" />
+		<result column="dir_type" property="dirType" jdbcType="VARCHAR" />
+		<result column="create_id" property="createId" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="modify_id" property="modifyId" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		dir_id, dir_path, resp_id, dir_type, create_id, create_time, modify_id, modify_time,
+		remark
+	</sql>
+	<sql id="Query_where">
+		<where>
+			<if test="dirPath != null and dirPath !=''">
+				and dir_path = #{dirPath}
+			</if>
+			<if test="dirPathLike != null and dirPathLike !=''">
+				and locate(#{dirPathLike},dir_path)>0
+			</if>
+			<if test="createTimeBegin!=null and createTimeBegin !=''">
+				and date_format(create_time,'%Y-%m-%d') &gt;= #{createTimeBegin}
+			</if>
+			<if test="createTimeEnd!=null and createTimeEnd !=''">
+				and date_format(create_time,'%Y-%m-%d') &lt;= #{createTimeEnd}
+			</if>
+			<if test="respId != null and respId !=''">
+				and resp_id = #{respId}
+			</if>
+			<if test="dirType != null and dirType !=''">
+				and dir_type = #{respId}
+			</if>
+			<if test="respNameLike !=null and respNameLike!=''">
+				and exists (select 1 from tb_svn_resp tsr where tsr.resp_id = t.resp_id and locate(#{respNameLike},tsr.resp_name)>0)
+			</if>
+			<if test="dirId != null and dirId !=''">
+				and dir_id = #{dirId}
+			</if>
+		</where>
+	</sql>
+	<select id="queryData" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from tb_svn_dir t
+		<include refid="Query_where"></include>
+	</select>
+	
+	<select id="queryDataToShowPermission" resultType="map" parameterType="map">
+		SELECT CONCAT("D",tsd.dir_id) AS id, CONCAT("D",tsd.dir_id) AS "currentId", CONCAT(tsr.resp_name,":",tsd.dir_path) AS text, CONCAT("R",tsd.resp_id) AS "parentId"
+		,tsd.dir_path,"open" as state
+		FROM tb_svn_dir tsd,tb_svn_resp tsr
+		WHERE tsd.resp_id = tsr.resp_id 
+		<if test="respType!=null and respType!=''">
+			and tsr.resp_type=#{respType}
+		</if>
+		<if test="respTypeNot!=null and respTypeNot!=''">
+			and tsr.resp_type !=#{respTypeNot}
+		</if>
+		ORDER BY tsr.resp_name,tsd.dir_path
+	</select>
+	
+	<select id="queryUserAuth" resultType="map" parameterType="map">
+		select 
+			 t.dir_id,
+			 t.dir_path,
+			 ifnull((select group_concat(concat(ud.user_id,":",ud.auth,":",(select tu.date_num from tb_svn_user tu where tu.user_id = ud.user_id))) from tb_svn_user_dir ud where ud.dir_id = t.dir_id),"") as user_auth
+		 from tb_svn_dir t where t.resp_id = #{respId}
+	</select>
+	
+	<select id="queryGroupAuth" resultType="map" parameterType="map">
+		select 
+			 t.dir_id,
+			 t.dir_path,
+			 ifnull((select group_concat(concat(gd.group_id,":",gd.auth)) from tb_svn_group_dir gd where gd.dir_id = t.dir_id),"") as group_auth
+		 from tb_svn_dir t where t.resp_id = #{respId}
+	</select>
+
+	<insert id="insertSelective" parameterType="com.sf.itmro.svn.model.TbSvnDir">
+		insert into tb_svn_dir
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="dirId != null">
+				dir_id,
+			</if>
+			<if test="dirPath != null">
+				dir_path,
+			</if>
+			<if test="respId != null">
+				resp_id,
+			</if>
+			<if test="dirType != null">
+				dir_type,
+			</if>
+			<if test="createId != null">
+				create_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyId != null">
+				modify_id,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="dirId != null">
+				#{dirId,jdbcType=VARCHAR},
+			</if>
+			<if test="dirPath != null">
+				#{dirPath,jdbcType=VARCHAR},
+			</if>
+			<if test="respId != null">
+				#{respId,jdbcType=VARCHAR},
+			</if>
+			<if test="dirType != null">
+				#{dirType,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				#{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.sf.itmro.svn.model.TbSvnDir" >
+	    update tb_svn_dir
+	    <set >
+	      <if test="dirPath != null" >
+	        dir_path = #{dirPath,jdbcType=VARCHAR},
+	      </if>
+	      <if test="dirType != null" >
+	        dir_type = #{dirType,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createId != null" >
+	        create_id = #{createId,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createTime != null" >
+	        create_time = #{createTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="modifyId != null" >
+	        modify_id = #{modifyId,jdbcType=VARCHAR},
+	      </if>
+	      <if test="modifyTime != null" >
+	        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="remark != null" >
+	        remark = #{remark,jdbcType=VARCHAR},
+	      </if>
+	    </set>
+	    where dir_id = #{dirId,jdbcType=VARCHAR}
+	</update>
+  
+	<update id="updateChildDirByDirPath" parameterType="map">
+  		UPDATE tb_svn_dir t SET t.dir_path = CONCAT(#{targetDirPath}, SUBSTRING(t.dir_path, CHAR_LENGTH(#{sourcesDirPath})+1))
+		WHERE resp_id=#{respId} AND t.dir_path LIKE '${sourcesDirPath}%'
+	</update>
+	
+	<select id="queryGroupDataByDirId" parameterType="java.lang.String" resultType="map">
+		SELECT tsg.group_id,tsg.group_name,tsgd.auth
+		FROM tb_svn_group_dir tsgd,tb_svn_group tsg
+		WHERE tsgd.group_id = tsg.group_id AND tsgd.dir_id = #{dirId}
+		ORDER BY group_name
+	</select>
+	
+	<select id="queryGroupDataByRespId" parameterType="java.lang.String" resultType="map">
+		SELECT tsg.group_id,tsg.group_name,tsgd.auth
+		FROM tb_svn_group_dir tsgd,tb_svn_group tsg,tb_svn_dir tsd
+		WHERE tsgd.group_id = tsg.group_id AND tsgd.dir_id = tsd.dir_id AND tsd.resp_id = #{respId}
+		ORDER BY group_name
+	</select>
+	
+	<select id="queryUserDataByDirId" parameterType="java.lang.String" resultType="map">
+		SELECT tsu.user_name,tsu.user_alias,tsud.auth,DATE_FORMAT(tsud.valid_begintime,'%Y-%m-%d') as begin_time,DATE_FORMAT(tsud.valid_endtime,'%Y-%m-%d') AS end_time
+		FROM tb_svn_user_dir tsud,tb_svn_user tsu
+		WHERE tsud.user_id = tsu.user_id AND tsud.dir_id=#{dirId}  
+		ORDER BY tsu.user_name
+	</select>
+	
+	<select id="queryUserDataByRespId" parameterType="java.lang.String" resultType="map">
+		SELECT tsu.user_name,tsu.user_alias,tsud.auth,DATE_FORMAT(tsud.valid_begintime,'%Y-%m-%d') as begin_time,DATE_FORMAT(tsud.valid_endtime,'%Y-%m-%d') AS end_time
+		FROM tb_svn_user_dir tsud,tb_svn_user tsu,tb_svn_dir tsd
+		WHERE tsud.user_id = tsu.user_id AND tsud.dir_id = tsd.dir_id AND tsd.resp_id=#{respId}
+		ORDER BY tsu.user_name
+	</select>
+	
+	<select id="queryMapData" parameterType="map" resultType="map">
+		SELECT DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%s') AS create_time_str,
+		(
+		SELECT user_alias
+		FROM sys_user su
+		WHERE su.user_code = t.create_id) AS create_name,
+		(
+		SELECT resp_name
+		FROM tb_svn_resp tsr
+		WHERE tsr.resp_id=t.resp_id) AS resp_name,
+		t.*
+		FROM tb_svn_dir t
+		<include refid="Query_where"></include>
+		ORDER BY DIR_PATH, create_time DESC
+		<if test="rowStart != null">
+			LIMIT ${rowStart},${rows}
+		</if>
+	</select>
+
+	<select id="countData" resultType="java.lang.Integer" parameterType="map">
+		select count(1) from tb_svn_dir t
+		<include refid="Query_where"></include>
+	</select>
+	
+	<delete id="deleteDirByRespId" parameterType="com.sf.itmro.svn.model.TbSvnDir">
+		DELETE
+		FROM tb_svn_dir
+		WHERE tb_svn_dir.resp_id=#{respId,jdbcType=VARCHAR} 
+	</delete>
+	<delete id="deleteDir" parameterType="com.sf.itmro.svn.model.TbSvnDir">
+		DELETE
+		FROM tb_svn_dir
+		WHERE tb_svn_dir.dir_id=#{dirId,jdbcType=VARCHAR} 
+	</delete>
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.itmro.jira.dao.TbJiraUserGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.sf.itmro.jira.model.TbJiraUserGroup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="valid_begintime" property="validBegintime" jdbcType="TIMESTAMP" />
+    <result column="valid_endtime" property="validEndtime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="statu" property="statu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name, group_name, valid_begintime, valid_endtime, create_time, statu
+  </sql>
+  <delete id="deleteByUserAndGroup" parameterType="com.sf.itmro.jira.model.TbJiraUserGroup" >
+    update tb_jira_user_group
+    set statu = '1'
+    where user_name = #{userName,jdbcType=VARCHAR} and group_name = #{groupName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insertSelective" parameterType="com.sf.itmro.jira.model.TbJiraUserGroup" >
+    insert into tb_jira_user_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="validBegintime != null" >
+        valid_begintime,
+      </if>
+      <if test="validEndtime != null" >
+        valid_endtime,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="statu != null" >
+        statu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="validBegintime != null" >
+        #{validBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validEndtime != null" >
+        #{validEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statu != null" >
+        #{statu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

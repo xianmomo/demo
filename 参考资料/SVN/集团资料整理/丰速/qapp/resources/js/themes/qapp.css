@@ -1,0 +1,129 @@
+@CHARSET "UTF-8";
+
+.indexTop {
+	height: 80px;
+	background-image: url("images/index-top.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.custom-menu ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.custom-menu ul li {
+	padding: 4px 0px 4px 20px;
+	cursor: pointer;
+	font-weight: 100%;
+}
+
+.custom-menu ul li:HOVER {
+	background: #EAF2FF;
+	border-radius: 5px;
+	border: 1px solid #B7D2FF;
+}
+.custom-query-form{
+	line-height:24px;
+}
+
+.custom-query-form label-title{
+	display:inline-block;
+	width:110px;
+	font-size:16px;
+	text-align: right;
+	padding-right: 2px;
+}
+.custom-query-form label-value{
+	display:inline-block;
+	width:140px;
+	font-size:16px;
+	text-align: left;
+	padding-left: 2px;
+}
+.custom-query-form label-seach{
+	display:inline-block;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.custom-query-form label-value select{
+	width:120px;
+}
+.custom-query-form label-value input{
+	width:117px;
+}
+
+.custom-form{
+	line-height:24px;
+}
+
+.custom-form label-title{
+	display:inline-block;
+	width:110px;
+	font-size:16px;
+	text-align: right;
+	padding-right: 2px;
+	margin-bottom: 3px;
+}
+.custom-form label-value{
+	display:inline-block;
+	width:170px;
+	font-size:16px;
+	text-align: left;
+	padding-left: 2px;
+	margin-bottom: 3px;
+}
+
+.custom-form label-value select{
+	width:170px;
+}
+.custom-form label-value input{
+	width:167px;
+}
+.custom-form label-value input[type='radio']{
+	width:15px;
+}
+
+.custom-table-show{
+	border: solid #B7D2FF;
+	border-width:1px 0px 0px 1px;
+	margin: 0px auto;
+}
+.custom-table-show tr td{
+	display:inline-block;
+	width:200px;
+	line-height: 20px;
+	height: 20px;
+	border: solid #B7D2FF;
+	border-width:0px 1px 1px 0px;
+}
+.custom-table-show thead{
+	text-align: center;
+	background-color: #E0ECFF;
+}
+.custom-table-show tbody tr td{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.custom-tooltip{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.AlertTheme {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.AlertSuccess {
+	color: green;
+}
+
+.AlertError {
+	color: red;
+}

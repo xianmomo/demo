@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 开始配置SVN权限申请处理定时任务 -->
+	<bean id="autoProcessSvnAuthJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.sf.itmro.quartz.common.MyJobDetailQuartzBean</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- <entry key="targetObject" value="com.sf.itmro.business.module.AutoProcessApply" /> <entry key="targetMethod" value="execute" 
+					/> -->
+				<entry key="targetObject" value="com.sf.itmro.business.module.AutoProcessSvnAuth" />
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+	<bean id="autoProcessSvnAuthTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="autoProcessSvnAuthJob"></ref>
+		</property>
+		<!-- core表达式 -->
+		<property name="cronExpression">
+			<!-- 执行时间 -->
+			<value>0 0/2 * * * ?</value>
+		</property>
+	</bean>
+	<!-- 结束配置SVN权限申请处理定时任务 -->
+	
+	<!-- 开始配置Git权限申请处理定时任务 -->
+	<bean id="autoProcessGitAuthJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.sf.itmro.quartz.common.MyJobDetailQuartzBean</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="targetObject" value="com.sf.itmro.business.module.AutoProcessApply" /> 
+				<entry key="targetMethod" value="executeGit" />
+			</map>
+		</property>
+	</bean>
+	<bean id="autoProcessGitAuthTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="autoProcessGitAuthJob"></ref>
+		</property>
+		<!-- core表达式 -->
+		<property name="cronExpression">
+			<!-- 执行时间 -->
+			<value>0 0/2 * * * ?</value>
+		</property>
+	</bean>
+	<!-- 结束配置Git权限申请处理定时任务 -->
+
+	<!-- 开始配置过期数据处理定时任务 -->
+	<bean id="overdueDataProcessJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.sf.itmro.quartz.common.MyJobDetailQuartzBean</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="targetObject" value="com.sf.itmro.business.module.OverdueDataProcess" />
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+	<bean id="overdueDataProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="overdueDataProcessJob"></ref>
+		</property>
+		<!-- core表达式 -->
+		<property name="cronExpression">
+			<!-- 执行时间 -->
+			<value>0 0 3 * * ?</value>
+		</property>
+	</bean>
+	<!-- 结束配置过期数据处理定时任务 -->
+
+	<!-- 开始svn、git等用户表同步处理定时任务 -->
+	<bean id="syncSapHcmOutEmpDataJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.sf.itmro.quartz.common.MyJobDetailQuartzBean</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="targetObject" value="com.sf.itmro.sap.module.SyncSapHcmOutEmpData" />
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+	<bean id="syncSapHcmOutEmpDataTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="syncSapHcmOutEmpDataJob"></ref>
+		</property>
+		<!-- core表达式 -->
+		<property name="cronExpression">
+			<!-- 执行时间 -->
+			<value>0 0 5 * * ?</value>
+		</property>
+	</bean>
+	<!-- 结束svn、git等用户表同步处理定时任务 -->
+
+	<!-- 开始配置权限提醒处理定时任务 -->
+	<bean id="emailRemindPermissionJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.sf.itmro.quartz.common.MyJobDetailQuartzBean</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="targetObject" value="com.sf.itmro.business.module.EmailRemindPermission" />
+				<entry key="targetMethod" value="execute" />
+			</map>
+		</property>
+	</bean>
+	<bean id="emailRemindPermissionTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="emailRemindPermissionJob"></ref>
+		</property>
+		<!-- core表达式 -->
+		<property name="cronExpression">
+			<!-- 执行时间 -->
+			<value>0 0 7 * * ?</value>
+		</property>
+	</bean>
+	<!-- 结束配置权限提醒处理定时任务 -->
+
+	<!-- 总管理类 -->
+	<bean id="scheduldManager" class="com.sf.itmro.quartz.common.MySchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="autoProcessSvnAuthTrigger" />
+				<ref bean="autoProcessGitAuthTrigger"/>
+				<ref bean="overdueDataProcessTrigger" />
+				<ref bean="syncSapHcmOutEmpDataTrigger" />
+				<ref bean="emailRemindPermissionTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 设置定时任务参数 。value值为相对路径(项目的classes目录) -->
+	<bean class="com.sf.itmro.quartz.utils.FilePathUtils">
+		<property name="resourceFile" value="quartz-inf/quartz.properties" />
+	</bean>
+
+</beans>

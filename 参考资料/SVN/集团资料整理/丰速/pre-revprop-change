@@ -1,0 +1,28 @@
+#!/bin/sh
+REPOS="$1"
+REV="$2"
+USER="$3"
+PROPNAME="$4"
+ACTION="$5"
+
+if [ "$ACTION" != "M" ];
+then
+   echo -e "Can't set $PROPNAME/$ACTION/$USER only admin can change logs!" 1>&2
+   exit 1
+fi
+
+if [ "$PROPNAME" != "svn:log" ];
+then
+   echo -e "Can't set $PROPNAME/$ACTION/$USER only admin can change logs!" 1>&2
+   exit 1
+fi
+
+if [[ "$USER" == "admin" || "$USER" == "687898" || "$USER" == "035851" || "$USER" == "608820" ]];
+then
+   exit 0
+else
+   echo -e "Can't set $PROPNAME/$ACTION/$USER only admin can change logs!" 1>&2
+   exit 1
+fi
+
+exit 0
