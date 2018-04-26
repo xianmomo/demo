@@ -1,0 +1,11 @@
+[user]
+	name = Candy
+	email = 925299641@qq.com
+[credential]
+	helper = manager
+[alias]
+	st = status
+	cm = commit -a -m
+	add = add --all
+	setu = remote set-url
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
